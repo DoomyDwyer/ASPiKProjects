@@ -307,8 +307,7 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
-# .vs Visual Studio database
-.vs
+**/.cmake/
 
 # vstgui4
 vstgui4

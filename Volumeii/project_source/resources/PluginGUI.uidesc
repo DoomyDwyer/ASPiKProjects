@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vstgui-ui-description version="1">
+	<fonts>
+	</fonts>
+	<colors>
+	</colors>
+	<template background-color="~ GreyCColor" background-color-draw-style="filled and stroked" class="CViewContainer" maxSize="450, 300" minSize="450, 300" mouse-enabled="true" name="Editor" opacity="1" origin="0, 0" size="450, 300" transparent="false">
+	</template>
+	<custom>
+		<attributes Path="" name="ASPiKEditor"/>
+		<attributes name="FocusDrawing"/>
+		<attributes KnobAction="2" name="Settings"/>
+		<attributes Size="10, 10" name="UIGridController"/>
+		<attributes SelectedTemplate="Editor" name="UITemplateController"/>
+		<attributes name="UIAttributesController"/>
+		<attributes EditViewScale="1" EditorSize="0, 0, 1024, 768" EncodeBitmaps="true" SplitViewSize_0_0="0.6613119143239625241648127484950236976147" SplitViewSize_0_1="0.3119143239625167263184835064748767763376" SplitViewSize_1_0="0.4779116465863453844242769719130592420697" SplitViewSize_1_1="0.5153949129852744004409714762005023658276" SplitViewSize_2_0="0.7560842322750649380225240747677162289619" SplitViewSize_2_1="0.2373056451794015864198428289455478079617" TabSwitchValue="0" Version="1" WriteRCFile="false" name="UIEditController"/>
+		<attributes AppendUnits="true"/>
+		<attributes TransparentEdits="true"/>
+		<attributes default-blurb-color="~ BlackCColor"/>
+		<attributes RAFXShowGrid="false"/>
+		<attributes SelectedRow="0" name="UIViewCreatorDataSource"/>
+		<attributes SelectedRow="0" name="UIBitmapsDataSource"/>
+		<attributes SelectedRow="0" name="UITagsDataSource"/>
+		<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="BlueGroup" origin="0, 0" size="75 ,85" transparent="true" sub-controller="" rafxtemplate-type="RafxUserTemplate">
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="0, 5" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="Control Name" transparent="true" value-precision="2" wheel-inc-value="0.1" />
+			<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="s6blue" circle-drawing="false" class="CAnimKnob" control-tag="" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="42" max-value="1" min-value="0" mouse-enabled="true" origin="16, 22" size="42, 42" sub-controller="" sub-pixmaps="80" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextEdit" control-tag="" custom-view-name="UnitsEdit" default-value="0" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" origin="0, 67" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="1234.56" tooltip="" transparent="true" value-precision="2" wheel-inc-value="0.1" />
+		</template>
+		<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="GreenGroup" origin="170, 155" size="75 ,85" transparent="true" sub-controller="" rafxtemplate-type="RafxUserTemplate">
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="0, 5" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="Control Name" transparent="true" value-precision="2" wheel-inc-value="0.1" />
+			<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="s6green" circle-drawing="false" class="CAnimKnob" control-tag="" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="42" max-value="1" min-value="0" mouse-enabled="true" origin="16, 22" size="42, 42" sub-controller="" sub-pixmaps="80" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextEdit" control-tag="" custom-view-name="UnitsEdit" default-value="0" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" origin="0, 67" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="1234.56" tooltip="" transparent="true" value-precision="2" wheel-inc-value="0.1" />
+		</template>
+		<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="ComboDrop" origin="255, 275" size="75 ,85" transparent="true" rafxtemplate-type="RafxUserTemplate">
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="COptionMenu" control-tag="" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ GreenCColor" frame-color="~ BlackCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="5 ,30" round-rect-radius="6" shadow-color="~ RedCColor" size="67 ,20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
+			<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="-15 ,5" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="100 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="Text Label" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
+		</template>
+		<attributes rafx-template-name="User ViewContainer 0" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="GreenGroup 0" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="GreenGroup 1" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="GreenGroup 2" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" rafxtemplate-type="knobgroup" />
+		<attributes rafx-template-name="User ViewContainer 2" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="User ViewContainer 1" rafxtemplate-type="userViewContainer" />
+	</custom>
+	<bitmaps>
+	</bitmaps>
+	<control-tags>
+	</control-tags>
+	<variables/>
+</vstgui-ui-description>
