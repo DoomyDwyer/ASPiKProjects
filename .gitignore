@@ -31,6 +31,7 @@
 *.out
 *.app
 
+# cmake files
 CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
@@ -43,4 +44,8 @@ compile_commands.json
 CTestTestfile.cmake
 _deps
 
+# .vs Visual Studio database
+.vs
+
+# vstgui4
 vstgui4
