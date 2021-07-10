@@ -57,7 +57,7 @@ set(IS_SYNTH_PLUGIN FALSE)		# <-- set Synth Flag to TRUE only for an output-only
 set(WANT_AAX_SIDECHAIN FALSE)	# <-- for AAX Sidechaining Only
 
 # --- AAX ProTools Gain Reduction Meter Flag:
-set(HAS_AAX_GR_METER FALSE)		# <-- for special Pro-Tools AAX Gain Reduction Meter Only
+set(HAS_AAX_GR_METER TRUE)		# <-- for special Pro-Tools AAX Gain Reduction Meter Only
 
 # --- VENDOR information (your company stuff)
 set(VENDOR_NAME "Doomsville Soundscapes")			# <-- required!

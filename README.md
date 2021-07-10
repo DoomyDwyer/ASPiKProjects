@@ -1,2 +1,2 @@
 # ASPiKProjects
-Audio plugins created using the ASPiK framework
+Audio Plugins created using the ASPiK framework

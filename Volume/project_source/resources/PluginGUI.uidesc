@@ -9,7 +9,7 @@
 	<template background-color="~ GreyCColor" background-color-draw-style="filled and stroked" bitmap="halfspacerack_dark" class="CViewContainer" maxSize="450, 100" minSize="450, 100" mouse-enabled="true" name="Editor" opacity="1" origin="0, 0" size="450, 100" transparent="false" wants-focus="false">
 		<view back-color="None" background-offset="0, 0" class="CTextLabel" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="20, 10" round-rect-radius="6" shadow-color="~ RedCColor" size="40, 20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" title="Volume" transparent="true" value-precision="2" wants-focus="false" wheel-inc-value="0.1"/>
 		<view angle-range="270" angle-start="135" bitmap="chickenhead2" class="CAnimKnob" control-tag="controlID::volume_dB" default-value="0.833333" height-of-one-image="42" inverse-bitmap="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="20, 30" size="42, 42" sub-pixmaps="80" transparent="false" value-inset="0" wants-focus="false" wheel-inc-value="0.1" zoom-factor="1.5"/>
-		<view back-color="None" background-offset="0, 0" class="CTextEdit" control-tag="controlID::volume_dB" default-value="0.833333" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="10, 70" round-rect-radius="6" secure-style="false" shadow-color="~ RedCColor" size="60, 20" style-3D-in="false" style-3D-out="false" style-doubleclick="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" title="3.24 dB" transparent="true" value-precision="2" wants-focus="true" wheel-inc-value="0.1"/>
+		<view back-color="None" background-offset="0, 0" class="CTextEdit" control-tag="controlID::volume_dB" default-value="0.833333" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="10, 70" round-rect-radius="6" secure-style="false" shadow-color="~ RedCColor" size="60, 20" style-3D-in="false" style-3D-out="false" style-doubleclick="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" title="0.00 dB" transparent="true" value-precision="2" wants-focus="true" wheel-inc-value="0.1"/>
 		<view back-color="None" background-offset="0, 0" class="CTextLabel" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="80, 10" round-rect-radius="6" shadow-color="~ RedCColor" size="40, 20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" title="Mute" transparent="true" value-precision="2" wants-focus="false" wheel-inc-value="0.1"/>
 		<view bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::enableMute" default-value="0" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="80, 30" size="42, 42" transparent="false" wants-focus="true" wheel-inc-value="0.1"/>
 		<view class="CSegmentButton" control-tag="controlID::channels" default-value="0" font="~ NormalFont" frame-color="~ BlackCColor" frame-width="1" gradient="segbutton" gradient-highlighted="segbutton2" icon-text-margin="0" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="140, 40" round-radius="5" segment-names="Stereo,Left,Right" selection-mode="Single" size="200, 20" style="horizontal" text-alignment="center" text-color="~ BlackCColor" text-color-highlighted="~ WhiteCColor" transparent="false" wants-focus="true" wheel-inc-value="0.1"/>
@@ -18,6 +18,7 @@
 		<view bitmap="vuon" class="CVuMeter" control-tag="controlID::vuMeter" custom-view-name="MeterView" decrease-step-value="0.1" default-value="0" max-value="1" min-value="0" mouse-enabled="true" num-led="65" off-bitmap="vuoff" opacity="1" orientation="vertical" origin="364, 29" size="15, 65" transparent="false" wants-focus="false" wheel-inc-value="0.1"/>
 		<view back-color="None" background-offset="0, 0" class="CTextLabel" control-tag="None" default-value="0" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" opacity="1" origin="145, 70" round-rect-radius="6" shadow-color="~ RedCColor" size="50, 20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" title="GUI Size" transparent="true" value-precision="2" wants-focus="false" wheel-inc-value="0.1"/>
 		<view back-color="DarkGray" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" default-value="0.6" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="5" menu-check-style="false" menu-popup-style="true" min-value="0" mouse-enabled="true" opacity="1" origin="205, 70" round-rect-radius="6" shadow-color="~ BlackCColor" size="100, 20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" text-alignment="center" text-inset="0, 0" text-rotation="0" text-shadow-offset="1, 1" transparent="false" value-precision="2" wants-focus="true" wheel-inc-value="0.1"/>
+		<view bitmap="Logo_icon_50x50px" class="CView" mouse-enabled="true" opacity="1" origin="390, 40" size="50, 50" transparent="false" wants-focus="false"/>
 	</template>
 	<custom>
 		<attributes Path="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volume\project_source\resources\PluginGUI.uidesc" name="ASPiKEditor"/>
@@ -39,6 +40,39 @@
 		<attributes SelectedRow="-1" name="UIFontsDataSource"/>
 	</custom>
 	<bitmaps>
+		<bitmap name="Logo_icon_50x50px" path="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volume\project_source\resources\backgrounds\Logo_icon_50x50px.png" scale-factor="50">
+			<data encoding="base64">
+				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
+				
+			</data>
+		</bitmap>
 		<bitmap name="chickenhead2" path="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volume\project_source\resources\knobs\chickenhead2.png">
 			<data encoding="base64">
 				iVBORw0KGgoAAAANSUhEUgAAACoAAA0gCAYAAAAFj4v9AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ

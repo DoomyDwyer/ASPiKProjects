@@ -17,8 +17,17 @@
 
 // **--0x7F1F--**
 
+// --- Plugin Variables controlID Enumeration 
 
-// **--0x0F1F--**
+enum controlID {
+	volume_dB = 0,
+	enableMute = 1,
+	channels = 2,
+	vuMeter = 3,
+	volumeCooked = 65568
+};
+
+	// **--0x0F1F--**
 
 /**
 \class PluginCore
@@ -105,6 +114,22 @@ public:
 
 private:
 	//  **--0x07FD--**
+
+	// --- Continuous Plugin Variables 
+	double volume_dB = 0.0;
+
+	// --- Discrete Plugin Variables 
+	int enableMute = 0;
+	enum class enableMuteEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(enableMuteEnum::SWITCH_OFF, enableMute)) etc... 
+
+	int channels = 0;
+	enum class channelsEnum { stereo,left,right };	// to compare: if(compareEnumToInt(channelsEnum::stereo, channels)) etc... 
+
+	// --- Meter Plugin Variables
+	float vuMeter = 0.f;
+
+	// --- Non-GUI-bound User Plugin Variables
+	double volumeCooked = 0.0;
 
 	// **--0x1A7F--**
     // --- end member variables

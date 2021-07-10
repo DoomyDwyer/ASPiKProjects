@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\pluginbase.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\plugincore.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\plugingui.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\pluginparameter.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginObjects\fxobjects.cpp">
+      <Filter>PluginObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\factory.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\customparameters.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\vst3plugin.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\customcontrols.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\customviews.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp">
+      <Filter>VST3SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\guiconstants.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\pluginbase.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\plugincore.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\plugindescription.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\plugingui.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\pluginparameter.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginKernel\pluginstructures.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginObjects\fxobjects.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\PluginObjects\filters.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\customparameters.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\channelformats.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\vst_source\vst3plugin.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\atomicops.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\customcontrols.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\readerwriterqueue.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\source\CustomControls\customviews.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h">
+      <Filter>VST3SDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\cmake\vst_cmake\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\resources\PluginGUI.uidesc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Volumeii\project_source\win\vst\PluginGUIMain.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CustomVSTGUI">
+      <UniqueIdentifier>{8079D81B-EC1C-3836-AE21-094C696886A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginKernel">
+      <UniqueIdentifier>{2928D4C0-7ACF-3848-A390-FCE6909FF243}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginObjects">
+      <UniqueIdentifier>{182C2C82-6DBE-3553-BB4E-F1CAF6E23B4F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{CEB823DE-55B2-393F-9100-E9840D7B63C7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3Core">
+      <UniqueIdentifier>{D7EE35F0-95EE-3513-B7DC-34E8861E10A9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3SDK">
+      <UniqueIdentifier>{866D0DAC-AB9B-3C2B-84AD-7374B3C02AB6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

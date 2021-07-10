@@ -65,8 +65,63 @@ bool PluginCore::initPluginParameters()
     // --- Add your plugin parameter instantiation code bewtween these hex codes
 	// **--0xDEA7--**
 
-    
-    
+
+	// --- Declaration of Plugin Parameter Objects 
+	PluginParameter* piParam = nullptr;
+
+	// --- continuous control: Volume
+	piParam = new PluginParameter(controlID::volume_dB, "Volume", "dB", controlVariableType::kDouble, -60.000000, 12.000000, 0.000000, taper::kLinearTaper);
+	piParam->setParameterSmoothing(true);
+	piParam->setSmoothingTimeMsec(20.00);
+	piParam->setBoundVariable(&volume_dB, boundVariableType::kDouble);
+	addPluginParameter(piParam);
+
+	// --- discrete control: Mute
+	piParam = new PluginParameter(controlID::enableMute, "Mute", "SWITCH OFF,SWITCH ON", "SWITCH OFF");
+	piParam->setBoundVariable(&enableMute, boundVariableType::kInt);
+	piParam->setIsDiscreteSwitch(true);
+	addPluginParameter(piParam);
+
+	// --- discrete control: Channel Select
+	piParam = new PluginParameter(controlID::channels, "Channel Select", "stereo,left,right", "stereo");
+	piParam->setBoundVariable(&channels, boundVariableType::kInt);
+	piParam->setIsDiscreteSwitch(true);
+	addPluginParameter(piParam);
+
+	// --- meter control: VU
+	piParam = new PluginParameter(controlID::vuMeter, "VU", 10.00, 500.00, ENVELOPE_DETECT_MODE_RMS, meterCal::kLogMeter);
+	piParam->setBoundVariable(&vuMeter, boundVariableType::kFloat);
+	addPluginParameter(piParam);
+
+	// --- non-GUI-bound variable: User
+	piParam = new PluginParameter(controlID::volumeCooked, "User");
+	addPluginParameter(piParam);
+
+	// --- Aux Attributes
+	AuxParameterAttribute auxAttribute;
+
+	// --- RAFX GUI attributes
+	// --- controlID::volume_dB
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(2147483705);
+	setParamAuxAttribute(controlID::volume_dB, auxAttribute);
+
+	// --- controlID::enableMute
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(1073741824);
+	setParamAuxAttribute(controlID::enableMute, auxAttribute);
+
+	// --- controlID::channels
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(268435456);
+	setParamAuxAttribute(controlID::channels, auxAttribute);
+
+	// --- controlID::vuMeter
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(134217728);
+	setParamAuxAttribute(controlID::vuMeter, auxAttribute);
+
+
 	// **--0xEDA5--**
    
     // --- BONUS Parameter
@@ -171,36 +226,78 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 		return true;	/// processed
 	}
 
-    // --- FX Plugin:
-    if(processFrameInfo.channelIOConfig.inputChannelFormat == kCFMono &&
-       processFrameInfo.channelIOConfig.outputChannelFormat == kCFMono)
-    {
-		// --- pass through code: change this with your signal processing
-        processFrameInfo.audioOutputFrame[0] = processFrameInfo.audioInputFrame[0];
+	// --- FX Plugin:
+	double volume_L = volumeCooked;
+	double volume_R = volumeCooked;
 
-        return true; /// processed
+    // — last in sequence = most significant
+    if (enableMute)
+    {
+	    volume_L = 0.0;
+	    volume_R = 0.0;
+    }
+    // — compare with channel setting
+    else if (compareIntToEnum(channels, channelsEnum::stereo))
+    {
+	    volume_L = volumeCooked; // redundant, just for demonstration
+	    volume_R = volumeCooked;
+    }
+    else if (compareIntToEnum(channels, channelsEnum::left))
+    {
+	    volume_L = volumeCooked;
+	    volume_R = 0.0;
+    }
+    else if (compareIntToEnum(channels, channelsEnum::right))
+    {
+	    volume_L = 0.0;
+	    volume_R = volumeCooked;
     }
 
-    // --- Mono-In/Stereo-Out
-    else if(processFrameInfo.channelIOConfig.inputChannelFormat == kCFMono &&
-       processFrameInfo.channelIOConfig.outputChannelFormat == kCFStereo)
-    {
-		// --- pass through code: change this with your signal processing
-        processFrameInfo.audioOutputFrame[0] = processFrameInfo.audioInputFrame[0];
-        processFrameInfo.audioOutputFrame[1] = processFrameInfo.audioInputFrame[0];
+    // — left channel:
+    double xn_L = processFrameInfo.audioInputFrame[0];
+    double yn_L = volume_L * xn_L;
 
-        return true; /// processed
+    if (processFrameInfo.channelIOConfig.inputChannelFormat == kCFMono &&
+	    processFrameInfo.channelIOConfig.outputChannelFormat == kCFMono)
+    {
+	    // — write to output
+	    processFrameInfo.audioOutputFrame[0] = yn_L;
+
+	    // — set VU meter
+	    vuMeter = yn_L;
+
+	    return true; // processed
     }
 
-    // --- Stereo-In/Stereo-Out
-    else if(processFrameInfo.channelIOConfig.inputChannelFormat == kCFStereo &&
-       processFrameInfo.channelIOConfig.outputChannelFormat == kCFStereo)
+    // — Mono-In/Stereo-Out
+    if (processFrameInfo.channelIOConfig.inputChannelFormat == kCFMono &&
+	    processFrameInfo.channelIOConfig.outputChannelFormat == kCFStereo)
     {
-		// --- pass through code: change this with your signal processing
-        processFrameInfo.audioOutputFrame[0] = processFrameInfo.audioInputFrame[0];
-        processFrameInfo.audioOutputFrame[1] = processFrameInfo.audioInputFrame[1];
+	    // — write to output
+	    processFrameInfo.audioOutputFrame[0] = yn_L;
+	    processFrameInfo.audioOutputFrame[1] = yn_L;
 
-        return true; /// processed
+    	// — set VU meter
+	    vuMeter = yn_L;
+
+	    return true; // processed
+    }
+
+    // — Stereo-In/Stereo-Out
+    if (processFrameInfo.channelIOConfig.inputChannelFormat == kCFStereo &&
+	    processFrameInfo.channelIOConfig.outputChannelFormat == kCFStereo)
+    {
+	    // — right channel:
+	    double xn_R = processFrameInfo.audioInputFrame[1];
+	    double yn_R = volume_R * xn_R;
+	    // — write to output
+	    processFrameInfo.audioOutputFrame[0] = yn_L;
+	    processFrameInfo.audioOutputFrame[1] = yn_R;
+
+    	// — sum L & R into mono
+	    vuMeter = 0.5 * yn_L + 0.5 * yn_R;
+
+    	return true; // processed
     }
 
     return false; /// NOT processed
@@ -292,18 +389,19 @@ bool PluginCore::postUpdatePluginParameter(int32_t controlID, double controlValu
     // --- now do any post update cooking; be careful with VST Sample Accurate automation
     //     If enabled, then make sure the cooking functions are short and efficient otherwise disable it
     //     for the Parameter involved
-    /*switch(controlID)
+    switch(controlID)
     {
-        case 0:
-        {
-            return true;    /// handled
-        }
+    case controlID::volume_dB:
+	    {
+		    // — cooked variables
+    		// — convert dB to raw
+		    volumeCooked = pow(10.0, volume_dB / 20.0);
+		    return true; // handled
+	    }
 
         default:
             return false;   /// not handled
-    }*/
-
-    return false;
+    }
 }
 
 /**
@@ -446,6 +544,29 @@ NOTES:
 bool PluginCore::initPluginPresets()
 {
 	// **--0xFF7A--**
+
+	// --- Plugin Presets 
+	int index = 0;
+	PresetInfo* preset = nullptr;
+
+	// --- Preset: Factory Preset
+	preset = new PresetInfo(index++, "Factory Preset");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::volume_dB, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableMute, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::channels, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::volumeCooked, 0.000000);
+	addPreset(preset);
+
+	// --- Preset: MinusTwelveLeft
+	preset = new PresetInfo(index++, "MinusTwelveLeft");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::volume_dB, -12.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableMute, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::channels, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::volumeCooked, 0.000000);
+	addPreset(preset);
+
 
 	// **--0xA7FF--**
 
