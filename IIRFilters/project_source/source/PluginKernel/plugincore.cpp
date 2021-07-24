@@ -69,15 +69,15 @@ bool PluginCore::initPluginParameters()
 	// --- Declaration of Plugin Parameter Objects 
 	PluginParameter* piParam = nullptr;
 
-	// --- continuous control: Cutoff
-	piParam = new PluginParameter(controlID::filterFc_Hz, "Cutoff", "Hz", controlVariableType::kDouble, 20.000000, 20480.000000, 1000.000000, taper::kVoltOctaveTaper);
+	// --- continuous control: fc
+	piParam = new PluginParameter(controlID::filterFc_Hz, "fc", "Hz", controlVariableType::kDouble, 20.000000, 20480.000000, 1000.000000, taper::kVoltOctaveTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(20.00);
 	piParam->setBoundVariable(&filterFc_Hz, boundVariableType::kDouble);
 	addPluginParameter(piParam);
 
-	// --- continuous control: Res
-	piParam = new PluginParameter(controlID::filterQ, "Res", "Units", controlVariableType::kDouble, 0.707000, 20.000000, 0.707000, taper::kLinearTaper);
+	// --- continuous control: Q
+	piParam = new PluginParameter(controlID::filterQ, "Q", "", controlVariableType::kDouble, 0.707000, 20.000000, 0.707000, taper::kLinearTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(20.00);
 	piParam->setBoundVariable(&filterQ, boundVariableType::kDouble);
@@ -599,7 +599,7 @@ bool PluginCore::initPluginDescriptors()
 }
 
 // --- static functions required for VST3/AU only --------------------------------------------- //
-const char* PluginCore::getPluginBundleName() { return kAUBundleName; }
+const char* PluginCore::getPluginBundleName() { return getPluginDescBundleName(); }
 const char* PluginCore::getPluginName(){ return kPluginName; }
 const char* PluginCore::getShortPluginName(){ return kShortPluginName; }
 const char* PluginCore::getVendorName(){ return kVendorName; }

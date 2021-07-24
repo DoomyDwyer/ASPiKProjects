@@ -115,6 +115,12 @@ else()
 	smtg_add_vst3plugin(${target} ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
 endif()
 
+# --- VST3 SDK 3.7.2 addition
+target_compile_features(${target}
+PUBLIC
+    cxx_std_14
+)
+
 # ---  setup header search paths
 target_include_directories(${target} PUBLIC ${VSTGUI_ROOT}/)
 target_include_directories(${target} PUBLIC ${VSTGUI_ROOT}/vstgui4)
@@ -215,9 +221,6 @@ endif()
 
 # for Xcode, add info.plist variables
 if(XCODE)
-	# --- this eliminates a warning that looks suspicious when debugging but is acutally not a problem
-	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${VST_BUNDLE_ID}")
-
 	# --- info.pList files
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=$(EXECUTABLE_NAME) PRODUCT_BUNDLE_IDENTIFIER=${VST_BUNDLE_ID}")
@@ -245,5 +248,4 @@ source_group(PluginObjects FILES ${plugin_object_sources})
 source_group(CustomVSTGUI FILES ${custom_vstgui_sources})
 source_group(VST3Core FILES ${vst_core_sources})
 source_group(VST3SDK FILES ${vstsdk_sources})
-
 
