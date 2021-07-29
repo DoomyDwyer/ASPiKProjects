@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_B292AD1752333384BF95EE0599093CD5
-#define AU_COCOA_VIEW_NAME AUCocoaView_B292AD1752333384BF95EE0599093CD5
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_3737D9AF5BD13D6A93339BFDDBC825B8
+#define AU_COCOA_VIEW_NAME AUCocoaView_3737D9AF5BD13D6A93339BFDDBC825B8
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.iirfilters.bundleID";
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{b292ad17-5233-3384-bf95-ee0599093cd5}";
+const char* kVSTFUID = "{3737d9af-5bd1-3d6a-9333-9bfddbc825b8}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'IIRF';
