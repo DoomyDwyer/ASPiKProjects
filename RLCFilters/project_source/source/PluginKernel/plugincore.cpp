@@ -227,6 +227,8 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 			yn[i] = rlcBPF[i].processAudioSample(xn[i]);
 		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BSF))
 			yn[i] = rlcBSF[i].processAudioSample(xn[i]);
+		else
+			return false; // Should never occur
 
 		// --- write output
 		processFrameInfo.audioOutputFrame[i] = yn[i];
