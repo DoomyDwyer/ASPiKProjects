@@ -207,25 +207,31 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 		return true;	/// processed
 	}
 
-    // --- FX Plugin:
+	// --- FX Plugin:
 	// --- in your processing object's audio processing function
-	double xnL = processFrameInfo.audioInputFrame[0];
+	double xn[NUM_CHANNELS];
+	double yn[NUM_CHANNELS];
 
-	// --- setup for left output
-	double ynL = 0.0;
+	for (unsigned int i = 0; i < NUM_CHANNELS; i++)
+	{
+		xn[i] = processFrameInfo.audioInputFrame[i];
 
-	// --- choose filter to process
-	if (compareIntToEnum(filterType, filterTypeEnum::RLC_LPF))
-		ynL = rlcLPF[0].processAudioSample(xnL);
-	else if (compareIntToEnum(filterType, filterTypeEnum::RLC_HPF))
-		ynL = rlcHPF[0].processAudioSample(xnL);
-	else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BPF))
-		ynL = rlcBPF[0].processAudioSample(xnL);
-	else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BSF))
-		ynL = rlcBSF[0].processAudioSample(xnL);
+		// --- setup for left output
+		yn[i] = 0.0;
 
-	// --- write output
-	processFrameInfo.audioOutputFrame[0] = ynL; //< output sample L
+		// --- choose filter to process
+		if (compareIntToEnum(filterType, filterTypeEnum::RLC_LPF))
+			yn[i] = rlcLPF[i].processAudioSample(xn[i]);
+		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_HPF))
+			yn[i] = rlcHPF[i].processAudioSample(xn[i]);
+		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BPF))
+			yn[i] = rlcBPF[i].processAudioSample(xn[i]);
+		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BSF))
+			yn[i] = rlcBSF[i].processAudioSample(xn[i]);
+
+		// --- write output
+		processFrameInfo.audioOutputFrame[i] = yn[i];
+	}
 	
     return true; /// processed
 }
