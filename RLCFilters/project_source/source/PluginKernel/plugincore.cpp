@@ -216,7 +216,6 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 	{
 		xn[i] = processFrameInfo.audioInputFrame[i];
 
-		// --- setup for left output
 		yn[i] = 0.0;
 
 		// --- choose filter to process
