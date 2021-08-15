@@ -9,11 +9,12 @@
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="26 ,25" rafxtemplate-type="knobgroup" size="75 ,85" template="Rafx KnobGroup 0" transparent="true" sub-controller="" />
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="26 ,95" rafxtemplate-type="knobgroup" size="75 ,85" template="Rafx KnobGroup 1" transparent="true" />
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="26 ,165" rafxtemplate-type="knobgroup" size="75 ,85" template="Rafx KnobGroup 2" transparent="true" sub-controller="" />
-		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="42 ,338" rafxtemplate-type="userViewContainer" size="46 ,63" template="User ViewContainer 0" transparent="false" sub-controller="" />
+		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="49 ,364" rafxtemplate-type="userViewContainer" size="29 ,38" template="User ViewContainer 0" transparent="false" sub-controller="" />
 		<view back-color="~ GreyCColor" background-offset="0, 0" class="COptionMenu" control-tag="controlID::filterType" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="15 ,254" round-rect-radius="6" shadow-color="~ RedCColor" size="100 ,20" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="16 ,276" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="100 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="Filter Type" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="Filterizer" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="0 ,301" rafxtemplate-type="userViewContainer" size="128 ,28" template="User ViewContainer 1" transparent="false" sub-controller="" />
 		<view back-color="kLightGreyCColor" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="39 ,1" round-rect-radius="6" shadow-color="~ RedCColor" size="50 ,10" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
+		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="iir" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="29 ,326" rafxtemplate-type="userViewContainer" size="71 ,32" template="User ViewContainer 2" transparent="false" sub-controller="" />
 	</template>
 	<custom>
 		<attributes Path="" name="ASPiKEditor" />
@@ -249,6 +250,47 @@
 		<attributes rafx-template-name="Rafx KnobGroup 2" />
 		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 0" />
+		<attributes rafx-template-name="Rafx KnobGroup 1" />
+		<attributes rafx-template-name="Rafx KnobGroup 2" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" rafxtemplate-type="userViewContainer" />
 	</custom>
 	<bitmaps>
 		<bitmap name="IIRFilters_VCVRack_panel" path="D:\Pictures\Doomsville\IIRFilters_VCVRack_panel.png">
@@ -480,64 +522,6 @@
         Axl2hfs34eyzxEknjVYRP+7focOHRakUgsaNm8inv6Fq+Lxq1RoVKPLW7CEUePhycrL3RzUfAFBTQ+SqoE
         uXzmq+AlzEBDM2ZW0WO3bscPIBfIAQMB0MGjhAdO7cST35lZUVKh9g27ZfRNbmzWLnzl1RuX/8jc1ZWYVJ
         UrIK+vbtV087HjW4GDQB31FViWzshUM87t/aNWuO/D/UjXQ3GnI4XAAAAABJRU5ErkJggg==
-      </data>
-		</bitmap>
-		<bitmap name="Filterizer" path="D:\Pictures\Doomsville\Filterizer.png">
-			<data encoding="base64">
-        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
-        aB5/0b4HZKcIPflg0AAAAASUVORK5CYII=
       </data>
 		</bitmap>
 		<bitmap name="Black_lighter_small" path="D:\Pictures\Doomsville\Black_lighter_small.png">
@@ -1322,30 +1306,170 @@
         lFTkSuQmCC
       </data>
 		</bitmap>
-		<bitmap name="DS_Merkurius" path="D:\Pictures\Doomsville\DS_Merkurius.png">
+		<bitmap name="DS_Merkurius_small" path="D:\Pictures\Doomsville\DS_Merkurius_small.png">
 			<data encoding="base64">
-        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
+        iVBORw0KGgoAAAANSUhEUgAAAB0AAAAmCAYAAAA4LpBhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALXSURBVFhHvZZNiE1hGMef6yvjK5LuLEZIiZUNakhK2fgqRQ1N
+        KFsWRPKVrKwsJmUxM8pXkQ0WNsTKZxZSmmbChGKEmmGEYcb1e+487+k95x7XPe84/vXrfc/zPO//uefcc9
+        5zxOmXyMmSSCkrrHsFe8wmm1hYhP4041pg7U6z+qsKNpbFwr0EmnSO0TSG7xx/0+M0UTOZ/Dybd44SWVBO
+        hIof0AIPoGihCpE76J3pWwuHCZNxmHw0s26YY6lI5ArEu1xTuGypMGG20ZkxH4JZlopEbJnXUOvWWCpMGF
+        z3zG5YOCbibV5ND+MYS2UXi+sx+ekZbrZUJGJ10OvVHLdUmDDY78ygDyZYKhI1zV6NMt9SYcKww5kxP2Xh
+        mIjf9GruWDhMGDQ6MzNcbKlIxBpg0KvZYakwYdDqmT21cEzED3s1X2CKpbKLxcmbI3U/Jd7pauCMhcOEWX
+        RzMNe7t95SkYgvdzVWt8JSYcLglmd2xcIxEW/3aroZY3t3JrF4NiZDnuF6S0UiVkdOHyFXc8hSYcLgqGf2
+        jnGspSIR3+bV6NY401KZVcBEecF1Km/qzO8xP1vOmohNZ9hNfIYe0/B1q8gjXavHqk8iAwdEnthhNX1Vg5
+        UsLp/BSGgDDGvhojY9xyzVKA3q3yRjvOVLCyGlQZIBaNR34i4mFftrivQL4iHXUy9hEw7F+yJzP4hMPMaj
+        9FiEqys/tLCKKJPnw9ORaQvoWdyGqRr4H9L3rbt8pzWQtxpgEFzTDZC7joBrqP95xfOdh/TGcE0V/ThbAr
+        nqGvhNHXdhE4R/N1WRmm6HZ5DW/CXsg0nwz6XNt0IXpDVvh9w0GpoheeYXIHetAr/pOshdJ8A1fA+5P0r6
+        //aAa9oCuWs1uIbKIshdl8A17NBAUtGbv0YthfPD0z9KP2Pcf9gPvP1iumpjzeIrJXbpQlgLNWs89EKaUZ
+        I+0H34sxfTrwZefVL4DVf2AAem/sC+AAAAAElFTkSuQmCC
+      </data>
+		</bitmap>
+		<bitmap name="Filterizer" path="D:\Pictures\Doomsville\Filterizer.png">
+			<data encoding="base64">
+        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
+      </data>
+		</bitmap>
+		<bitmap name="iir" path="D:\Pictures\Doomsville\iir.png">
+			<data encoding="base64">
+        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
       </data>
 		</bitmap>
 	</bitmaps>
@@ -1383,6 +1507,7 @@
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="" default-value="0.5" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="0 ,66" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="75 ,12" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="Boost/Cut (dB)" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_lighter_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::boostCut_dB" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="6 ,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
 	</template>
-	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 0" origin="0, 0" size="46 ,63" transparent="false" sub-controller="" />
+	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 0" origin="0, 0" size="29 ,38" transparent="false" sub-controller="" />
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="Filterizer" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 1" origin="0, 0" size="128 ,28" transparent="false" sub-controller="" />
+	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="iir" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 2" origin="0, 0" size="71 ,32" transparent="false" sub-controller="" />
 </vstgui-ui-description>
