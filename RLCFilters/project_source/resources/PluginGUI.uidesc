@@ -55,6 +55,8 @@
 		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 1" />
 		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 0" />
 	</custom>
 	<bitmaps>
 		<bitmap name="Black_lighter_small" path="D:\Pictures\Doomsville\Black_lighter_small.png">

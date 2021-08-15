@@ -209,29 +209,27 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 
 	// --- FX Plugin:
 	// --- in your processing object's audio processing function
-	double xn[NUM_CHANNELS];
-	double yn[NUM_CHANNELS];
 
 	for (unsigned int i = 0; i < NUM_CHANNELS; i++)
 	{
-		xn[i] = processFrameInfo.audioInputFrame[i];
+		const double xn = processFrameInfo.audioInputFrame[i];
 
-		yn[i] = 0.0;
+		double yn;
 
 		// --- choose filter to process
 		if (compareIntToEnum(filterType, filterTypeEnum::RLC_LPF))
-			yn[i] = rlcLPF[i].processAudioSample(xn[i]);
+			yn = rlcLPF[i].processAudioSample(xn);
 		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_HPF))
-			yn[i] = rlcHPF[i].processAudioSample(xn[i]);
+			yn = rlcHPF[i].processAudioSample(xn);
 		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BPF))
-			yn[i] = rlcBPF[i].processAudioSample(xn[i]);
+			yn = rlcBPF[i].processAudioSample(xn);
 		else if (compareIntToEnum(filterType, filterTypeEnum::RLC_BSF))
-			yn[i] = rlcBSF[i].processAudioSample(xn[i]);
+			yn = rlcBSF[i].processAudioSample(xn);
 		else
 			return false; // Should never occur
 
 		// --- write output
-		processFrameInfo.audioOutputFrame[i] = yn[i];
+		processFrameInfo.audioOutputFrame[i] = yn;
 	}
 	
     return true; /// processed
