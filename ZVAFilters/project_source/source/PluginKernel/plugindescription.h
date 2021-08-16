@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_B86655315EDC36D89EB97E728109DA83
-#define AU_COCOA_VIEW_NAME AUCocoaView_B86655315EDC36D89EB97E728109DA83
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_9B0D62CC7DC63C83AC1AD2F94EE23E01
+#define AU_COCOA_VIEW_NAME AUCocoaView_9B0D62CC7DC63C83AC1AD2F94EE23E01
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.zvafilters.bundleID";
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{b8665531-5edc-36d8-9eb9-7e728109da83}";
+const char* kVSTFUID = "{9b0d62cc-7dc6-3c83-ac1a-d2f94ee23e01}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'ZVAF';
