@@ -1,0 +1,6 @@
+Add to \project_source\cmake\vst_cmake\CMakeLists.txt
+
+	${OBJECTS_SOURCE_ROOT}/customfxobjects.h
+	${OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
+	${OBJECTS_SOURCE_ROOT}/utilities
+
