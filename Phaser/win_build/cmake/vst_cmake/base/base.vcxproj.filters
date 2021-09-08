@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\baseiids.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fbuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fdebug.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fdynlib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fobject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fstreamer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fstring.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\timer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\updatehandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\thread\source\fcondition.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\thread\source\flock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\classfactoryhelpers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fbuffer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fcleanup.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fcommandline.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fdebug.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fdynlib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fobject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fstreamer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\fstring.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\timer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\source\updatehandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\thread\include\fcondition.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\thread\include\flock.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\base\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{102A1731-7535-3E78-850B-EF75FF7E9B81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DBB0F41E-98E1-398A-B713-531AA944C629}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

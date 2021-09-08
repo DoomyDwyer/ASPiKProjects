@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\pluginbase.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\plugincore.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\plugingui.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\pluginparameter.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\fxobjects.cpp">
+      <Filter>PluginObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\customfxobjects.cpp">
+      <Filter>PluginObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\factory.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\customparameters.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\vst3plugin.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\customcontrols.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\customviews.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp">
+      <Filter>VST3SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\guiconstants.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\pluginbase.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\plugincore.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\plugindescription.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\plugingui.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\pluginparameter.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginKernel\pluginstructures.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\fxobjects.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\filters.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\customfxobjects.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\PluginObjects\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\customparameters.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\channelformats.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\vst_source\vst3plugin.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\atomicops.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\customcontrols.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\readerwriterqueue.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\source\CustomControls\customviews.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h">
+      <Filter>VST3SDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\cmake\vst_cmake\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\resources\PluginGUI.uidesc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Phaser\project_source\win\vst\PluginGUIMain.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CustomVSTGUI">
+      <UniqueIdentifier>{9CD79B4D-EE64-30E1-8398-90A6C19544BA}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{102A1731-7535-3E78-850B-EF75FF7E9B81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginKernel">
+      <UniqueIdentifier>{457E1731-070C-3139-BFA1-73D59D6F021A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginObjects">
+      <UniqueIdentifier>{D87591C5-F302-37EB-A345-EBFC59958339}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{DBB0F41E-98E1-398A-B713-531AA944C629}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3Core">
+      <UniqueIdentifier>{20F8E77C-E474-35EC-9E3F-8223966298C6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3SDK">
+      <UniqueIdentifier>{A80D5C24-DD15-3ABC-967A-F3ADA2394C4E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
