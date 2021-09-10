@@ -23,6 +23,7 @@
 		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="Waveform_Sine" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="56 ,5" rafxtemplate-type="userViewContainer" size="12 ,9" template="User ViewContainer 1" transparent="false" sub-controller="" />
 		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="Waveform_Saw" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="82 ,15" rafxtemplate-type="userViewContainer" size="12 ,10" template="User ViewContainer 2" transparent="false" sub-controller="" />
 		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="165 ,280" rafxtemplate-type="userViewContainer" size="29 ,38" template="User ViewContainer 3" transparent="false" sub-controller="" />
+		<view background-offset="0, 0" bitmap="led_red" class="COnOffButton" control-tag="controlID::quadPhaseLFO" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="105 ,135" size="9, 9" transparent="false" wheel-inc-value="0.1" height-of-one-image="9" custom-view-name="" />
 	</template>
 	<custom>
 		<attributes Path="" name="ASPiKEditor" />
@@ -35,7 +36,7 @@
 		<attributes AppendUnits="true" />
 		<attributes TransparentEdits="true" />
 		<attributes default-blurb-color="~ BlackCColor" />
-		<attributes RAFXShowGrid="false" />
+		<attributes RAFXShowGrid="true" />
 		<attributes SelectedRow="0" name="UIViewCreatorDataSource" />
 		<attributes SelectedRow="0" name="UIBitmapsDataSource" />
 		<attributes SelectedRow="0" name="UITagsDataSource" />
@@ -70,6 +71,19 @@
 		<attributes rafx-template-name="User ViewContainer 1" />
 		<attributes rafx-template-name="User ViewContainer 2" />
 		<attributes rafx-template-name="User ViewContainer 3" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
+		<attributes rafx-template-name="User ViewContainer 4" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
 	</custom>
 	<bitmaps>
 		<bitmap name="Black_pedal_small" path="D:\Pictures\Doomsville\Black_pedal_small.png">
@@ -1491,6 +1505,35 @@
         nqGvhNHXdhE4R/N1WRmm6HZ5DW/CXsg0nwz6XNt0IXpDVvh9w0GpoheeYXIHetAr/pOshdJ8A1fA+5P0r6
         //aAa9oCuWs1uIbKIshdl8A17NBAUtGbv0YthfPD0z9KP2Pcf9gPvP1iumpjzeIrJXbpQlgLNWs89EKaUZ
         I+0H34sxfTrwZefVL4DVf2AAem/sC+AAAAAElFTkSuQmCC
+      </data>
+		</bitmap>
+		<bitmap name="led_red" path="D:\Pictures\Doomsville\led_red.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAAG8SURBVChTrVFNaxNRFD33vTczqal9TRMSGipJCHRTCLoR/0EV
+        /ACX/gkX4sKNK8GP3+BfEI3duBcK7abbLgSRBkNbnZR26Hy8vHneN2ZR9x64c+eeczlzhitxBXeAtS6weQ
+        MwEyBd0CD/uA2sBMAbHh4vOOeADwZ4sQ+cV05D4L0CnvBQE1zcI+43mev9AD7RA60HTsrDQCnhylJkSQKT
+        Zd6uLLnYcVNQrda+trRErXabBltb0FpTIIRfInYj7h26y3kK4DsTK164ksmx03kCDOQ3IOe/+cXkthfs30
+        9YXphzPd0F9qrgHO5ggwcmtc/B5d+ffQU+ev3/wYesMGm1bnF7GBTFBhXFJLD2c8OYA69VSz97vXvSmOc8
+        hLwgyRgr8rxwzr1r5vkXmo5GdRkEYyFlQyoVuosLQXFsXZIUtixnxfLyIxGur/dVs6lVtxup4TBS/X6E1d
+        WIwrCmhNBRnveFPT2Ny+NjKqdTckdHwMkJ5GxGIk3BEchmWVxl+t3pvOID3JdCBMIYSZeXVaaSaOe6MS/5
+        GgCf5TXSdIwkyVyaZpjP+cI0rhvz1uv/4EzrRlyvj86AxoJiAH8AWtytAgPM8JIAAAAASUVORK5CYII=
+      </data>
+		</bitmap>
+		<bitmap name="vuledon" path="vuledon.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAABEAAABVCAYAAACvpA+AAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABnSURBVFhH7dCxCcAwDABBOSNkUo/iSbOCE0Qg4K9sUpl/BEKF
+        mgtD5d3Rc+Z6nvP/yGubNGGfSV8wKZqMacJ2N2lXmzapZ9VkSBOmCdOEacI0YZowTZgmTBOmCdOEacI0YZ
+        ua/FDEDUZeST28e3HtAAAAAElFTkSuQmCC
+      </data>
+		</bitmap>
+		<bitmap name="vuledoff" path="vuledoff.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAABEAAABVCAYAAACvpA+AAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABxSURBVFhH7dShDYBAEAXRD5bGKIQWMBSAoQUKoTE0JOSCYAwI
+        zGWe2T1xZsRG0JSZJTnK+tpY/rfXqxo2obvJNnefm/TTbpMHm1DtTTJ8vydZ674nNrnZhGxCNiGbkE3IJm
+        QTsgnZhGxCNiGbkE1+kZwGrC49hxLEAwAAAABJRU5ErkJggg==
       </data>
 		</bitmap>
 	</bitmaps>

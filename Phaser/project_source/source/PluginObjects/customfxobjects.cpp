@@ -124,6 +124,7 @@ void AutoQEnvelopeFollower::updateDetectorParameters(const AutoQEnvelopeFollower
 		detector.setParameters(adParams);
 	}
 }
+
 const PhaserAPFParameters* Phaser::getPhaserApfParameters()
 {
 	return nsPhaserParams;
@@ -225,8 +226,8 @@ double Phaser::processAudioSample(double xn)
 	}
 
 	// Mix dry & wet signal, based on chosen coefficients
-	const PhaserMixCoeffs mixCoeefs = getPhaserMixCoeffs();
-	const double output = mixCoeefs.dry * xn + mixCoeefs.wet * apfsOutput;
+	const PhaserMixCoeffs mixCoeffs = getPhaserMixCoeffs();
+	const double output = mixCoeffs.dry * xn + mixCoeffs.wet * apfsOutput;
 
 	return output;
 }
