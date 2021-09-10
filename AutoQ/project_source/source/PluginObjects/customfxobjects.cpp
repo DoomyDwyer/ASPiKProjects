@@ -105,6 +105,7 @@ void AutoQEnvelopeFollower::updateFilterParameters(const AutoQEnvelopeFollowerPa
 		filter.setParameters(filterParams);
 	}
 }
+
 bool AutoQEnvelopeFollower::detectorParametersUpdated(const AudioDetectorParameters adParams, const AutoQEnvelopeFollowerParameters& params)
 {
 	return !isFloatEqual(adParams.attackTime_mSec, params.attackTime_mSec) ||
