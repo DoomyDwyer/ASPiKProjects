@@ -14,9 +14,13 @@ Custom parameter structure for the AutoQEnvelopeFollower object.
 */
 struct AutoQEnvelopeFollowerParameters
 {
-	AutoQEnvelopeFollowerParameters()
-	= default;
+	AutoQEnvelopeFollowerParameters() = default;
+	~AutoQEnvelopeFollowerParameters() = default;
+	
+	// Explicitly use default copy constructor
+	AutoQEnvelopeFollowerParameters(const AutoQEnvelopeFollowerParameters&) = default;
 
+	// Copy assignment operator
 	/** all FXObjects parameter objects require overloaded= operator so remember to add new entries if you add new variables. */
 	AutoQEnvelopeFollowerParameters& operator=(const AutoQEnvelopeFollowerParameters& params)
 	// need this override for collections to work
@@ -42,6 +46,10 @@ struct AutoQEnvelopeFollowerParameters
 
 		return *this;
 	}
+
+	// Suppress generation of move constructor and move assignment operator
+	AutoQEnvelopeFollowerParameters(const AutoQEnvelopeFollowerParameters&&) = delete;
+	AutoQEnvelopeFollowerParameters& operator=(const AutoQEnvelopeFollowerParameters&&) = delete;
 
 	// Filter parameters
 	vaFilterAlgorithm filterAlgorithm = vaFilterAlgorithm::kSVF_LP; ///< va filter algorithm
@@ -82,8 +90,15 @@ class AutoQEnvelopeFollower : public IAudioSignalProcessor
 {
 public:
 	AutoQEnvelopeFollower(); /* C-TOR */
-
 	virtual ~AutoQEnvelopeFollower(); /* D-TOR */
+
+	// Suppress generation of copy constructor and copy assignment operator
+	AutoQEnvelopeFollower(const AutoQEnvelopeFollower&) = delete;
+	AutoQEnvelopeFollower& operator=(const AutoQEnvelopeFollower&) = delete;
+
+	// Suppress generation of move constructor and move assignment operator
+	AutoQEnvelopeFollower(const AutoQEnvelopeFollower&&) = delete;
+	AutoQEnvelopeFollower& operator=(const AutoQEnvelopeFollower&&) = delete;
 
 	/** reset members to initialized state */
 	bool reset(double _sampleRate) override;
@@ -141,7 +156,12 @@ Custom parameter structure for the PhaserParameters object.
 struct PhaserParameters
 {
 	PhaserParameters() = default;
+	~PhaserParameters() = default;
 
+	// Explicitly use default copy constructor
+	PhaserParameters(const PhaserParameters&) = default;
+
+	// Copy assignment operator
 	/** all FXObjects parameter objects require overloaded= operator so remember to add new entries if you add new variables. */
 	PhaserParameters& operator=(const PhaserParameters& params)
 	{
@@ -156,6 +176,18 @@ struct PhaserParameters
 		return *this;
 	}
 
+	PhaserParameters(const PhaserParameters&& params) noexcept
+		: lfoWaveform{params.lfoWaveform},
+		  lfoRate_Hz{params.lfoRate_Hz},
+		  lfoDepth_Pct{params.lfoDepth_Pct},
+		  intensity_Pct{params.intensity_Pct},
+		  quadPhaseLFO{params.quadPhaseLFO}
+	{
+	}
+
+	// Suppress generation of move assignment operator
+	PhaserParameters& operator=(const PhaserParameters&&) = delete;
+
 	// --- individual parameters
 	generatorWaveform lfoWaveform = generatorWaveform::kTriangle;
 	double lfoRate_Hz = 0.0;	///< phaser LFO rate in Hz
@@ -164,7 +196,8 @@ struct PhaserParameters
 	bool quadPhaseLFO = false;	///< quad phase LFO flag
 };
 
-struct PhaserAPFParameters {
+struct PhaserApfParameters
+{
 	const double minF;
 	const double maxF;
 };
@@ -197,8 +230,15 @@ class Phaser : public IAudioSignalProcessor
 {
 public:
 	Phaser();	/* C-TOR */
-
 	virtual ~Phaser(); /* D-TOR */
+
+	// Suppress generation of copy constructor and copy assignment operator
+	Phaser(const Phaser&) = delete;
+	Phaser& operator=(const Phaser&) = delete;
+
+	// Suppress generation of move constructor and move assignment operator
+	Phaser(const Phaser&&) = delete;
+	Phaser& operator=(const Phaser&&) = delete;
 
 public:
 	/** reset members to initialized state */
@@ -233,10 +273,10 @@ protected:
 
 private:
 	// --- these are the ideal band definitions
-	const PhaserAPFParameters idealPhaserParams[PHASER_STAGES] = {{16.0, 1600.0}, {33.0, 3300.0}, {48.0, 4800.0}, {98.0, 9800.0}, {160.0, 16000.0}, {260.0, 20480.0}};
+	const PhaserApfParameters idealPhaserParams[PHASER_STAGES] = {{16.0, 1600.0}, {33.0, 3300.0}, {48.0, 4800.0}, {98.0, 9800.0}, {160.0, 16000.0}, {260.0, 20480.0}};
 
 	// --- these are the exact values from the National Semiconductor Phaser design
-	const PhaserAPFParameters nsPhaserParams[PHASER_STAGES] = {{32.0, 1500.0}, {68.0, 3400.0}, {96.0, 4800.0}, {212.0, 10000.0}, {320.0, 16000.0}, {636.0, 20480.0}};
+	const PhaserApfParameters nsPhaserParams[PHASER_STAGES] = {{32.0, 1500.0}, {68.0, 3400.0}, {96.0, 4800.0}, {212.0, 10000.0}, {320.0, 16000.0}, {636.0, 20480.0}};
 
 	// -3dB coefficients
 	const PhaserMixCoeffs min3dBPhaserMixCoeffs = {0.707, 0.707};
@@ -254,7 +294,7 @@ private:
 
 	virtual void updateParameters(const PhaserParameters& params);
 
-	virtual const PhaserAPFParameters* getPhaserApfParameters();
+	virtual const PhaserApfParameters* getPhaserApfParameters();
 
 	virtual PhaserMixCoeffs getPhaserMixCoeffs();
 };

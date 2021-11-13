@@ -24,8 +24,7 @@ AutoQEnvelopeFollower::AutoQEnvelopeFollower()
 	detector.setParameters(adParams);
 } /* C-TOR */
 
-AutoQEnvelopeFollower::~AutoQEnvelopeFollower()
-= default; /* D-TOR */
+AutoQEnvelopeFollower::~AutoQEnvelopeFollower() = default; /* D-TOR */
 
 bool AutoQEnvelopeFollower::reset(double _sampleRate)
 {
@@ -125,7 +124,7 @@ void AutoQEnvelopeFollower::updateDetectorParameters(const AutoQEnvelopeFollower
 	}
 }
 
-const PhaserAPFParameters* Phaser::getPhaserApfParameters()
+const PhaserApfParameters* Phaser::getPhaserApfParameters()
 {
 	return nsPhaserParams;
 }
@@ -161,8 +160,7 @@ Phaser::Phaser()
 	}
 }
 
-Phaser::~Phaser()
-= default;
+Phaser::~Phaser() = default;
 
 bool Phaser::reset(double _sampleRate)
 {
@@ -187,10 +185,10 @@ double Phaser::processAudioSample(double xn)
 	if (parameters.quadPhaseLFO)
 		lfoValue = lfoData.quadPhaseOutput_pos;
 
-	const double depth = parameters.lfoDepth_Pct / 100.0;
+	const double depth = parameters.lfoDepth_Pct * 0.01;
 	const double modulatorValue = lfoValue * depth;
 
-	const PhaserAPFParameters* apfParams = getPhaserApfParameters();
+	const PhaserApfParameters* apfParams = getPhaserApfParameters();
 	double gammas[PHASER_STAGES];
 	double gamma = 1;
 	for (uint32_t i = 0; i < PHASER_STAGES; i++)
@@ -204,6 +202,10 @@ double Phaser::processAudioSample(double xn)
 		gamma = apfs[PHASER_STAGES - (i + 1)].getG_value() * gamma;
 		gammas[i] = gamma;
 	}
+	
+	// --- set the alpha0 value
+	const double K = parameters.intensity_Pct * 0.01;
+	const double alpha0 = 1.0 / (1.0 + K * gamma);
 
 	// --- create combined feedback
 	double Sn = 0;
@@ -211,10 +213,6 @@ double Phaser::processAudioSample(double xn)
 	{
 		Sn += i < PHASER_STAGES - 1 ? gammas[PHASER_STAGES - (i+2)] * apfs[i].getS_value() : apfs[i].getS_value();
 	}
-	
-	// --- set the alpha0 value
-	const double K = parameters.intensity_Pct / 100.0;
-	const double alpha0 = 1.0 / (1.0 + K * gamma);
 
 	// --- form input to first APF
 	double apfsOutput = alpha0 * (xn + K * Sn);

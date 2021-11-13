@@ -562,43 +562,19 @@ NOTES:
 bool PluginCore::processMessage(MessageInfo& messageInfo)
 {
 	// --- decode message
-	switch (messageInfo.message)
+	switch (messageInfo.message) // --- add customization appearance here
 	{
-		// --- add customization appearance here
-	case PLUGINGUI_DIDOPEN:
-	{
-		return false;
-	}
-
-	// --- NULL pointers so that we don't accidentally use them
-	case PLUGINGUI_WILLCLOSE:
-	{
-		return false;
-	}
-
-	// --- update view; this will only be called if the GUI is actually open
-	case PLUGINGUI_TIMERPING:
-	{
-		return false;
-	}
-
-	// --- register the custom view, grab the ICustomView interface
+	case PLUGINGUI_DIDOPEN: // --- NULL pointers so that we don't accidentally use them
+	case PLUGINGUI_WILLCLOSE: // --- update view; this will only be called if the GUI is actually open
+	case PLUGINGUI_TIMERPING: // --- register the custom view, grab the ICustomView interface
 	case PLUGINGUI_REGISTER_CUSTOMVIEW:
-	{
-
-		return false;
-	}
-
 	case PLUGINGUI_REGISTER_SUBCONTROLLER:
 	case PLUGINGUI_QUERY_HASUSERCUSTOM:
 	case PLUGINGUI_USER_CUSTOMOPEN:
 	case PLUGINGUI_USER_CUSTOMCLOSE:
 	case PLUGINGUI_EXTERNAL_SET_NORMVALUE:
 	case PLUGINGUI_EXTERNAL_SET_ACTUALVALUE:
-	{
-
 		return false;
-	}
 
 	default:
 		break;
