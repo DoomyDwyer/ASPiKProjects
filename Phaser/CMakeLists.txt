@@ -68,9 +68,9 @@ set(VENDOR_URL "github.com/DoomyDwyer")			# <-- OPTIONAL (ok if blank)
 set(VENDOR_EMAIL "doomy@puscii.nl")		# <-- OPTIONAL (ok if blank)
 
 # --- 4-Character Codes (for AAX and VST3)
-set(4CHAR_CODE "FAZE")				# MUST be unique for each plugin your company creates/sells
+set(4CHAR_CODE "PHSR")				# MUST be unique for each plugin your company creates/sells
 set(4CHAR_MANUFACTURER_ID "DOOM")			# your company CODE (does NOT need to be unique for each plugin; can be re-used)
-set(4CHAR_AAX_PRODUCT_ID "FAZE")			# MUST be unique for each plugin your company creates/sells
+set(4CHAR_AAX_PRODUCT_ID "PHSR")			# MUST be unique for each plugin your company creates/sells
 
 # --- Plugin Options ---
 set(INCLUDE_FX_OBJECTS TRUE)		# <-- set TRUE or FALSE
