@@ -309,5 +309,11 @@ _deps
 
 **/.cmake/
 
+# mac files
+.DS_Store
+
 # vstgui4
 vstgui4
+
+# mac_build directory
+**/mac_build/*
