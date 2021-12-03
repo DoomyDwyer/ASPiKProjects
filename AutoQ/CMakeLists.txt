@@ -51,7 +51,7 @@ set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 set(PLUGIN_PROJECT_NAME AutoQ)	# <-- set PROJECT NAME with or without quotes
 
 # --- the name of the PLUGIN as you want it to appear in DAW menus for the user
-set(PLUGIN_NAME "Auto-Q")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
+set(PLUGIN_NAME "AutoQ")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
 
 # --- Synth Flag: FALSE = FX plugin, TRUE = Synth Plugin
 set(IS_SYNTH_PLUGIN FALSE)		# <-- set Synth Flag to TRUE only for an output-only (synth) plugin
@@ -69,7 +69,7 @@ set(VENDOR_EMAIL "doomy@puscii.nl")		# <-- OPTIONAL (ok if blank)
 
 # --- 4-Character Codes (for AAX and VST3)
 set(4CHAR_CODE "AUTQ")				# MUST be unique for each plugin your company creates/sells
-set(4CHAR_MANUFACTURER_ID "DOOM")			# your company CODE (does NOT need to be unique for each plugin; can be re-used)
+set(4CHAR_MANUFACTURER_ID "doom")			# your company CODE (does NOT need to be unique for each plugin; can be re-used)
 set(4CHAR_AAX_PRODUCT_ID "AUTQ")			# MUST be unique for each plugin your company creates/sells
 
 # --- Plugin Options ---

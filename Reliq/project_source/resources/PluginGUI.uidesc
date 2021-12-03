@@ -13,7 +13,7 @@
 		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::delayType" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="88 ,131" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="84 ,275" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="" />
 		<view back-color="kLightGreyCColor" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" custom-view-name="" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ BlackCColor" frame-color="kDarkGreyCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="90,3" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,10" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
-		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="164 ,280" rafxtemplate-type="userViewContainer" size="29 ,38" template="User ViewContainer 0" transparent="false" sub-controller="" />
+		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small_red_white" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="164 ,280" rafxtemplate-type="userViewContainer" size="29 ,38" template="User ViewContainer 0" transparent="false" sub-controller="" />
 		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="102 ,250" size="17, 18" transparent="false" wheel-inc-value="0.1" height-of-one-image="18" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="led_red" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="52 ,275" size="9, 9" transparent="false" wheel-inc-value="0.1" height-of-one-image="9" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="35 ,285" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
@@ -46,6 +46,7 @@
 		<attributes RAFXCanvasWidth="219" />
 		<attributes RAFXCanvasHeight="354" />
 		<attributes rafx-template-name="User ViewContainer 0" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 0" />
@@ -2314,34 +2315,6 @@
         /f3BG1qQLwAAAABJRU5ErkJggg==
       </data>
 		</bitmap>
-		<bitmap name="DS_Merkurius_small" path="D:\Pictures\Doomsville\DS_Merkurius_small.png">
-			<data encoding="base64">
-        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
-      </data>
-		</bitmap>
 		<bitmap name="Kick_Switch_trace_2_states" path="D:\Pictures\Doomsville\Kick_Switch_trace_2_states.png">
 			<data encoding="base64">
         iVBORw0KGgoAAAANSUhEUgAAADUAAABqCAYAAAAcPhlSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
@@ -3618,6 +3591,25 @@
         0+GXOtu+fXuoxx07dgSaGXPT+j2nHdEfPvbYYz8IgQuFyP8B0rTA5qvG3TMAAAAASUVORK5CYII=
       </data>
 		</bitmap>
+		<bitmap name="DS_Merkurius_small_red_white" path="D:\Pictures\Doomsville\DS_Merkurius_small_red_white.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAnCAYAAAAYRfjHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADuoAAA7qAaOKY3EAAAMDSURBVFhHtZZPSBRhGMZn1lKwP6RBRlHRLSiIToWXQIMKIQo8
+        BeFNKepSIYGXDiHejE5BS13qYFBRUJdIiggCSyjszyGMIggrwyzastzp980+s33fmtvup/ODh2++933neX
+        Znd2cnSIiC4CSKqlU+CHJoEG2WVXVw4hI09i/zSsS542iV7P5LqDWGE7tYugu7oAbVo6/xbnZWYmLmzFXr
+        yQRBb1z1BZO9vJBRtFGlGTBTQ/+d9a5Pq+UPJtdlOIF2qOzAzO4k1Ij9frX8wKAJTVmGPWo50LtszXxhjS
+        +5N5h0W4bTaI1aRag1oh/W3Fm1/MHkuWV4S2UH6oeTGc1tVcsPDJpLDNvVcqD+2JoZUdkfTM5Zhp9QnVpF
+        qG1KZjR3VC0/MFiEzJckMexXy8HUrZkptEItPzDoSAxlOuM2SH0h9Q/WzBW1/MHormU4pLID9X3JjOba1P
+        IDg/UobxkeUsuB+g1r5j3rArX8wOSUZZhjbVCrCPXSG8uc78sZTN5ahpfUcqB+PJmRNqjlB4a7bEP2rWo5
+        UH9qzdxT2R9MBizD16z8u/2FfUi99BvfobYfGCxH9j33J/pcokk7NJ6rrc1FDQ2Ro2w2qoR8Pv/EBB8pNf
+        VSXV0UjY3JujwEHzOXcJgniC26ALNizFlGmc1y0MJxC8fmKSWIGvmj6u2dCDo7J8y+HGEY3if7oLZzg3fQ
+        j+5guEyl9CGsltCPuoQjLGvVShfC2k1oAvttaqULQTeVaUJfqJwuBK1Gv5Vrgq+yOI/MqUCQc5kN1J6hLg
+        7n9uBXDgKaCHgUJ5ZAb5ylj3XGg+K8gHmI+R40FCeWQP0XGkDrdMr8g3kbeqhMB+pZjaUHITvRS2UmnFA7
+        XQjqK+TF73YapfNZ25BlPvdXhdg4+LZa6ULQdmXGsD+gVroQdF6ZJvQby2K10oOQesIm41Tg+IJaDlXd3v
+        AJ0TCH5X6TNfznLtWxOec7y8/CrsjFqoJ59c2YPtDWG15Mq/NQVwEVf0kwf4OuoSmVTC2HzmQymcE/UlZo
+        1iJcCooAAAAASUVORK5CYII=
+      </data>
+		</bitmap>
 	</bitmaps>
 	<control-tags>
 		<control-tag name="controlID::delayTime_mSec" tag="0" />
@@ -3660,5 +3652,5 @@
 			<color-stop rgba="#646464ff" start="1" />
 		</gradient>
 	</gradients>
-	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 0" origin="0, 0" size="29 ,38" transparent="false" sub-controller="" />
+	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="DS_Merkurius_small_red_white" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="User ViewContainer 0" origin="0, 0" size="29 ,38" transparent="false" sub-controller="" />
 </vstgui-ui-description>

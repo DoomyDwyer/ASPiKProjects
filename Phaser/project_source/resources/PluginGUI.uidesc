@@ -8,10 +8,10 @@
 	<template background-color="~ GreyCColor" background-color-draw-style="filled and stroked" class="CViewContainer" maxSize="219, 354" minSize="219, 354" mouse-enabled="true" name="Editor" opacity="1" origin="0, 0" size="219, 354" transparent="false" bitmap="Phaser_Enclosure">
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="84 ,275" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="102 ,225" size="17, 18" transparent="false" wheel-inc-value="0.1" height-of-one-image="18" custom-view-name="" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoRate_Hz" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="125 ,10" size="64 ,64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small_3_steps" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoWaveform" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,10" size="64 ,64" sub-controller="" sub-pixmaps="3" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoDepth_Pct" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,80" size="64 ,64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::intensity_Pct" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="125 ,80" size="64 ,64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoRate_Hz" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="125 ,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small_3_steps" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoWaveform" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,10" size="64, 64" sub-controller="" sub-pixmaps="3" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::lfoDepth_Pct" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,80" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::intensity_Pct" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="125 ,80" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
 		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::quadPhaseLFO" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="88 ,140" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
 		<view back-color="kLightGreyCColor" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" custom-view-name="" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ BlackCColor" frame-color="kDarkGreyCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="90 ,3" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,10" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontBig" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,70" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="64 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="LFO" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
@@ -80,6 +80,22 @@
 		<attributes rafx-template-name="User ViewContainer 2" />
 		<attributes rafx-template-name="User ViewContainer 3" />
 		<attributes rafx-template-name="User ViewContainer 4" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
+		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="User ViewContainer 1" />
+		<attributes rafx-template-name="User ViewContainer 2" />
+		<attributes rafx-template-name="User ViewContainer 3" />
 		<attributes rafx-template-name="User ViewContainer 0" />
 		<attributes rafx-template-name="User ViewContainer 1" />
 		<attributes rafx-template-name="User ViewContainer 2" />
@@ -1537,30 +1553,20 @@
 		</bitmap>
 		<bitmap name="DS_Merkurius_small" path="D:\Pictures\Doomsville\DS_Merkurius_small.png">
 			<data encoding="base64">
-        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
+        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
       </data>
 		</bitmap>
 	</bitmaps>
