@@ -2,12 +2,15 @@
 
 echo Building in $(pwd)
 
-cmake -GXcode ../
+project=$(basename $(dirname $(pwd)))
+projectFile=${project}.xcodeproj
+
+if [[ ! -e $projectFile ]] then
+  cmake -GXcode ../
+fi
 
 configuration=$1
 if [[ -z $configuration ]] ; then configuration=Release fi
-
-project=$(basename $(dirname $(pwd)))
 
 xcodebuild -configuration $configuration
 
