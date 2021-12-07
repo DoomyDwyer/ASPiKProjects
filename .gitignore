@@ -316,4 +316,4 @@ _deps
 vstgui4
 
 # mac_build directory
-**/mac_build/*
+**/mac_build/build/*
