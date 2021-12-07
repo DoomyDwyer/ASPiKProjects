@@ -746,6 +746,15 @@ bool PluginCore::initPluginPresets()
 	int index = 0;
 	PresetInfo* preset = nullptr;
 
+	// --- Preset: Factory Preset
+	preset = new PresetInfo(index++, "Factory Preset");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 0.500000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 0.500000);
+	setPresetParameter(preset->presetParameters, controlID::level, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, -0.000000);
+	addPreset(preset);
+
 
 	// **--0xA7FF--**
 
