@@ -316,4 +316,17 @@ _deps
 vstgui4
 
 # mac_build directory
+**/mac_build/bin/*
 **/mac_build/build/*
+**/mac_build/cmake/*
+**/mac_build/CMakeFiles/*
+**/mac_build/CMakeScripts/*
+**/mac_build/Debug/*
+**/mac_build/lib/*
+**/mac_build/project_source/*
+**/mac_build/VST3/*
+**/mac_build/Release/*
+**/mac_build/*.build/*
+**/mac_build/*.xcodeproj/*
+**/mac_build/*.xctestrun
+
