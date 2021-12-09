@@ -5,6 +5,15 @@ echo Building in $(pwd)
 project=$(basename $(dirname $(pwd)))
 projectFile=${project}.xcodeproj
 
+targetdir=~/Library/Audio/Plug-Ins/VST3/
+vst3file=$project.vst3
+targetfile=${targetdir}$vst3file
+
+if [[ -e $targetfile ]] then
+  echo Deleting previous version of $vst3file from $targetdir 
+  rm -R $targetfile
+fi
+
 if [[ ! -e $projectFile ]] then
   cmake -GXcode ../
 fi
@@ -14,16 +23,14 @@ if [[ -z $configuration ]] ; then configuration=Release fi
 
 xcodebuild -configuration $configuration
 
-linkfile=~/Library/Audio/Plug-Ins/VST3/$project.vst3
+buildfile=VST3/$configuration/$vst3file
 
-if [[ -e $linkfile ]] then
-  echo Deleting symbolic link $linkfile
-  rm $linkfile
+if [[ -e $targetfile ]] then
+  echo "Deleting symbolic link $vst3file from $targetdir (created by CMake PostBuild Rules)"
+  rm $targetfile
 fi
 
-buildfile=VST3/$configuration/$project.vst3
+echo Copying $buildfile to $targetdir
 
-echo Creating symbolic link $linkfile to $buildfile
-
-ln -s $buildfile $linkfile
+cp -R $buildfile $targetdir
 
