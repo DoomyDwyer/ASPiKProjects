@@ -237,7 +237,6 @@ bool Phaser::canProcessAudioFrame() { return false; }
 
 PhaserParameters Phaser::getParameters() { return parameters; }
 
-
 bool Phaser::parametersUpdated(const OscillatorParameters lfoparams, const PhaserParameters& params)
 {
     return !isFloatEqual(lfoparams.frequency_Hz, params.lfoRate_Hz) ||
@@ -262,6 +261,34 @@ void Phaser::setParameters(const PhaserParameters& params)
     updateParameters(params);
     // --- save
     parameters = params;
+}
+
+DefaultSideChainProcessor::DefaultSideChainProcessor() = default; /* C-TOR */
+DefaultSideChainProcessor::~DefaultSideChainProcessor() = default; /* D-TOR */
+
+bool DefaultSideChainProcessor::reset(double _sampleRate)
+{
+    return true;
+};
+
+bool DefaultSideChainProcessor::canProcessAudioFrame()
+{
+    return false;
+}
+
+double DefaultSideChainProcessor::processAudioSample(double xn)
+{
+    return 1.0;
+}
+
+SideChainProcessorParameters DefaultSideChainProcessor::getParameters() const
+{
+    return parameters;
+}
+
+void DefaultSideChainProcessor::setParameters(const SideChainProcessorParameters _parameters)
+{
+    parameters = _parameters;
 }
 
 DigitalDelay::DigitalDelay() = default; /* C-TOR */
@@ -307,12 +334,19 @@ bool DigitalDelay::reset(double _sampleRate)
 
     // Reset the LPF each time and set params
     resetLpf(_sampleRate);
+
+    // Reset the sideChainSignalProcessor
+    sideChainSignalProcessor.reset(_sampleRate);
+
     return true;
 }
 
-double DigitalDelay::getOutput(double xn, double yn) const
+double DigitalDelay::getOutputMix(double xn, double yn)
 {
-    return ((1.0 - mix) * xn + mix * yn) * level_dB;
+    const double dryMix = 1.0 - mix;
+    const double wetMix = sideChainSignalProcessor.processAudioSample(xn) * mix;
+
+    return (dryMix * xn + wetMix * yn) * level_dB;
 }
 
 double DigitalDelay::filter(double yn)
@@ -341,7 +375,7 @@ double DigitalDelay::processAudioSample(double xn)
     delayBuffer_L.writeBuffer(dn);
 
     // --- form mixture out
-    const double output = getOutput(xn, yn);
+    const double output = getOutputMix(xn, yn);
 
     return output;
 }
@@ -412,10 +446,10 @@ bool DigitalDelay::processAudioFrame(const float* inputFrame,
     }
 
     // --- form Left mixture out
-    const double outputL = getOutput(xnL, ynL);
+    const double outputL = getOutputMix(xnL, ynL);
 
     // --- form Right mixture out
-    const double outputR = getOutput(xnR, ynR);
+    const double outputR = getOutputMix(xnR, ynR);
 
     // --- set left channel
     outputFrame[0] = static_cast<float>(outputL);
@@ -461,6 +495,8 @@ void DigitalDelay::updateParameters(const DigitalDelayParameters _parameters)
         delayInSamples_L = newDelayInSamples;
         delayInSamples_R = delayInSamples_L * delayRatio;
     }
+
+    sideChainSignalProcessor.setParameters(_parameters.sideChainProcessorParameters);
 }
 
 void DigitalDelay::setParameters(const DigitalDelayParameters _parameters)
@@ -485,3 +521,169 @@ void DigitalDelay::createDelayBuffers(double _sampleRate, double _bufferLength_m
     delayBuffer_L.createCircularBuffer(bufferLength);
     delayBuffer_R.createCircularBuffer(bufferLength);
 }
+
+AnalogTone::AnalogTone() = default;
+
+AnalogTone::~AnalogTone() = default;
+
+bool AnalogTone::reset(double _sampleRate)
+{
+    if (!isFloatEqual(Fs, _sampleRate)) {
+        Fs = _sampleRate;
+        updateCoefficients();
+    }
+
+    return true;
+}
+
+double AnalogTone::processAudioSample(double xn)
+{
+    const double Vo = b0 * xn + b1 * x1 + b2 * x2 + b3 * x3 + b4 * x4;
+    const double vx = xn / (R6 * Gz) + x1 / Gz + x2 * R2 / (G2 * Gz * P1);
+    x1 = (2.0 / R1) * (vx) - x1;
+    x2 = (2.0 / R2) * (vx / Gr + x2 * (P1 + R5) / Gr) - x2;
+    x3 = (2.0 / R3) * (vx / Gs + x3 * (P2 + R8) / Gs) - x3;
+    x4 = 2 * Vo / R11 + x4;
+    return Vo;
+}
+
+bool AnalogTone::canProcessAudioFrame() { return false; }
+
+AnalogToneParameters AnalogTone::getParameters() const { return parameters; }
+
+bool AnalogTone::parametersUpdated(AnalogToneParameters _parameters) const
+{
+    return !isFloatEqual(parameters.tone, _parameters.tone) || !isFloatEqual(parameters.level, _parameters.level);
+}
+
+void AnalogTone::updateParameters(AnalogToneParameters _parameters)
+{
+    if (parametersUpdated(_parameters))
+    {
+        tone = 0.0000001 + 0.999998 * _parameters.tone;
+        level = 0.000001 + 0.999999 * _parameters.level;
+        updateCoefficients();
+    }
+}
+
+void AnalogTone::setParameters(AnalogToneParameters _parameters)
+{
+    // --- update tone & level
+    updateParameters(_parameters);
+    // --- save
+    parameters = _parameters;
+}
+
+void AnalogTone::updateCoefficients(){
+    Ts = 1.0 / Fs;
+
+    R1 = Ts / (2.0 * C1);
+    R2 = Ts / (2.0 * C2);
+    R3 = Ts / (2.0 * C3);
+    R4 = Ts / (2.0 * C4);
+
+    R10 = 100e3 * (1.0 - level);
+    R11 = 100e3 * level;
+
+    P1 = 20000.0 * tone;
+    P2 = 20000.0 * (1.0 - tone);
+
+    // Grouped resistances
+    G2 = 1.0 + R2 / P1 + R5 / P1;
+    G3 = 1.0 + R3 / P2 + R8 / P2;
+    Gx = 1.0 + R7 / (G3 * P2);
+    Gz = (1.0 / R1 + 1.0 / R6 + 1.0 / (G2 * P1));
+    Go = (1.0 + R10 / R11 + R9 / R11 + R4 / R11);
+    Gr = 1.0 + P1 / R2 + R5 / R2;
+    Gs = 1.0 + P2 / R3 + R8 / R3;
+
+    b0 = Gx / (Go * R6 * Gz);
+    b1 = Gx / (Go * Gz);
+    b2 = Gx * R2 / (G2 * Gz * Go * P1);
+    b3 = -R3 * R7 / (Go * G3 * P2);
+    b4 = -R4 / Go;
+}
+
+AnalogClipper::AnalogClipper() = default;
+
+AnalogClipper::~AnalogClipper() = default;
+
+bool AnalogClipper::reset(double _sampleRate)
+{
+    if (!isFloatEqual(Fs, _sampleRate)) {
+        Fs = _sampleRate;
+        updateCoefficients();
+    }
+
+    return true;
+}
+
+double AnalogClipper::processAudioSample(double xn)
+{
+    const double p = -xn / (G4 * R4) + R1 / (G4 * R4) * x1 - x2;
+
+    int iter = 1;
+    double b = 1.0;
+    double fd = p + Vd / R2 + Vd / R3 + 2.0 * Is * sinh(Vd / (eta * Vt));
+    while (iter < 50 && abs(fd) > thr)
+    {
+        const double den = 2.0 * Is / (eta * Vt) * cosh(Vd / (eta * Vt)) + 1.0 / R2 + 1.0 / R3;
+        const double Vnew = Vd - b * fd / den;
+        const double fn = p + Vnew / R2 + Vnew / R3 + 2.0 * Is * sinh(Vnew / (eta * Vt));
+        if (abs(fn) < abs(fd))
+        {
+            Vd = Vnew;
+            b = 1.0;
+        }
+        else
+        {
+            b *= 0.5;
+        }
+        fd = p + Vd / R2 + Vd / R3 + 2.0 * Is * sinh(Vd / (eta * Vt));
+        iter++;
+    }
+    const double Vo = Vd + xn;
+    x1 = (2.0 / R1) * (xn / G1 + x1 * R4 / G1) - x1;
+    x2 = (2.0 / R2) * (Vd) - x2;
+
+    return Vo;
+}
+
+bool AnalogClipper::canProcessAudioFrame() { return false; }
+
+AnalogClipperParameters AnalogClipper::getParameters() const { return parameters; }
+
+bool AnalogClipper::parametersUpdated(AnalogClipperParameters _parameters) const
+{
+    return !isFloatEqual(parameters.drive, _parameters.drive);
+}
+
+void AnalogClipper::updateParameters(AnalogClipperParameters _parameters)
+{
+    if (parametersUpdated(_parameters))
+    {
+        drive = _parameters.drive;
+        updateCoefficients();
+    }
+}
+
+void AnalogClipper::setParameters(AnalogClipperParameters _parameters)
+{
+    // --- update tone & level
+    updateParameters(_parameters);
+    // --- save
+    parameters = _parameters;
+}
+
+void AnalogClipper::updateCoefficients(){
+    Ts = 1.0 / Fs;
+    R1 = Ts / (2.0 * C1);
+    R2 = Ts / (2. * C2);
+    P1 = drive * 500e3;
+    R3 = 51000.0 + P1;
+    R4 = 4700.0;
+
+    // Combined Resistances
+    G1 = (1.0 + R4 / R1);
+    G4 = (1.0 + R1 / R4);
+ }
