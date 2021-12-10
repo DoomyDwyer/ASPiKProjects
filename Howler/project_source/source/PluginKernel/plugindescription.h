@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_F6713EEDF92B33CA95C8E21DA2A1A598
-#define AU_COCOA_VIEW_NAME AUCocoaView_F6713EEDF92B33CA95C8E21DA2A1A598
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_C394DBFF4A053D54A6765B3A6C55972B
+#define AU_COCOA_VIEW_NAME AUCocoaView_C394DBFF4A053D54A6765B3A6C55972B
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.howler.bundleID";
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{f6713eed-f92b-33ca-95c8-e21da2a1a598}";
+const char* kVSTFUID = "{c394dbff-4a05-3d54-a676-5b3a6c55972b}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'HOWL';
