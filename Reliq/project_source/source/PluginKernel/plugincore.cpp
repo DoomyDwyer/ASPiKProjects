@@ -385,7 +385,7 @@ Operation:
 bool PluginCore::renderSynthSilence(ProcessBlockInfo& blockInfo)
 {
     // --- process all MIDI events in this block (same as SynthLab)
-    uint32_t midiEvents = blockInfo.getMidiEventCount();
+    const uint32_t midiEvents = blockInfo.getMidiEventCount();
     for (uint32_t i = 0; i < midiEvents; i++)
     {
         // --- get the event
@@ -500,7 +500,7 @@ bool PluginCore::updatePluginParameterNormalized(int32_t controlID, double norma
                                                  ParameterUpdateInfo& paramInfo)
 {
     // --- use base class helper, returns actual value
-    double controlValue = setPIParamValueNormalized(controlID, normalizedValue, paramInfo.applyTaper);
+    const double controlValue = setPIParamValueNormalized(controlID, normalizedValue, paramInfo.applyTaper);
 
     // --- do any post-processing
     postUpdatePluginParameter(controlID, controlValue, paramInfo);

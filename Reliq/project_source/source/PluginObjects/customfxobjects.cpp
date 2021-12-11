@@ -263,35 +263,37 @@ void Phaser::setParameters(const PhaserParameters& params)
     parameters = params;
 }
 
-DefaultSideChainProcessor::DefaultSideChainProcessor() = default; /* C-TOR */
-DefaultSideChainProcessor::~DefaultSideChainProcessor() = default; /* D-TOR */
+DefaultSideChainSignalProcessor::DefaultSideChainSignalProcessor() = default; /* C-TOR */
+DefaultSideChainSignalProcessor::~DefaultSideChainSignalProcessor() = default; /* D-TOR */
 
-bool DefaultSideChainProcessor::reset(double _sampleRate)
+bool DefaultSideChainSignalProcessor::reset(double _sampleRate)
 {
     return true;
 };
 
-bool DefaultSideChainProcessor::canProcessAudioFrame()
+bool DefaultSideChainSignalProcessor::canProcessAudioFrame()
 {
     return false;
 }
 
-double DefaultSideChainProcessor::processAudioSample(double xn)
+double DefaultSideChainSignalProcessor::processAudioSample(double xn)
 {
     return 1.0;
 }
 
-SideChainProcessorParameters DefaultSideChainProcessor::getParameters() const
+SideChainSignalProcessorParameters DefaultSideChainSignalProcessor::getParameters() const
 {
     return parameters;
 }
 
-void DefaultSideChainProcessor::setParameters(const SideChainProcessorParameters _parameters)
+void DefaultSideChainSignalProcessor::setParameters(const SideChainSignalProcessorParameters _parameters)
 {
     parameters = _parameters;
 }
 
-DigitalDelay::DigitalDelay() = default; /* C-TOR */
+DigitalDelay::DigitalDelay(DefaultSideChainSignalProcessor& _sideChainSignalProcessor) :  sideChainSignalProcessor{_sideChainSignalProcessor}
+{
+}; /* C-TOR */
 DigitalDelay::~DigitalDelay() = default; /* D-TOR */
 
 void DigitalDelay::resetLpf(double _sampleRate)
@@ -341,7 +343,7 @@ bool DigitalDelay::reset(double _sampleRate)
     return true;
 }
 
-double DigitalDelay::getOutputMix(double xn, double yn)
+double DigitalDelay::getOutputMix(double xn, double yn) const
 {
     const double dryMix = 1.0 - mix;
     const double wetMix = sideChainSignalProcessor.processAudioSample(xn) * mix;
@@ -496,7 +498,7 @@ void DigitalDelay::updateParameters(const DigitalDelayParameters _parameters)
         delayInSamples_R = delayInSamples_L * delayRatio;
     }
 
-    sideChainSignalProcessor.setParameters(_parameters.sideChainProcessorParameters);
+    sideChainSignalProcessor.setParameters(_parameters.sideChainSignalProcessorParameters);
 }
 
 void DigitalDelay::setParameters(const DigitalDelayParameters _parameters)

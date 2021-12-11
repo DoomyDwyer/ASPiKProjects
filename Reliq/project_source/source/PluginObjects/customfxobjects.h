@@ -305,58 +305,108 @@ private:
 };
 
 /**
-\struct SideChainProcessorParameters
+\struct SideChainSignalProcessorParameters
 \ingroup Custom-FX-Objects
 \brief
-Custom parameter structure for SideChainProcessor object.
-
-\author Steve Dwyer
-\version Revision : 1.0
-\date Date : 2021 / 09 / 09
-*/
-struct SideChainProcessorParameters
-{
-    SideChainProcessorParameters() = default;
-    ~SideChainProcessorParameters() = default;
-
-    // Explicitly use default Copy constructor & Copy assignment operator
-    SideChainProcessorParameters(const SideChainProcessorParameters&) = default;
-    SideChainProcessorParameters& operator=(const SideChainProcessorParameters& params) = default;
-
-    // Explicitly use default  Move constructor & Move assignment operator
-    SideChainProcessorParameters(SideChainProcessorParameters&& params) = default;
-    SideChainProcessorParameters& operator=(SideChainProcessorParameters&&) = default;
-};
-
-/**
-\class DefaultSideChainProcessor
-\ingroup Custom-FX-Objects
-\brief
-The DefaultSideChainProcessor simply always returns the value 1 from its processAudioSampleMethod.
-
-Audio I/O:
-- None.
-
-Control I/F:
-- None.
+Custom parameter structure for SideChainSignalProcessor object.
 
 \author Steve Dwyer
 \version Revision : 1.0
 \date Date : 2021 / 12 / 09
 */
-class DefaultSideChainProcessor : public IAudioSignalProcessor
+struct SideChainSignalProcessorParameters
+{
+    SideChainSignalProcessorParameters() = default;
+    ~SideChainSignalProcessorParameters() = default;
+
+    // Explicitly use default Copy constructor & Copy assignment operator
+    SideChainSignalProcessorParameters(const SideChainSignalProcessorParameters&) = default;
+    SideChainSignalProcessorParameters& operator=(const SideChainSignalProcessorParameters& params) = default;
+
+    // Explicitly use default  Move constructor & Move assignment operator
+    SideChainSignalProcessorParameters(SideChainSignalProcessorParameters&& params) = default;
+    SideChainSignalProcessorParameters& operator=(SideChainSignalProcessorParameters&&) = default;
+};
+
+/**
+\class SideChainSignalProcessor
+\ingroup Custom-FX-Objects
+\brief
+The SideChainSignalProcessor interface for all Side Chain Signal Processors.
+
+Audio I/O:
+- None.
+
+Control I/F:
+- Use SideChainSignalProcessorParameters structure to get/set object params.
+
+\author Steve Dwyer
+\version Revision : 1.0
+\date Date : 2021 / 12 / 10
+*/
+class SideChainSignalProcessor : public IAudioSignalProcessor
 {
 public:
-    DefaultSideChainProcessor(); /* C-TOR */
-    virtual ~DefaultSideChainProcessor(); /* D-TOR */
+    /**
+     * Virtual D-TOR for pure Pure-Virtual Interface Class
+     */
+    SideChainSignalProcessor() = default;
+
+    /**
+     * Virtual D-TOR for pure Pure-Virtual Interface Class
+     */
+    virtual ~SideChainSignalProcessor() = default;
 
     // Suppress generation of copy constructor and copy assignment operator
-    DefaultSideChainProcessor(const DefaultSideChainProcessor&) = delete;
-    DefaultSideChainProcessor& operator=(const DefaultSideChainProcessor&) = delete;
+    SideChainSignalProcessor(const SideChainSignalProcessor&) = delete;
+    virtual SideChainSignalProcessor& operator=(const SideChainSignalProcessor&) = delete;
 
     // Suppress generation of move constructor and move assignment operator
-    DefaultSideChainProcessor(const DefaultSideChainProcessor&&) = delete;
-    DefaultSideChainProcessor& operator=(const DefaultSideChainProcessor&&) = delete;
+    SideChainSignalProcessor(const SideChainSignalProcessor&&) = delete;
+    virtual SideChainSignalProcessor& operator=(const SideChainSignalProcessor&&) = delete;
+
+    /** get parameters: note use of custom structure for passing param data */
+    /**
+    \return DigitalDelayParameters custom data structure
+    */
+    virtual SideChainSignalProcessorParameters getParameters() const = 0;
+
+    /** set parameters: note use of custom structure for passing param data */
+    /**
+    \param _parameters custom data structure
+    */
+    virtual void setParameters(SideChainSignalProcessorParameters _parameters) = 0;
+};
+
+/**
+\class DefaultSideChainSignalProcessor
+\ingroup Custom-FX-Objects
+\brief
+The DefaultSideChainSignalProcessor simply always returns the value 1 from its processAudioSampleMethod.
+
+Audio I/O:
+- None.
+
+Control I/F:
+- Use SideChainSignalProcessorParameters structure to get/set object params.
+
+\author Steve Dwyer
+\version Revision : 1.0
+\date Date : 2021 / 12 / 09
+*/
+class DefaultSideChainSignalProcessor : public SideChainSignalProcessor
+{
+public:
+    DefaultSideChainSignalProcessor(); /* C-TOR */
+    ~DefaultSideChainSignalProcessor() override; /* D-TOR */
+
+    // Suppress generation of copy constructor and copy assignment operator
+    DefaultSideChainSignalProcessor(const DefaultSideChainSignalProcessor&) = delete;
+    DefaultSideChainSignalProcessor& operator=(const DefaultSideChainSignalProcessor&) = delete;
+
+    // Suppress generation of move constructor and move assignment operator
+    DefaultSideChainSignalProcessor(const DefaultSideChainSignalProcessor&&) = delete;
+    DefaultSideChainSignalProcessor& operator=(const DefaultSideChainSignalProcessor&&) = delete;
 
     /** reset members to initialized state */
     bool reset(double _sampleRate) override;
@@ -375,16 +425,16 @@ public:
     /**
     \return DigitalDelayParameters custom data structure
     */
-    SideChainProcessorParameters getParameters() const;
+    SideChainSignalProcessorParameters getParameters() const override;
 
     /** set parameters: note use of custom structure for passing param data */
     /**
     \param _parameters custom data structure
     */
-    void setParameters(SideChainProcessorParameters _parameters);
+    void setParameters(SideChainSignalProcessorParameters _parameters) override;
 
 private:
-    SideChainProcessorParameters parameters;
+    SideChainSignalProcessorParameters parameters;
 };
 
 /**
@@ -425,7 +475,7 @@ struct DigitalDelayParameters
         delayRatio_Pct = params.delayRatio_Pct;
         emulateAnalog = params.emulateAnalog;
 
-        sideChainProcessorParameters = params.sideChainProcessorParameters;
+        sideChainSignalProcessorParameters = params.sideChainSignalProcessorParameters;
 
         return *this;
     }
@@ -441,7 +491,7 @@ struct DigitalDelayParameters
           rightDelay_mSec{params.rightDelay_mSec},
           delayRatio_Pct{params.delayRatio_Pct},
           emulateAnalog{params.emulateAnalog},
-          sideChainProcessorParameters{params.sideChainProcessorParameters}
+          sideChainSignalProcessorParameters{params.sideChainSignalProcessorParameters}
     {
     }
 
@@ -461,7 +511,7 @@ struct DigitalDelayParameters
     bool emulateAnalog = false;
 
     // Any parameters required for the Side Chain Processor
-    SideChainProcessorParameters sideChainProcessorParameters;
+    SideChainSignalProcessorParameters sideChainSignalProcessorParameters;
 };
 
 /**
@@ -484,7 +534,7 @@ Control I/F:
 class DigitalDelay : public IAudioSignalProcessor
 {
 public:
-    DigitalDelay(); /* C-TOR */
+    DigitalDelay(DefaultSideChainSignalProcessor& sideChainSignalProcessor);
     virtual ~DigitalDelay(); /* D-TOR */
 
     // Suppress generation of copy constructor and copy assignment operator
@@ -531,7 +581,7 @@ public:
     void createDelayBuffers(double _sampleRate, double _bufferLength_mSec);
 
 private:
-    double getOutputMix(double xn, double yn);
+    double getOutputMix(double xn, double yn) const;
     double filter(double yn);
     double getDn(double xn, double yn);
     void updateParameters(DigitalDelayParameters _parameters);
@@ -539,7 +589,7 @@ private:
 
     DigitalDelayParameters parameters; ///< object parameters
     ZVAFilter zvaFilter;
-    DefaultSideChainProcessor sideChainSignalProcessor;
+    SideChainSignalProcessor& sideChainSignalProcessor;
 
     double sampleRate = 0.0; ///< current sample rate
     double samplesPerMSec = 0.0; ///< samples per millisecond, for easy access calculation
@@ -607,7 +657,7 @@ struct AnalogToneParameters
 \ingroup Custom-FX-Objects
 \brief
 The AnalogTone object implements a stereo tone control, based on Analog circuit modeling of the Ibanez Tube Screamer's
-Tone/Volume stage - https://www.electrosmash.com/tube-screamer-analysis..
+Tone/Volume stage - https://www.electrosmash.com/tube-screamer-analysis.
 
 Audio I/O:
 - Processes mono input to mono output OR stereo  input to stereo output.
@@ -616,7 +666,7 @@ Control I/F:
 - Use AnalogToneParameters structure to get/set object params.
 
 \author Steve Dwyer - Based on Eric Tarr's Analog Modeling Workshop - https://www.hackaudio.com/
-\remark This object is based on the TSTone class designed by Eric Tarr
+\remark This class is based on the TSTone class designed by Eric Tarr
 \version Revision : 1.0
 \date Date : 2021 / 12 / 05
 */
@@ -776,7 +826,7 @@ Control I/F:
 - Use AnalogToneParameters structure to get/set object params.
 
 \author Steve Dwyer - Based on Eric Tarr's Analog Modeling Workshop - https://www.hackaudio.com/
-\remark This object is based on the TSClipper class designed by Eric Tarr
+\remark This class is based on the TSClipper class designed by Eric Tarr
 \version Revision : 1.0
 \date Date : 2021 / 12 / 05
 */

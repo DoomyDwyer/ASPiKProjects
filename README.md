@@ -3,7 +3,7 @@ Audio Plugins created using the ASPiK framework.
 
 DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://www.hackaudio.com/), adapted by Steve Dwyer. GUI design by Steve Dwyer.
 
-Current VST3 Plugins, available for Windows 64 and Mac Silicon:
+Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
 
 **Pedals**
 
