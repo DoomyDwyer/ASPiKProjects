@@ -534,7 +534,7 @@ Control I/F:
 class DigitalDelay : public IAudioSignalProcessor
 {
 public:
-    DigitalDelay(DefaultSideChainSignalProcessor& sideChainSignalProcessor);
+    DigitalDelay(SideChainSignalProcessor& sideChainSignalProcessor);
     virtual ~DigitalDelay(); /* D-TOR */
 
     // Suppress generation of copy constructor and copy assignment operator

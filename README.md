@@ -9,12 +9,6 @@ Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
 
 ----------
 
-## "AutoQ" Envelope Follower ##
-
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot.png)
-
-----------
-
 ## "Unphased" Stereo Phaser ##
 
 ![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Phaser_screenshot.png)
@@ -32,5 +26,11 @@ Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
 ----------
 
 ## "Memento" Ducking Delay ##
+
+----------
+
+## "AutoQ" Envelope Follower ##
+
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot.png)
 
 ----------

@@ -291,7 +291,7 @@ void DefaultSideChainSignalProcessor::setParameters(const SideChainSignalProcess
     parameters = _parameters;
 }
 
-DigitalDelay::DigitalDelay(DefaultSideChainSignalProcessor& _sideChainSignalProcessor) :  sideChainSignalProcessor{_sideChainSignalProcessor}
+DigitalDelay::DigitalDelay(SideChainSignalProcessor& _sideChainSignalProcessor) :  sideChainSignalProcessor{_sideChainSignalProcessor}
 {
 }; /* C-TOR */
 DigitalDelay::~DigitalDelay() = default; /* D-TOR */
