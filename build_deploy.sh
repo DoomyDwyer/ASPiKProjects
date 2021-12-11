@@ -34,3 +34,6 @@ echo Copying $buildfile to $targetdir
 
 cp -R $buildfile $targetdir
 
+echo "Build completed $(date)"
+echo "New file: $(ls -lad $targetfile)"
+
