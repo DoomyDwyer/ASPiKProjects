@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_7799602D6B803F03AA5AEEF5A6D51E49
-#define AU_COCOA_VIEW_NAME AUCocoaView_7799602D6B803F03AA5AEEF5A6D51E49
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_DCBB5084F0E63773857B29883484D0F6
+#define AU_COCOA_VIEW_NAME AUCocoaView_DCBB5084F0E63773857B29883484D0F6
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.autoq.bundleID";
@@ -49,12 +49,12 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{7799602d-6b80-3f03-aa5a-eef5a6d51e49}";
+const char* kVSTFUID = "{dcbb5084-f0e6-3773-857b-29883484d0f6}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'AUTQ';
 const int32_t kAAXProductID = 'AUTQ';
-const int32_t kManufacturerID = 'doom';
+const int32_t kManufacturerID = 'DOOM';
 
 // --- Vendor information 
 const char* kVendorName = "Doomsville Soundscapes";

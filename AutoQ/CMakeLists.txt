@@ -69,7 +69,7 @@ set(VENDOR_EMAIL "doomy@puscii.nl")		# <-- OPTIONAL (ok if blank)
 
 # --- 4-Character Codes (for AAX and VST3)
 set(4CHAR_CODE "AUTQ")				# MUST be unique for each plugin your company creates/sells
-set(4CHAR_MANUFACTURER_ID "doom")			# your company CODE (does NOT need to be unique for each plugin; can be re-used)
+set(4CHAR_MANUFACTURER_ID "DOOM")			# your company CODE (does NOT need to be unique for each plugin; can be re-used)
 set(4CHAR_AAX_PRODUCT_ID "AUTQ")			# MUST be unique for each plugin your company creates/sells
 
 # --- Plugin Options ---
