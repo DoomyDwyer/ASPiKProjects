@@ -263,265 +263,50 @@ void Phaser::setParameters(const PhaserParameters& params)
     parameters = params;
 }
 
-DefaultSideChainSignalProcessor::DefaultSideChainSignalProcessor() = default; /* C-TOR */
-DefaultSideChainSignalProcessor::~DefaultSideChainSignalProcessor() = default; /* D-TOR */
+DelayGainCalculator::DelayGainCalculator() = default; /* C-TOR */
+DelayGainCalculator::~DelayGainCalculator() = default; /* D-TOR */
 
-bool DefaultSideChainSignalProcessor::reset(double _sampleRate)
+bool DelayGainCalculator::reset(double _sampleRate)
 {
-    return true;
+	return true;
 };
 
-bool DefaultSideChainSignalProcessor::canProcessAudioFrame()
+bool DelayGainCalculator::canProcessAudioFrame()
 {
     return false;
 }
 
-double DefaultSideChainSignalProcessor::processAudioSample(double xn)
+double DelayGainCalculator::processAudioSample(double xn)
 {
-    return 1.0;
+	// --- calc threshold
+	const double threshValue = pow(10.0, parameters.threshold_dB / 20.0);
+	const double deltaValue = xn - threshValue;
+
+	const double wetGainMin = pow(10.0, parameters.wetGainMin_dB / 20.0);
+	const double wetGainMax = pow(10.0, parameters.wetGainMax_dB / 20.0);
+
+    double yn = 1.0;
+    // --- if above the threshold, modulate the filter fc
+	if (deltaValue > 0.0) // || delta_dB > 0.0)
+	{
+		// --- best results are with linear values when detector is in dB mode
+		double modulatorValue = (deltaValue * parameters.sensitivity);
+        boundValue(modulatorValue, wetGainMin, wetGainMax);
+        yn = modulatorValue;
+	}
+
+    return yn;
 }
 
-SideChainSignalProcessorParameters DefaultSideChainSignalProcessor::getParameters() const
+DelayGainCalculatorParameters DelayGainCalculator::getParameters() const
 {
     return parameters;
 }
 
-void DefaultSideChainSignalProcessor::setParameters(const SideChainSignalProcessorParameters _parameters)
+void DelayGainCalculator::setParameters(const DelayGainCalculatorParameters& _parameters)
 {
-    parameters = _parameters;
-}
-
-DigitalDelay::DigitalDelay(SideChainSignalProcessor& _sideChainSignalProcessor) :  sideChainSignalProcessor{_sideChainSignalProcessor}
-{
-}; /* C-TOR */
-DigitalDelay::~DigitalDelay() = default; /* D-TOR */
-
-void DigitalDelay::resetLpf(double _sampleRate)
-{
-    zvaFilter.reset(_sampleRate);
-
-    // Set the LPF parameters
-    // --- all objects share  same params, so get first
-    ZVAFilterParameters params;
-
-    // --- update with our GUI parameter variables
-    params.fc = 1000;
-    params.Q = 0;
-    params.filterOutputGain_dB = 0.707;
-
-    // --- Discrete Plugin Variables 
-    params.filterAlgorithm = vaFilterAlgorithm::kLPF1;
-    params.enableGainComp = false;
-    params.matchAnalogNyquistLPF = false;
-    params.selfOscillate = false;
-    params.enableNLP = false;
-
-    // --- apply to parameters to LPF
-    zvaFilter.setParameters(params);
-}
-
-bool DigitalDelay::reset(double _sampleRate)
-{
-    // --- if sample rate did not change
-    if (isFloatEqual(sampleRate, _sampleRate))
-    {
-        // --- just flush buffer and return
-        delayBuffer_L.flushBuffer();
-        delayBuffer_R.flushBuffer();
-        return true;
-    }
-
-    // --- create new buffer, will store sample rate and length(mSec)
-    createDelayBuffers(_sampleRate, bufferLength_mSec);
-
-    // Reset the LPF each time and set params
-    resetLpf(_sampleRate);
-
-    // Reset the sideChainSignalProcessor
-    sideChainSignalProcessor.reset(_sampleRate);
-
-    return true;
-}
-
-double DigitalDelay::getOutputMix(double xn, double yn) const
-{
-    const double dryMix = 1.0 - mix;
-    const double wetMix = sideChainSignalProcessor.processAudioSample(xn) * mix;
-
-    return (dryMix * xn + wetMix * yn) * level_dB;
-}
-
-double DigitalDelay::filter(double yn)
-{
-    if (parameters.emulateAnalog)
-    {
-        yn = zvaFilter.processAudioSample(yn);
-    }
-    return yn;
-}
-
-double DigitalDelay::getDn(double xn, const double yn)
-{
-    return xn + filter((parameters.feedback_Pct * 0.01) * yn);
-}
-
-double DigitalDelay::processAudioSample(double xn)
-{
-    // --- read delay
-    const double yn = delayBuffer_L.readBuffer(delayInSamples_L);
-
-    // --- create input for delay buffer
-    const double dn = getDn(xn, yn);
-
-    // --- write to delay buffer
-    delayBuffer_L.writeBuffer(dn);
-
-    // --- form mixture out
-    const double output = getOutputMix(xn, yn);
-
-    return output;
-}
-
-bool DigitalDelay::canProcessAudioFrame() { return true; }
-
-bool DigitalDelay::processAudioFrame(const float* inputFrame,
-                                     /* ptr to one frame of data: pInputFrame[0] = left, pInputFrame[1] = right, etc...*/
-                                     float* outputFrame,
-                                     uint32_t inputChannels,
-                                     uint32_t outputChannels)
-{
-    // --- make sure we have input and outputs
-    if (inputChannels == 0 || outputChannels == 0)
-        return false;
-
-    // --- make sure we support this delay algorithm
-    if (parameters.algorithm != delayAlgorithm::kNormal &&
-        parameters.algorithm != delayAlgorithm::kPingPong)
-        return false;
-
-    // --- if only one output channel, revert to mono operation
-    if (outputChannels == 1)
-    {
-        // --- process left channel only
-        outputFrame[0] = static_cast<float>(processAudioSample(inputFrame[0]));
-        return true;
-    }
-
-    // --- if we get here we know we have 2 output channels
-    //
-    // --- pick up inputs
-    //
-    // --- LEFT channel
-    const double xnL = inputFrame[0];
-
-    // --- RIGHT channel (duplicate left input if mono-in)
-    const double xnR = inputChannels > 1 ? inputFrame[1] : xnL;
-
-    // --- read delay LEFT
-    const double ynL = delayBuffer_L.readBuffer(delayInSamples_L);
-
-    // --- read delay RIGHT
-    const double ynR = delayBuffer_R.readBuffer(delayInSamples_R);
-
-    // --- create input for delay buffer with LEFT channel info
-    const double dnL = getDn(xnL, ynL);
-
-    // --- create input for delay buffer with RIGHT channel info
-    const double dnR = getDn(xnR, ynR);
-
-    // --- decode
-    if (parameters.algorithm == delayAlgorithm::kNormal)
-    {
-        // --- write to LEFT delay buffer with LEFT channel info
-        delayBuffer_L.writeBuffer(dnL);
-
-        // --- write to RIGHT delay buffer with RIGHT channel info
-        delayBuffer_R.writeBuffer(dnR);
-    }
-    else if (parameters.algorithm == delayAlgorithm::kPingPong)
-    {
-        // --- write to LEFT delay buffer with RIGHT channel info
-        delayBuffer_L.writeBuffer(dnR);
-
-        // --- write to RIGHT delay buffer with LEFT channel info
-        delayBuffer_R.writeBuffer(dnL);
-    }
-
-    // --- form Left mixture out
-    const double outputL = getOutputMix(xnL, ynL);
-
-    // --- form Right mixture out
-    const double outputR = getOutputMix(xnR, ynR);
-
-    // --- set left channel
-    outputFrame[0] = static_cast<float>(outputL);
-
-    // --- set right channel
-    outputFrame[1] = static_cast<float>(outputR);
-
-    return true;
-}
-
-DigitalDelayParameters DigitalDelay::getParameters() const { return parameters; }
-
-void DigitalDelay::updateParameters(const DigitalDelayParameters _parameters)
-{
-    // --- check level in dB for calc
-    if (!isFloatEqual(_parameters.Level_dB, parameters.Level_dB))
-        level_dB = pow(10.0, _parameters.Level_dB / 20.0);
-
-    mix = _parameters.mix;
-
-    // --- check update type first:
-    if (_parameters.updateType == delayUpdateType::kLeftAndRight)
-    {
-        // --- set left and right delay times
-        // --- calculate total delay time in samples + fraction
-        const double newDelayInSamples_L = _parameters.leftDelay_mSec * (samplesPerMSec);
-        const double newDelayInSamples_R = _parameters.rightDelay_mSec * (samplesPerMSec);
-
-        // --- new delay time with fraction
-        delayInSamples_L = newDelayInSamples_L;
-        delayInSamples_R = newDelayInSamples_R;
-    }
-    else if (_parameters.updateType == delayUpdateType::kLeftPlusRatio)
-    {
-        // --- get and validate ratio
-        double delayRatio = _parameters.delayRatio_Pct * 0.01;
-        boundValue(delayRatio, 0.0, 1.0);
-
-        // --- calculate total delay time in samples + fraction
-        const double newDelayInSamples = _parameters.leftDelay_mSec * (samplesPerMSec);
-
-        // --- new delay time with fraction
-        delayInSamples_L = newDelayInSamples;
-        delayInSamples_R = delayInSamples_L * delayRatio;
-    }
-
-    sideChainSignalProcessor.setParameters(_parameters.sideChainSignalProcessorParameters);
-}
-
-void DigitalDelay::setParameters(const DigitalDelayParameters _parameters)
-{
-    updateParameters(_parameters);
-
-    // --- save; rest of updates are cheap on CPU
-    parameters = _parameters;
-}
-
-void DigitalDelay::createDelayBuffers(double _sampleRate, double _bufferLength_mSec)
-{
-    // --- store for math
-    bufferLength_mSec = _bufferLength_mSec;
-    sampleRate = _sampleRate;
-    samplesPerMSec = sampleRate / 1000.0;
-
-    // --- total buffer length including fractional part
-    bufferLength = static_cast<unsigned>(bufferLength_mSec * (samplesPerMSec)) + 1; // +1 for fractional part
-
-    // --- create new buffer
-    delayBuffer_L.createCircularBuffer(bufferLength);
-    delayBuffer_R.createCircularBuffer(bufferLength);
+        // --- save
+        parameters = _parameters;
 }
 
 AnalogTone::AnalogTone() = default;

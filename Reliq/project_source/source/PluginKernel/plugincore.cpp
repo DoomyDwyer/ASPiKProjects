@@ -55,7 +55,7 @@ PluginCore::PluginCore()
 
 void PluginCore::updateParameters()
 {
-    DigitalDelayParameters params = stereoDelay.getParameters();
+    DigitalDelayParameters<DefaultSideChainSignalProcessorParameters> params = stereoDelay.getParameters();
     params.leftDelay_mSec = delayTime_mSec;
 
     params.Level_dB = level_dB;
