@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\pluginbase.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\plugincore.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\plugingui.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\pluginparameter.cpp">
+      <Filter>PluginKernel</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\fxobjects.cpp">
+      <Filter>PluginObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\customfxobjects.cpp">
+      <Filter>PluginObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\factory.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\customparameters.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\vst3plugin.cpp">
+      <Filter>VST3Core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\customcontrols.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\customviews.cpp">
+      <Filter>CustomVSTGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp">
+      <Filter>VST3SDK</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\main\dllmain.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\guiconstants.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\pluginbase.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\plugincore.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\plugindescription.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\plugingui.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\pluginparameter.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginKernel\pluginstructures.h">
+      <Filter>PluginKernel</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\fxobjects.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\filters.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\customfxobjects.h">
+      <Filter>PluginObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\PluginObjects\utilities.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\customparameters.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\channelformats.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\vst_source\vst3plugin.h">
+      <Filter>VST3Core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\atomicops.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\customcontrols.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\readerwriterqueue.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\source\CustomControls\customviews.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h">
+      <Filter>VST3SDK</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\cmake\vst_cmake\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\resources\PluginGUI.uidesc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Memento\project_source\win\vst\PluginGUIMain.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CustomVSTGUI">
+      <UniqueIdentifier>{37D0B6A6-1446-3957-826B-BFFEA656E65B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{3DCD7213-8152-3EF8-B15C-F978A0CD7CA0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginKernel">
+      <UniqueIdentifier>{44660090-0971-3149-8AE6-3B281FB48C8F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PluginObjects">
+      <UniqueIdentifier>{833BF73B-4089-395D-90A6-2E61FD633BB3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{70C34DD4-F058-3159-9E68-FE7280D25121}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3Core">
+      <UniqueIdentifier>{9FC2375C-C037-3597-99D7-24330EBB9815}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="VST3SDK">
+      <UniqueIdentifier>{3724D3FB-98AB-3FB8-A8E4-943825E7E70B}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
