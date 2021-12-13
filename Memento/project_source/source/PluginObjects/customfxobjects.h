@@ -322,34 +322,36 @@ struct DelayGainCalculatorParameters
 
     // Explicitly use default Copy constructor & Copy assignment operator
     DelayGainCalculatorParameters(const DelayGainCalculatorParameters&) = default;
+
     DelayGainCalculatorParameters& operator=(const DelayGainCalculatorParameters& params)
     {
         if (this == &params) return *this;
 
-	    threshold_dB = params.threshold_dB;
-		sensitivity = params.sensitivity;
-	    wetGainMin_dB = params.wetGainMin_dB;
-	    wetGainMax_dB = params.wetGainMax_dB;
+        threshold_dB = params.threshold_dB;
+        sensitivity = params.sensitivity;
+        wetGainMin_dB = params.wetGainMin_dB;
+        wetGainMax_dB = params.wetGainMax_dB;
         return *this;
     }
 
     // Explicitly use default  Move constructor & Move assignment operator
     DelayGainCalculatorParameters(DelayGainCalculatorParameters&& params) = default;
+
     DelayGainCalculatorParameters& operator=(DelayGainCalculatorParameters&& params) noexcept
     {
         if (this == &params) return *this;
 
-	    threshold_dB = params.threshold_dB;
-		sensitivity = params.sensitivity;
-	    wetGainMin_dB = params.wetGainMin_dB;
-	    wetGainMax_dB = params.wetGainMax_dB;
+        threshold_dB = params.threshold_dB;
+        sensitivity = params.sensitivity;
+        wetGainMin_dB = params.wetGainMin_dB;
+        wetGainMax_dB = params.wetGainMax_dB;
         return *this;
     }
 
-	double threshold_dB = 0.0;
-	double sensitivity = 0.0;
-	double wetGainMin_dB = 0.0;
-	double wetGainMax_dB = 0.0;
+    double threshold_dB = 0.0;
+    double sensitivity = 0.0;
+    double wetGainMin_dB = 0.0;
+    double wetGainMax_dB = 0.0;
 };
 
 /**
@@ -476,44 +478,50 @@ struct EnvelopeDetectorSideChainSignalProcessorParameters : SideChainSignalProce
     ~EnvelopeDetectorSideChainSignalProcessorParameters() override = default;
 
     // Explicitly use default Copy constructor & Copy assignment operator
-    EnvelopeDetectorSideChainSignalProcessorParameters(const EnvelopeDetectorSideChainSignalProcessorParameters&) = default;
-    EnvelopeDetectorSideChainSignalProcessorParameters& operator=(const EnvelopeDetectorSideChainSignalProcessorParameters& params)
+    EnvelopeDetectorSideChainSignalProcessorParameters(const EnvelopeDetectorSideChainSignalProcessorParameters&)
+    = default;
+
+    EnvelopeDetectorSideChainSignalProcessorParameters& operator=(
+        const EnvelopeDetectorSideChainSignalProcessorParameters& params)
     {
         if (this == &params) return *this;
 
-	    sideChainGain_dB = params.sideChainGain_dB;
-	    attackTime_mSec = params.attackTime_mSec;
-	    releaseTime_mSec = params.releaseTime_mSec;
-	    threshold_dB = params.threshold_dB;
-		sensitivity = params.sensitivity;
-	    wetGainMin_dB = params.wetGainMin_dB;
-	    wetGainMax_dB = params.wetGainMax_dB;
+        sideChainGain_dB = params.sideChainGain_dB;
+        attackTime_mSec = params.attackTime_mSec;
+        releaseTime_mSec = params.releaseTime_mSec;
+        threshold_dB = params.threshold_dB;
+        sensitivity = params.sensitivity;
+        wetGainMin_dB = params.wetGainMin_dB;
+        wetGainMax_dB = params.wetGainMax_dB;
         return *this;
     }
 
     // Explicitly use default  Move constructor & Move assignment operator
-    EnvelopeDetectorSideChainSignalProcessorParameters(EnvelopeDetectorSideChainSignalProcessorParameters&& params) = default;
-    EnvelopeDetectorSideChainSignalProcessorParameters& operator=(EnvelopeDetectorSideChainSignalProcessorParameters&& params) noexcept
+    EnvelopeDetectorSideChainSignalProcessorParameters(EnvelopeDetectorSideChainSignalProcessorParameters&& params)
+    = default;
+
+    EnvelopeDetectorSideChainSignalProcessorParameters& operator=(
+        EnvelopeDetectorSideChainSignalProcessorParameters&& params) noexcept
     {
         if (this == &params) return *this;
 
-	    sideChainGain_dB = params.sideChainGain_dB;
-	    attackTime_mSec = params.attackTime_mSec;
-	    releaseTime_mSec = params.releaseTime_mSec;
-	    threshold_dB = params.threshold_dB;
-		sensitivity = params.sensitivity;
-	    wetGainMin_dB = params.wetGainMin_dB;
-	    wetGainMax_dB = params.wetGainMax_dB;
+        sideChainGain_dB = params.sideChainGain_dB;
+        attackTime_mSec = params.attackTime_mSec;
+        releaseTime_mSec = params.releaseTime_mSec;
+        threshold_dB = params.threshold_dB;
+        sensitivity = params.sensitivity;
+        wetGainMin_dB = params.wetGainMin_dB;
+        wetGainMax_dB = params.wetGainMax_dB;
         return *this;
     }
 
-	double sideChainGain_dB = 0.0;
-	double attackTime_mSec = 0.0;
-	double releaseTime_mSec = 0.0;
-	double threshold_dB = 0.0;
-	double sensitivity = 0.0;
-	double wetGainMin_dB = 0.0;
-	double wetGainMax_dB = 0.0;
+    double sideChainGain_dB = 0.0;
+    double attackTime_mSec = 0.0;
+    double releaseTime_mSec = 0.0;
+    double threshold_dB = 0.0;
+    double sensitivity = 0.0;
+    double wetGainMin_dB = 0.0;
+    double wetGainMax_dB = 0.0;
 };
 
 /**
@@ -547,12 +555,16 @@ public:
     virtual ~SideChainSignalProcessor<SideChainProcessorParams>() = default;
 
     // Suppress generation of copy constructor and copy assignment operator
-    SideChainSignalProcessor<SideChainProcessorParams>(const SideChainSignalProcessor<SideChainProcessorParams>&) = default;
-    virtual SideChainSignalProcessor<SideChainProcessorParams>& operator=(const SideChainSignalProcessor<SideChainProcessorParams>&) = delete;
+    SideChainSignalProcessor<SideChainProcessorParams>(const SideChainSignalProcessor<SideChainProcessorParams>&)
+    = default;
+    virtual SideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const SideChainSignalProcessor<SideChainProcessorParams>&) = delete;
 
     // Suppress generation of move constructor and move assignment operator
-    SideChainSignalProcessor<SideChainProcessorParams>(const SideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
-    virtual SideChainSignalProcessor<SideChainProcessorParams>& operator=(const SideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
+    SideChainSignalProcessor<SideChainProcessorParams>(const SideChainSignalProcessor<SideChainProcessorParams>&&)
+    = delete;
+    virtual SideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const SideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
 
     /** get parameters: note use of custom structure for passing param data */
     /**
@@ -591,12 +603,16 @@ public:
     ~DefaultSideChainSignalProcessor<SideChainProcessorParams>() override = default; /* D-TOR */
 
     // Suppress generation of copy constructor and copy assignment operator
-    DefaultSideChainSignalProcessor<SideChainProcessorParams>(const DefaultSideChainSignalProcessor<SideChainProcessorParams>&) = default;
-    DefaultSideChainSignalProcessor<SideChainProcessorParams>& operator=(const DefaultSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
+    DefaultSideChainSignalProcessor<SideChainProcessorParams>(
+        const DefaultSideChainSignalProcessor<SideChainProcessorParams>&) = default;
+    DefaultSideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const DefaultSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
 
     // Suppress generation of move constructor and move assignment operator
-    DefaultSideChainSignalProcessor<SideChainProcessorParams>(const DefaultSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
-    DefaultSideChainSignalProcessor<SideChainProcessorParams>& operator=(const DefaultSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
+    DefaultSideChainSignalProcessor<SideChainProcessorParams>(
+        const DefaultSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
+    DefaultSideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const DefaultSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
 
     /** reset members to initialized state */
     bool reset(double _sampleRate) override
@@ -680,24 +696,28 @@ public:
         delayGainCalculatorParams.wetGainMin_dB = 0.0;
         delayGainCalculatorParams.wetGainMax_dB = 0.0;
         delayGainCalculator.setParameters(delayGainCalculatorParams);
-    }/* C-TOR */
+    } /* C-TOR */
 
     ~EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>() override = default; /* D-TOR */
 
     // Suppress generation of copy constructor and copy assignment operator
-    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>(const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
-    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>& operator=(const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
+    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>(
+        const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
+    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&) = delete;
 
     // Suppress generation of move constructor and move assignment operator
-    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>(const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
-    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>& operator=(const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
+    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>(
+        const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
+    EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>& operator=(
+        const EnvelopeDetectorSideChainSignalProcessor<SideChainProcessorParams>&&) = delete;
 
     /** reset members to initialized state */
     bool reset(double _sampleRate) override
     {
-	    envDetector.reset(_sampleRate);
-	    delayGainCalculator.reset(_sampleRate);
-	    return true;
+        envDetector.reset(_sampleRate);
+        delayGainCalculator.reset(_sampleRate);
+        return true;
     }
 
     /** process audio through Clipping Stage */
@@ -712,8 +732,8 @@ public:
         xn *= sideChainGain;
 
         // --- detect the signal
-	    const double detect_dB = envDetector.processAudioSample(xn);
-	    const double detectValue = pow(10.0, detect_dB / 20.0);
+        const double detect_dB = envDetector.processAudioSample(xn);
+        const double detectValue = pow(10.0, detect_dB / 20.0);
 
         // Pass it through Delay Gain Calculator
         const double yn = delayGainCalculator.processAudioSample(detectValue);
@@ -742,7 +762,7 @@ public:
     */
     void setParameters(const SideChainProcessorParams& _parameters) override
     {
-	    parameters = _parameters;
+        parameters = _parameters;
 
         updateDetectorParameters(parameters);
         updateDelayGainCalculatorParameters(parameters);
@@ -751,47 +771,48 @@ public:
 private:
     EnvelopeDetectorSideChainSignalProcessorParameters parameters;
 
-	AudioDetector envDetector; ///< detector to track input signal
-	DelayGainCalculator delayGainCalculator; // Calculate gain to wet signal based on detected envelope
+    AudioDetector envDetector; ///< detector to track input signal
+    DelayGainCalculator delayGainCalculator; // Calculate gain to wet signal based on detected envelope
 
     static bool detectorParametersUpdated(AudioDetectorParameters adParams, const SideChainProcessorParams& params)
     {
-	    return !isFloatEqual(adParams.attackTime_mSec, params.attackTime_mSec) ||
-		    !isFloatEqual(adParams.releaseTime_mSec, params.releaseTime_mSec);
+        return !isFloatEqual(adParams.attackTime_mSec, params.attackTime_mSec) ||
+            !isFloatEqual(adParams.releaseTime_mSec, params.releaseTime_mSec);
     }
 
     void updateDetectorParameters(const SideChainProcessorParams& params)
     {
-	    AudioDetectorParameters adParams = envDetector.getParameters();
+        AudioDetectorParameters adParams = envDetector.getParameters();
 
-	    if (detectorParametersUpdated(adParams, params))
-	    {
-		    adParams.attackTime_mSec = params.attackTime_mSec;
-		    adParams.releaseTime_mSec = params.releaseTime_mSec;
-		    envDetector.setParameters(adParams);
-	    }
+        if (detectorParametersUpdated(adParams, params))
+        {
+            adParams.attackTime_mSec = params.attackTime_mSec;
+            adParams.releaseTime_mSec = params.releaseTime_mSec;
+            envDetector.setParameters(adParams);
+        }
     }
 
-    static bool delayGainCalculatorParametersUpdated(DelayGainCalculatorParameters dgcParams, const SideChainProcessorParams& params)
+    static bool delayGainCalculatorParametersUpdated(DelayGainCalculatorParameters dgcParams,
+                                                     const SideChainProcessorParams& params)
     {
-	    return !isFloatEqual(dgcParams.threshold_dB, params.threshold_dB) ||
+        return !isFloatEqual(dgcParams.threshold_dB, params.threshold_dB) ||
             !isFloatEqual(dgcParams.sensitivity, params.sensitivity) ||
             !isFloatEqual(dgcParams.wetGainMin_dB, params.wetGainMin_dB) ||
-		    !isFloatEqual(dgcParams.wetGainMax_dB, params.wetGainMax_dB);
+            !isFloatEqual(dgcParams.wetGainMax_dB, params.wetGainMax_dB);
     }
 
     void updateDelayGainCalculatorParameters(const SideChainProcessorParams& params)
     {
-	    DelayGainCalculatorParameters dgcParams = delayGainCalculator.getParameters();
+        DelayGainCalculatorParameters dgcParams = delayGainCalculator.getParameters();
 
-	    if (delayGainCalculatorParametersUpdated(dgcParams, params))
-	    {
-		    dgcParams.threshold_dB = params.threshold_dB;
-		    dgcParams.sensitivity = params.sensitivity;
-		    dgcParams.wetGainMin_dB = params.wetGainMin_dB;
-		    dgcParams.wetGainMax_dB = params.wetGainMax_dB;
-		    delayGainCalculator.setParameters(dgcParams);
-	    }
+        if (delayGainCalculatorParametersUpdated(dgcParams, params))
+        {
+            dgcParams.threshold_dB = params.threshold_dB;
+            dgcParams.sensitivity = params.sensitivity;
+            dgcParams.wetGainMin_dB = params.wetGainMin_dB;
+            dgcParams.wetGainMax_dB = params.wetGainMax_dB;
+            delayGainCalculator.setParameters(dgcParams);
+        }
     }
 };
 
@@ -818,7 +839,8 @@ public:
 
     // Copy assignment operator
     /** all FXObjects parameter objects require overloaded= operator so remember to add new entries if you add new variables. */
-    DigitalDelayParameters<SideChainProcessorParams>& operator=(const DigitalDelayParameters<SideChainProcessorParams>& params)
+    DigitalDelayParameters<SideChainProcessorParams>& operator=(
+        const DigitalDelayParameters<SideChainProcessorParams>& params)
     // need this override for collections to work
     {
         if (this == &params)
@@ -856,7 +878,8 @@ public:
     }
 
     // Suppress generation of move assignment operator
-    DigitalDelayParameters<SideChainProcessorParams>& operator=(DigitalDelayParameters<SideChainProcessorParams>&&) = default;
+    DigitalDelayParameters<SideChainProcessorParams>& operator=(DigitalDelayParameters<SideChainProcessorParams>&&)
+    = default;
 
     // --- individual parameters
     delayAlgorithm algorithm = delayAlgorithm::kNormal; ///< delay algorithm
@@ -895,18 +918,25 @@ template <class SideChainProcessor, class SideChainProcessorParams>
 class DigitalDelay : public IAudioSignalProcessor
 {
 public:
-    DigitalDelay<SideChainProcessor, SideChainProcessorParams>(SideChainProcessor& _sideChainSignalProcessor) :  sideChainSignalProcessor{_sideChainSignalProcessor}
+    DigitalDelay<SideChainProcessor,
+                 SideChainProcessorParams>(SideChainProcessor& _sideChainSignalProcessor) : sideChainSignalProcessor{
+        _sideChainSignalProcessor
+    }
     {
     } /* C-TOR */
     virtual ~DigitalDelay<SideChainProcessor, SideChainProcessorParams>() = default; /* D-TOR */
 
     // Suppress generation of copy constructor and copy assignment operator
-    DigitalDelay<SideChainProcessor, SideChainProcessorParams>(const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&) = delete;
-    DigitalDelay<SideChainProcessor, SideChainProcessorParams>& operator=(const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&) = delete;
+    DigitalDelay<SideChainProcessor, SideChainProcessorParams>(
+        const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&) = delete;
+    DigitalDelay<SideChainProcessor, SideChainProcessorParams>& operator=(
+        const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&) = delete;
 
     // Suppress generation of move constructor and move assignment operator
-    DigitalDelay<SideChainProcessor, SideChainProcessorParams>(const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&&) = delete;
-    DigitalDelay<SideChainProcessor, SideChainProcessorParams>& operator=(const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&&) = delete;
+    DigitalDelay<SideChainProcessor, SideChainProcessorParams>(
+        const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&&) = delete;
+    DigitalDelay<SideChainProcessor, SideChainProcessorParams>& operator=(
+        const DigitalDelay<SideChainProcessor, SideChainProcessorParams>&&) = delete;
 
     /** reset members to initialized state */
     bool reset(double _sampleRate) override
@@ -1449,7 +1479,7 @@ private:
 
     AnalogClipperParameters parameters; ///< object parameters
     double drive = 0.5; ///< overdrive factor (0..1)
-       
+
     const double eta = 1.0; // Change for non-ideal diode
     const double Is = 1e-15;
     const double Vt = 26e-3;

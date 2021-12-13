@@ -268,7 +268,7 @@ DelayGainCalculator::~DelayGainCalculator() = default; /* D-TOR */
 
 bool DelayGainCalculator::reset(double _sampleRate)
 {
-	return true;
+    return true;
 };
 
 bool DelayGainCalculator::canProcessAudioFrame()
@@ -278,22 +278,22 @@ bool DelayGainCalculator::canProcessAudioFrame()
 
 double DelayGainCalculator::processAudioSample(double xn)
 {
-	// --- calc threshold
-	const double threshValue = pow(10.0, parameters.threshold_dB / 20.0);
-	const double deltaValue = xn - threshValue;
+    // --- calc threshold
+    const double threshValue = pow(10.0, parameters.threshold_dB / 20.0);
+    const double deltaValue = xn - threshValue;
 
-	const double wetGainMin = pow(10.0, parameters.wetGainMin_dB / 20.0);
-	const double wetGainMax = pow(10.0, parameters.wetGainMax_dB / 20.0);
+    const double wetGainMin = pow(10.0, parameters.wetGainMin_dB / 20.0);
+    const double wetGainMax = pow(10.0, parameters.wetGainMax_dB / 20.0);
 
     double yn = 1.0;
     // --- if above the threshold, modulate the filter fc
-	if (deltaValue > 0.0) // || delta_dB > 0.0)
-	{
-		// --- best results are with linear values when detector is in dB mode
-		double modulatorValue = (deltaValue * parameters.sensitivity);
+    if (deltaValue > 0.0) // || delta_dB > 0.0)
+    {
+        // --- best results are with linear values when detector is in dB mode
+        double modulatorValue = (deltaValue * parameters.sensitivity);
         boundValue(modulatorValue, wetGainMin, wetGainMax);
         yn = modulatorValue;
-	}
+    }
 
     return yn;
 }
@@ -305,8 +305,8 @@ DelayGainCalculatorParameters DelayGainCalculator::getParameters() const
 
 void DelayGainCalculator::setParameters(const DelayGainCalculatorParameters& _parameters)
 {
-        // --- save
-        parameters = _parameters;
+    // --- save
+    parameters = _parameters;
 }
 
 AnalogTone::AnalogTone() = default;
@@ -315,7 +315,8 @@ AnalogTone::~AnalogTone() = default;
 
 bool AnalogTone::reset(double _sampleRate)
 {
-    if (!isFloatEqual(Fs, _sampleRate)) {
+    if (!isFloatEqual(Fs, _sampleRate))
+    {
         Fs = _sampleRate;
         updateCoefficients();
     }
@@ -361,7 +362,8 @@ void AnalogTone::setParameters(AnalogToneParameters _parameters)
     parameters = _parameters;
 }
 
-void AnalogTone::updateCoefficients(){
+void AnalogTone::updateCoefficients()
+{
     Ts = 1.0 / Fs;
 
     R1 = Ts / (2.0 * C1);
@@ -397,7 +399,8 @@ AnalogClipper::~AnalogClipper() = default;
 
 bool AnalogClipper::reset(double _sampleRate)
 {
-    if (!isFloatEqual(Fs, _sampleRate)) {
+    if (!isFloatEqual(Fs, _sampleRate))
+    {
         Fs = _sampleRate;
         updateCoefficients();
     }
@@ -462,7 +465,8 @@ void AnalogClipper::setParameters(AnalogClipperParameters _parameters)
     parameters = _parameters;
 }
 
-void AnalogClipper::updateCoefficients(){
+void AnalogClipper::updateCoefficients()
+{
     Ts = 1.0 / Fs;
     R1 = Ts / (2.0 * C1);
     R2 = Ts / (2. * C2);
@@ -473,4 +477,4 @@ void AnalogClipper::updateCoefficients(){
     // Combined Resistances
     G1 = (1.0 + R4 / R1);
     G4 = (1.0 + R1 / R4);
- }
+}
