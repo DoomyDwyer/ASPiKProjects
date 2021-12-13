@@ -278,21 +278,14 @@ bool DelayGainCalculator::canProcessAudioFrame()
 
 double DelayGainCalculator::processAudioSample(double xn)
 {
-    // --- calc threshold
-    const double threshValue = pow(10.0, parameters.threshold_dB / 20.0);
-    const double deltaValue = xn - threshValue;
-
-    const double wetGainMin = pow(10.0, parameters.wetGainMin_dB / 20.0);
-    const double wetGainMax = pow(10.0, parameters.wetGainMax_dB / 20.0);
-
-    double yn = 1.0;
-    // --- if above the threshold, modulate the filter fc
-    if (deltaValue > 0.0) // || delta_dB > 0.0)
+    // If above the threshold, attenuate the wet mix by the wetGainMin factor
+    double yn = wetGainMin;
+    if (xn < threshValue)
     {
-        // --- best results are with linear values when detector is in dB mode
-        double modulatorValue = (deltaValue * parameters.sensitivity);
-        boundValue(modulatorValue, wetGainMin, wetGainMax);
-        yn = modulatorValue;
+        // if below the threshold, amplify the wet mix
+        yn = xn * parameters.sensitivity;
+        // Keep within min & max wet gain bounds
+        boundValue(yn, wetGainMin, wetGainMax);
     }
 
     return yn;
@@ -303,8 +296,17 @@ DelayGainCalculatorParameters DelayGainCalculator::getParameters() const
     return parameters;
 }
 
+void DelayGainCalculator::updateSettings(const DelayGainCalculatorParameters& _parameters)
+{
+    threshValue = pow(10.0, _parameters.threshold_dB * 0.05);
+    wetGainMin = pow(10.0, _parameters.wetGainMin_dB * 0.05);
+    wetGainMax = pow(10.0, _parameters.wetGainMax_dB * 0.05);
+}
+
 void DelayGainCalculator::setParameters(const DelayGainCalculatorParameters& _parameters)
 {
+    updateSettings(_parameters);
+
     // --- save
     parameters = _parameters;
 }

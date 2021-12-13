@@ -20,25 +20,24 @@
 
 // --- Plugin Variables controlID Enumeration 
 
-enum controlID
-{
-    delayTime_mSec = 0,
-    delayFeedback_Pct = 1,
-    mix = 2,
-    level_dB = 3,
-    delayType = 4,
-    emulateAnalog = 5,
-    sideChainGain_dB = 6,
-    attackTime_mSec = 7,
-    releaseTime_mSec = 8,
-    threshold_dB = 9,
-    wetGainMin_dB = 10,
-    wetGainMax_dB = 11,
-    fx_On = 12,
-    sensitivity = 13
+enum controlID {
+	delayTime_mSec = 0,
+	delayFeedback_Pct = 1,
+	mix = 2,
+	level_dB = 3,
+	delayType = 4,
+	emulateAnalog = 5,
+	sideChainGain_dB = 6,
+	attackTime_mSec = 7,
+	releaseTime_mSec = 8,
+	threshold_dB = 9,
+	wetGainMin_dB = 10,
+	wetGainMax_dB = 11,
+	fx_On = 12,
+	sensitivity = 13
 };
 
-// **--0x0F1F--**
+	// **--0x0F1F--**
 
 /**
 \class PluginCore
@@ -156,39 +155,30 @@ protected:
 private:
     //  **--0x07FD--**
 
-    // --- Continuous Plugin Variables 
-    double delayTime_mSec = 0.0;
-    double delayFeedback_Pct = 0.0;
-    double mix = 0.0;
-    double level_dB = 0.0;
-    double sideChainGain_dB = 0.0;
-    double attackTime_mSec = 0.0;
-    double releaseTime_mSec = 0.0;
-    double threshold_dB = 0.0;
-    double wetGainMin_dB = 0.0;
-    double wetGainMax_dB = 0.0;
-    double sensitivity = 0.0;
+	// --- Continuous Plugin Variables 
+	double delayTime_mSec = 0.0;
+	double delayFeedback_Pct = 0.0;
+	double mix = 0.0;
+	double level_dB = 0.0;
+	double sideChainGain_dB = 0.0;
+	double attackTime_mSec = 0.0;
+	double releaseTime_mSec = 0.0;
+	double threshold_dB = 0.0;
+	double wetGainMin_dB = 0.0;
+	double wetGainMax_dB = 0.0;
+	double sensitivity = 0.0;
 
-    // --- Discrete Plugin Variables 
-    int delayType = 0;
+	// --- Discrete Plugin Variables 
+	int delayType = 0;
+	enum class delayTypeEnum { NORMAL,PINGPONG };	// to compare: if(compareEnumToInt(delayTypeEnum::NORMAL, delayType)) etc... 
 
-    enum class delayTypeEnum { NORMAL, PINGPONG };
+	int emulateAnalog = 0;
+	enum class emulateAnalogEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(emulateAnalogEnum::SWITCH_OFF, emulateAnalog)) etc... 
 
-    // to compare: if(compareEnumToInt(delayTypeEnum::NORMAL, delayType)) etc... 
+	int fx_On = 0;
+	enum class fx_OnEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnEnum::SWITCH_OFF, fx_On)) etc... 
 
-    int emulateAnalog = 0;
-
-    enum class emulateAnalogEnum { SWITCH_OFF, SWITCH_ON };
-
-    // to compare: if(compareEnumToInt(emulateAnalogEnum::SWITCH_OFF, emulateAnalog)) etc... 
-
-    int fx_On = 0;
-
-    enum class fx_OnEnum { SWITCH_OFF, SWITCH_ON };
-
-    // to compare: if(compareEnumToInt(fx_OnEnum::SWITCH_OFF, fx_On)) etc... 
-
-    // **--0x1A7F--**
+	// **--0x1A7F--**
     // --- end member variables
     const double delayGoldenRatio = 1 / 1.618 * 100;
 

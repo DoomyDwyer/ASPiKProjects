@@ -388,7 +388,7 @@ public:
     /** reset members to initialized state */
     bool reset(double _sampleRate) override;
 
-    /** process audio through Clipping Stage */
+    /** process audio through the Delay Gain Calculator */
     /**
     \param xn input
     \return the processed sample
@@ -412,6 +412,12 @@ public:
 
 private:
     DelayGainCalculatorParameters parameters;
+
+    void updateSettings(const DelayGainCalculatorParameters& _parameters);
+
+    double threshValue = 0.0;
+    double wetGainMin = 0.0;
+    double wetGainMax = 0.0;
 };
 
 /**
@@ -620,7 +626,7 @@ public:
         return true;
     }
 
-    /** process audio through Clipping Stage */
+    /** process audio through the Side Chain Processor */
     /**
     \param xn input
     \return the processed sample
@@ -720,7 +726,7 @@ public:
         return true;
     }
 
-    /** process audio through Clipping Stage */
+    /** process audio through the Side Chain Processor */
     /**
     \param xn input
     \return the processed sample
@@ -728,17 +734,16 @@ public:
     double processAudioSample(double xn) override
     {
         // Amplify signal by sideChainGain
-        const double sideChainGain = pow(10.0, parameters.sideChainGain_dB / 20.0);
         xn *= sideChainGain;
 
         // --- detect the signal
         const double detect_dB = envDetector.processAudioSample(xn);
-        const double detectValue = pow(10.0, detect_dB / 20.0);
+        const double detectValue = pow(10.0, detect_dB * 0.05);
 
         // Pass it through Delay Gain Calculator
         const double yn = delayGainCalculator.processAudioSample(detectValue);
 
-        return 1 - yn;
+        return yn;
     }
 
     /** return true: this object can also process frames */
@@ -756,16 +761,32 @@ public:
         return parameters;
     }
 
+    bool parametersUpDated(const SideChainProcessorParams& _parameters) const
+    {
+        return !isFloatEqual(parameters.sideChainGain_dB, _parameters.sideChainGain_dB) ||
+            !isFloatEqual(parameters.attackTime_mSec, _parameters.attackTime_mSec) ||
+            !isFloatEqual(parameters.releaseTime_mSec, _parameters.releaseTime_mSec) ||
+            !isFloatEqual(parameters.threshold_dB, _parameters.threshold_dB) ||
+            !isFloatEqual(parameters.sensitivity, _parameters.sensitivity) ||
+            !isFloatEqual(parameters.wetGainMin_dB, _parameters.wetGainMin_dB) ||
+            !isFloatEqual(parameters.wetGainMax_dB, _parameters.wetGainMax_dB);
+    }
+
     /** set parameters: note use of custom structure for passing param data */
     /**
     \param _parameters custom data structure
     */
     void setParameters(const SideChainProcessorParams& _parameters) override
     {
-        parameters = _parameters;
+        if (parametersUpDated(_parameters))
+        {
+            sideChainGain = pow(10.0, parameters.sideChainGain_dB * 0.05);
 
-        updateDetectorParameters(parameters);
-        updateDelayGainCalculatorParameters(parameters);
+            updateDetectorParameters(parameters);
+            updateDelayGainCalculatorParameters(parameters);
+        }
+
+        parameters = _parameters;
     }
 
 private:
@@ -773,6 +794,8 @@ private:
 
     AudioDetector envDetector; ///< detector to track input signal
     DelayGainCalculator delayGainCalculator; // Calculate gain to wet signal based on detected envelope
+
+    double sideChainGain = 0.0;
 
     static bool detectorParametersUpdated(AudioDetectorParameters adParams, const SideChainProcessorParams& params)
     {
