@@ -5,9 +5,9 @@ Audio Plugins created using the ASPiK framework.
 
 DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://www.hackaudio.com/), adapted by Steve Dwyer. GUI design by Steve Dwyer. Adriator font in "Memento" Ducking Delay used by kind permission of Raymond Larabie (https://typodermicfonts.com/).
 
-Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
-
 Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://github.com/DoomyDwyer/ASPiKProjects/releases "Download")
+
+Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
 
 ## Pedals ##
 
