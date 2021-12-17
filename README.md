@@ -7,7 +7,7 @@ DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://w
 
 Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://github.com/DoomyDwyer/ASPiKProjects/releases "Download")
 
-Current VST3 Plugins, available for Windows 64 and MacOS Silicon:
+Current VST3 Plugins, available for Windows 64 and MacOS (Intel x86_64 and Silicon arm64):
 
 ## Pedals ##
 
