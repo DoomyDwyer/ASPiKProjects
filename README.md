@@ -7,7 +7,7 @@ DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://w
 
 Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://github.com/DoomyDwyer/ASPiKProjects/releases "Download")
 
-User Guides: [https://github.com/DoomyDwyer/ASPiKProjects/UserGuides](https://github.com/DoomyDwyer/ASPiKProjects/UserGuides "User Guides")
+User Guides: [https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides](https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides "User Guides")
 
 Current VST3 Plugins, available for Windows 64 and MacOS (Intel x86_64 and Silicon arm64):
 
