@@ -765,7 +765,7 @@ bool PluginCore::initPluginParameters()
 	addPluginParameter(piParam);
 
 	// --- continuous control: Threshold
-	piParam = new PluginParameter(controlID::threshold_dB, "Threshold", "dB", controlVariableType::kDouble, -60.000000, 12.000000, -3.000000, taper::kLinearTaper);
+	piParam = new PluginParameter(controlID::threshold_dB, "Threshold", "dB", controlVariableType::kDouble, -20.000000, 0.000000, -6.000000, taper::kLinearTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(20.00);
 	piParam->setBoundVariable(&threshold_dB, boundVariableType::kDouble);
@@ -779,7 +779,7 @@ bool PluginCore::initPluginParameters()
 	addPluginParameter(piParam);
 
 	// --- continuous control: Wet Gain Max
-	piParam = new PluginParameter(controlID::wetGainMax_dB, "Wet Gain Max", "dB", controlVariableType::kDouble, -60.000000, 12.000000, -3.000000, taper::kLinearTaper);
+	piParam = new PluginParameter(controlID::wetGainMax_dB, "Wet Gain Max", "dB", controlVariableType::kDouble, -60.000000, 12.000000, 0.000000, taper::kLinearTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(20.00);
 	piParam->setBoundVariable(&wetGainMax_dB, boundVariableType::kDouble);
@@ -914,14 +914,52 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::level_dB, -3.000000);
 	setPresetParameter(preset->presetParameters, controlID::delayType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
-	setPresetParameter(preset->presetParameters, controlID::sideChainGain_dB, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::sideChainGain_dB, -3.000000);
 	setPresetParameter(preset->presetParameters, controlID::attackTime_mSec, 20.000000);
 	setPresetParameter(preset->presetParameters, controlID::releaseTime_mSec, 500.000000);
 	setPresetParameter(preset->presetParameters, controlID::threshold_dB, -6.000000);
-	setPresetParameter(preset->presetParameters, controlID::wetGainMin_dB, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::wetGainMin_dB, -3.000000);
 	setPresetParameter(preset->presetParameters, controlID::wetGainMax_dB, 0.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_On, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 1.000000);
+	addPreset(preset);
+
+	// --- Preset: Clean guitar 120bpm
+	preset = new PresetInfo(index++, "Clean guitar 120bpm");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::delayTime_mSec, 250.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayFeedback_Pct, 74.750000);
+	setPresetParameter(preset->presetParameters, controlID::mix, 0.705000);
+	setPresetParameter(preset->presetParameters, controlID::level_dB, 6.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayType, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::sideChainGain_dB, -3.000000);
+	setPresetParameter(preset->presetParameters, controlID::attackTime_mSec, 19.999998);
+	setPresetParameter(preset->presetParameters, controlID::releaseTime_mSec, 999.750000);
+	setPresetParameter(preset->presetParameters, controlID::threshold_dB, -12.799999);
+	setPresetParameter(preset->presetParameters, controlID::wetGainMin_dB, -12.000000);
+	setPresetParameter(preset->presetParameters, controlID::wetGainMax_dB, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
+	addPreset(preset);
+
+	// --- Preset: Overdriven guitar 120bpm
+	preset = new PresetInfo(index++, "Overdriven guitar 120bpm");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::delayTime_mSec, 250.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayFeedback_Pct, 74.750000);
+	setPresetParameter(preset->presetParameters, controlID::mix, 0.705000);
+	setPresetParameter(preset->presetParameters, controlID::level_dB, 6.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayType, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::sideChainGain_dB, -3.000000);
+	setPresetParameter(preset->presetParameters, controlID::attackTime_mSec, 19.999998);
+	setPresetParameter(preset->presetParameters, controlID::releaseTime_mSec, 999.750000);
+	setPresetParameter(preset->presetParameters, controlID::threshold_dB, -12.799999);
+	setPresetParameter(preset->presetParameters, controlID::wetGainMin_dB, -29.999998);
+	setPresetParameter(preset->presetParameters, controlID::wetGainMax_dB, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
 	addPreset(preset);
 
 

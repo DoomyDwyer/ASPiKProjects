@@ -278,11 +278,12 @@ bool DelayGainCalculator::canProcessAudioFrame()
 
 double DelayGainCalculator::processAudioSample(double xn)
 {
-    // If above the threshold, attenuate the wet mix by the wetGainMin factor
+    // If above the threshold, side chain output is always equal to wetGainMin
     double yn = wetGainMin;
+
     if (xn < threshValue)
     {
-        // if below the threshold, amplify the wet mix
+        // if below the threshold, amplify the side chain output
         yn = xn * parameters.sensitivity;
         // Keep within min & max wet gain bounds
         boundValue(yn, wetGainMin, wetGainMax);
