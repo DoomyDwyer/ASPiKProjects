@@ -89,6 +89,7 @@ set(custom_vstgui_sources
 	${VSTGUI_SOURCE_ROOT}/customviews.h
 	${VSTGUI_SOURCE_ROOT}/customcontrols.cpp
 	${VSTGUI_SOURCE_ROOT}/customviews.cpp
+	${VSTGUI_SOURCE_ROOT}/custompedalviews.h
 )
 
 # ---------------------------------------------------------------------------------

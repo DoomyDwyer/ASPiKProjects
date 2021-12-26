@@ -63,6 +63,7 @@ set(plugin_object_sources
 set(custom_vstgui_sources
 	${VSTGUI_SOURCE_ROOT}/atomicops.h
 	${VSTGUI_SOURCE_ROOT}/customcontrols.h
+	${VSTGUI_SOURCE_ROOT}/custompedalviews.h
 	${VSTGUI_SOURCE_ROOT}/readerwriterqueue.h
 	${VSTGUI_SOURCE_ROOT}/customviews.h
 	${VSTGUI_SOURCE_ROOT}/customcontrols.cpp

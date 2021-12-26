@@ -96,6 +96,9 @@
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Reliq\project_source\source\CustomControls\customviews.h">
       <Filter>CustomVSTGUI</Filter>
     </ClInclude>
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Reliq\project_source\source\CustomControls\custompedalviews.h">
+      <Filter>CustomVSTGUI</Filter>
+    </ClInclude>
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h">
       <Filter>VST3SDK</Filter>
     </ClInclude>

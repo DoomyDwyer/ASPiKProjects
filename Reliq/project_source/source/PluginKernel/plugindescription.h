@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_64A9CCEFDC8F3011B285B443E0787C37
-#define AU_COCOA_VIEW_NAME AUCocoaView_64A9CCEFDC8F3011B285B443E0787C37
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_D9391517B3EE38AAB56BE29956B927CD
+#define AU_COCOA_VIEW_NAME AUCocoaView_D9391517B3EE38AAB56BE29956B927CD
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.reliq.bundleID";
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{64a9ccef-dc8f-3011-b285-b443e0787c37}";
+const char* kVSTFUID = "{d9391517-b3ee-38aa-b56b-e29956b927cd}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'RELQ';

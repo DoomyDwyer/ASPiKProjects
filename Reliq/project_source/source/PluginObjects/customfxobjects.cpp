@@ -82,10 +82,10 @@ bool AutoQEnvelopeFollower::filterParametersUpdated(const ZVAFilterParameters fi
                                                     const AutoQEnvelopeFollowerParameters& params)
 {
     return filterParams.filterAlgorithm != params.filterAlgorithm ||
-        !isFloatEqual(filterParams.fc, params.fc) ||
-        !isFloatEqual(filterParams.Q, params.Q) ||
-        !isFloatEqual(filterParams.enableGainComp, params.enableGainComp) ||
-        !isFloatEqual(filterParams.filterOutputGain_dB, params.filterOutputGain_dB) ||
+        !isEqual(filterParams.fc, params.fc) ||
+        !isEqual(filterParams.Q, params.Q) ||
+        !isEqual(filterParams.filterOutputGain_dB, params.filterOutputGain_dB) ||
+        filterParams.enableGainComp != params.enableGainComp ||
         filterParams.matchAnalogNyquistLPF != params.matchAnalogNyquistLPF ||
         filterParams.enableNLP != params.enableNLP ||
         filterParams.selfOscillate != params.selfOscillate;
@@ -111,8 +111,8 @@ void AutoQEnvelopeFollower::updateFilterParameters(const AutoQEnvelopeFollowerPa
 bool AutoQEnvelopeFollower::detectorParametersUpdated(const AudioDetectorParameters adParams,
                                                       const AutoQEnvelopeFollowerParameters& params)
 {
-    return !isFloatEqual(adParams.attackTime_mSec, params.attackTime_mSec) ||
-        !isFloatEqual(adParams.releaseTime_mSec, params.releaseTime_mSec);
+    return !isEqual(adParams.attackTime_mSec, params.attackTime_mSec) ||
+        !isEqual(adParams.releaseTime_mSec, params.releaseTime_mSec);
 }
 
 void AutoQEnvelopeFollower::updateDetectorParameters(const AutoQEnvelopeFollowerParameters& params)
@@ -239,7 +239,7 @@ PhaserParameters Phaser::getParameters() { return parameters; }
 
 bool Phaser::parametersUpdated(const OscillatorParameters lfoparams, const PhaserParameters& params)
 {
-    return !isFloatEqual(lfoparams.frequency_Hz, params.lfoRate_Hz) ||
+    return !isEqual(lfoparams.frequency_Hz, params.lfoRate_Hz) ||
         lfoparams.waveform != params.lfoWaveform;
 }
 
@@ -268,7 +268,7 @@ DelayGainCalculator::~DelayGainCalculator() = default; /* D-TOR */
 
 bool DelayGainCalculator::reset(double _sampleRate)
 {
-	return true;
+    return true;
 };
 
 bool DelayGainCalculator::canProcessAudioFrame()
@@ -278,22 +278,15 @@ bool DelayGainCalculator::canProcessAudioFrame()
 
 double DelayGainCalculator::processAudioSample(double xn)
 {
-	// --- calc threshold
-	const double threshValue = pow(10.0, parameters.threshold_dB / 20.0);
-	const double deltaValue = xn - threshValue;
+    // If above the threshold, side chain output is always equal to wetGainMin
+    double yn = wetGainMin;
 
-	const double wetGainMin = pow(10.0, parameters.wetGainMin_dB / 20.0);
-	const double wetGainMax = pow(10.0, parameters.wetGainMax_dB / 20.0);
-
-    double yn = 1.0;
-    // --- if above the threshold, modulate the filter fc
-	if (deltaValue > 0.0) // || delta_dB > 0.0)
-	{
-		// --- best results are with linear values when detector is in dB mode
-		double modulatorValue = (deltaValue * parameters.sensitivity);
-        boundValue(modulatorValue, wetGainMin, wetGainMax);
-        yn = modulatorValue;
-	}
+    if (xn < threshValue)
+    {
+        // If below the threshold,
+        // do unipolar modulation to determine side chain output, up to a maximum value of wetGainMax
+        yn  = doUnipolarModulationFromMin(parameters.sensitivity * (threshValue - xn), wetGainMin, wetGainMax);
+    }
 
     return yn;
 }
@@ -303,10 +296,19 @@ DelayGainCalculatorParameters DelayGainCalculator::getParameters() const
     return parameters;
 }
 
+void DelayGainCalculator::updateSettings(const DelayGainCalculatorParameters& _parameters)
+{
+    threshValue = pow(10.0, _parameters.threshold_dB * 0.05);
+    wetGainMin = pow(10.0, _parameters.wetGainMin_dB * 0.05);
+    wetGainMax = pow(10.0, _parameters.wetGainMax_dB * 0.05);
+}
+
 void DelayGainCalculator::setParameters(const DelayGainCalculatorParameters& _parameters)
 {
-        // --- save
-        parameters = _parameters;
+    updateSettings(_parameters);
+
+    // --- save
+    parameters = _parameters;
 }
 
 AnalogTone::AnalogTone() = default;
@@ -315,7 +317,8 @@ AnalogTone::~AnalogTone() = default;
 
 bool AnalogTone::reset(double _sampleRate)
 {
-    if (!isFloatEqual(Fs, _sampleRate)) {
+    if (!isEqual(Fs, _sampleRate))
+    {
         Fs = _sampleRate;
         updateCoefficients();
     }
@@ -340,7 +343,7 @@ AnalogToneParameters AnalogTone::getParameters() const { return parameters; }
 
 bool AnalogTone::parametersUpdated(AnalogToneParameters _parameters) const
 {
-    return !isFloatEqual(parameters.tone, _parameters.tone) || !isFloatEqual(parameters.level, _parameters.level);
+    return !isEqual(parameters.tone, _parameters.tone) || !isEqual(parameters.level, _parameters.level);
 }
 
 void AnalogTone::updateParameters(AnalogToneParameters _parameters)
@@ -361,7 +364,8 @@ void AnalogTone::setParameters(AnalogToneParameters _parameters)
     parameters = _parameters;
 }
 
-void AnalogTone::updateCoefficients(){
+void AnalogTone::updateCoefficients()
+{
     Ts = 1.0 / Fs;
 
     R1 = Ts / (2.0 * C1);
@@ -397,7 +401,8 @@ AnalogClipper::~AnalogClipper() = default;
 
 bool AnalogClipper::reset(double _sampleRate)
 {
-    if (!isFloatEqual(Fs, _sampleRate)) {
+    if (!isEqual(Fs, _sampleRate))
+    {
         Fs = _sampleRate;
         updateCoefficients();
     }
@@ -442,7 +447,7 @@ AnalogClipperParameters AnalogClipper::getParameters() const { return parameters
 
 bool AnalogClipper::parametersUpdated(AnalogClipperParameters _parameters) const
 {
-    return !isFloatEqual(parameters.drive, _parameters.drive);
+    return !isEqual(parameters.drive, _parameters.drive);
 }
 
 void AnalogClipper::updateParameters(AnalogClipperParameters _parameters)
@@ -462,7 +467,8 @@ void AnalogClipper::setParameters(AnalogClipperParameters _parameters)
     parameters = _parameters;
 }
 
-void AnalogClipper::updateCoefficients(){
+void AnalogClipper::updateCoefficients()
+{
     Ts = 1.0 / Fs;
     R1 = Ts / (2.0 * C1);
     R2 = Ts / (2. * C2);
@@ -473,4 +479,4 @@ void AnalogClipper::updateCoefficients(){
     // Combined Resistances
     G1 = (1.0 + R4 / R1);
     G4 = (1.0 + R1 / R4);
- }
+}
