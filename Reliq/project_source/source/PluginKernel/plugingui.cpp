@@ -2,7 +2,7 @@
 #include "plugingui.h"
 
 // --- custom data view example; include more custom views here
-#include "custompedalviews.h"
+#include "../../../../ASPiKCommon/gui/custompedalviews.h"
 #include "customviews.h"
 
 #if MAC

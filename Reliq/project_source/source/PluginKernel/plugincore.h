@@ -13,8 +13,8 @@
 #ifndef __pluginCore_h__
 #define __pluginCore_h__
 
-#include "customfxobjects.h"
 #include "pluginbase.h"
+#include "../../../../ASPiKCommon/dsp/customfxobjects.h"
 
 // **--0x7F1F--**
 

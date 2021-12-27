@@ -12,6 +12,7 @@ set(WIN_ROOT "../../win/vst")
 set(MAC_ROOT "../../mac/vst")
 set(SOURCE_ROOT "../../source")
 set(RESOURCE_ROOT "../../resources")
+set(COMMON_SOURCE_ROOT "../../../../../../ASPiKCommon")
 
 # --- local roots
 set(KERNEL_SOURCE_ROOT "${SOURCE_ROOT}/PluginKernel")
@@ -19,6 +20,8 @@ set(OBJECTS_SOURCE_ROOT "${SOURCE_ROOT}/PluginObjects")
 set(VSTGUI_SOURCE_ROOT "${SOURCE_ROOT}/CustomControls")
 set(VST_SOURCE_ROOT "${SOURCE_ROOT}/vst_source")
 set(FFTW_SOURCE_ROOT "${SOURCE_ROOT}/FFTW")
+set(COMMON_OBJECTS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/dsp")
+set(COMMON_VSTGUI_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/gui")
 
 # ---------------------------------------------------------------------------------
 #
@@ -48,9 +51,9 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.h
 	${OBJECTS_SOURCE_ROOT}/filters.h
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
-	${OBJECTS_SOURCE_ROOT}/customfxobjects.h
-	${OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
-	${OBJECTS_SOURCE_ROOT}/utilities
+	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
+	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
+	${COMMON_OBJECTS_SOURCE_ROOT}/utilities
 )
 
 # ---------------------------------------------------------------------------------
@@ -89,6 +92,7 @@ set(custom_vstgui_sources
 	${VSTGUI_SOURCE_ROOT}/customviews.h
 	${VSTGUI_SOURCE_ROOT}/customcontrols.cpp
 	${VSTGUI_SOURCE_ROOT}/customviews.cpp
+	${COMMON_VSTGUI_SOURCE_ROOT}/custompedalviews.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -251,3 +255,4 @@ source_group(PluginObjects FILES ${plugin_object_sources})
 source_group(CustomVSTGUI FILES ${custom_vstgui_sources})
 source_group(VST3Core FILES ${vst_core_sources})
 source_group(VST3SDK FILES ${vstsdk_sources})
+
