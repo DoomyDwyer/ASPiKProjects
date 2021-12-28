@@ -13,7 +13,7 @@
 #ifndef __pluginCore_h__
 #define __pluginCore_h__
 
-#include "customfxobjects.h"
+#include "../../../../ASPiKCommon/dsp/customfxobjects.h"
 #include "fxobjects.h"
 #include "pluginbase.h"
 
@@ -35,7 +35,8 @@ enum controlID {
 	enableNLP = 14,
 	filterType = 15,
 	vuMeter = 16,
-	enableGainComp = 11
+	enableGainComp = 11,
+	fx_OnOff_Toggle = 7
 };
 
 	// **--0x0F1F--**
@@ -172,6 +173,9 @@ private:
 
 	int enableGainComp = 0;
 	enum class enableGainCompEnum { BOOST_Q_OFF,BOOST_Q_ON };	// to compare: if(compareEnumToInt(enableGainCompEnum::BOOST_Q_OFF, enableGainComp)) etc... 
+
+	int fx_OnOff_Toggle = 0;
+	enum class fx_OnOff_ToggleEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnOff_ToggleEnum::SWITCH_OFF, fx_OnOff_Toggle)) etc... 
 
 	// --- Meter Plugin Variables
 	float vuMeter = 0.f;
