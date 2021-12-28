@@ -12,7 +12,6 @@
 // -----------------------------------------------------------------------------
 #include "plugincore.h"
 
-#include "customfxobjects.h"
 #include "plugindescription.h"
 #pragma warning (disable : 4244)
 
@@ -678,7 +677,7 @@ bool PluginCore::initPluginParameters()
 	addPluginParameter(piParam);
 
 	// --- continuous control: Level
-	piParam = new PluginParameter(controlID::level, "Level", "", controlVariableType::kDouble, 0.000001, 1.000000, 1.000000, taper::kLinearTaper);
+	piParam = new PluginParameter(controlID::level, "Level", "", controlVariableType::kDouble, 0.000001, 1.000000, 0.500000, taper::kLinearTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(20.00);
 	piParam->setBoundVariable(&level, boundVariableType::kDouble);
@@ -687,6 +686,12 @@ bool PluginCore::initPluginParameters()
 	// --- discrete control: On
 	piParam = new PluginParameter(controlID::fx_On, "On", "SWITCH OFF,SWITCH ON", "SWITCH OFF");
 	piParam->setBoundVariable(&fx_On, boundVariableType::kInt);
+	piParam->setIsDiscreteSwitch(true);
+	addPluginParameter(piParam);
+
+	// --- discrete control: On/Off
+	piParam = new PluginParameter(controlID::fx_OnOff_Toggle, "On/Off", "SWITCH OFF,SWITCH ON", "SWITCH OFF");
+	piParam->setBoundVariable(&fx_OnOff_Toggle, boundVariableType::kInt);
 	piParam->setIsDiscreteSwitch(true);
 	addPluginParameter(piParam);
 
@@ -713,6 +718,11 @@ bool PluginCore::initPluginParameters()
 	auxAttribute.reset(auxGUIIdentifier::guiControlData);
 	auxAttribute.setUintAttribute(1073741824);
 	setParamAuxAttribute(controlID::fx_On, auxAttribute);
+
+	// --- controlID::fx_OnOff_Toggle
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(1610612736);
+	setParamAuxAttribute(controlID::fx_OnOff_Toggle, auxAttribute);
 
 
 	// **--0xEDA5--**
@@ -751,8 +761,9 @@ bool PluginCore::initPluginPresets()
 	initPresetParameters(preset->presetParameters);
 	setPresetParameter(preset->presetParameters, controlID::drive, 0.500000);
 	setPresetParameter(preset->presetParameters, controlID::tone, 0.500000);
-	setPresetParameter(preset->presetParameters, controlID::level, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.500000);
 	setPresetParameter(preset->presetParameters, controlID::fx_On, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 
