@@ -1193,32 +1193,6 @@
         IHaB8H8QNoc4C1YDL5/453hent6v3wAAAAAElFTkSuQmCC
       </data>
 		</bitmap>
-		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
-			<data encoding="base64">
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAAkCAYAAABv2tHkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
-        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASsSURBVEhL7VbNi1xFEK/qj/d2ZnZnM5vsCgm6RldzyWL0YBJP
-        iZ/gTYScvUg8CCLiQS96FE8BEZTE/AViTqIgfiB+BclFJGgImk0i4mYn2a+Zea/f625/1TObzbqClxwttq
-        b6o+rX1VXV9ZZuB/FIbqE3iNSP09OHgnMP1/3+zsr7bgzh7NdEZ7EdhlqbtA3k0Tx/IrP2bZNl+ygEHvT7
-        RHVNPoSI7V9qole/Ifp8qD0kPZKJjhhz3Fj7gdF6RoEoRhWrigPAQoysiHbB4NhdRN0FonMjs02QI3n+mN
-        X6dG6tsWNjanxiQtk8Z++cABEAGW6L5yIfB9APALoktglEYrDYan2YNRp3NJtN1Zqa4tn9+3lyelqVvR4X
-        4Oj9xt1FKPw8CIRTGMcEMjEzc0gb84oxRjXbbTU3P89Hjx3j+w4c4LXFRb525QrXZSmqJIERBu26m+gzAP
-        2BaxL5sjzsi4LdYMBVr0f95WXura2xKwpyuApiIilJ1xEDcBqDHxF7cY2Oav2WYX4JJyitFGeIyUSnw3Ji
-        v9slyRBSLKoRazJKEnziK6LXhp54v1rVdUzsHA1WV+O1hYW4uLBA/fX1WwGijEYg0ROtyEYCgTs/yR4mor
-        RxUsT6rafKXtrHOqZJit0QZILoC6wuARl/ycCPwGSc5Gic9kVP9B3Rl2KfsnOBqLqTSMJ/NAUJBKXkjYBs
-        SCwnIHANoDe/R62I7s1iu4wKRAHNQWFuw4MRi1FirNeQqHz66FuADC3/UfYHiT5eHa7Ny7HwSgzkCpUAQP
-        Yh39lD9Pr5oWeJNrzfQoeJZnHiMxg+BIUdGC+DzxmiM/AATv9P/0X/GtiLrdbMWAgHkaa9wfuWJeph+bcx
-        5862ia4NtTZpCwgyoC5PTT2rQ3iK6zpDNhSjjwgp7+VZOMw/2eH9GRhuTzEAeGF6+kWcftjEaDE3MFAwZk
-        hMKRjnaswqZv5uZ1m+C2NZ3wT5fXb2abSB53BapgUkBIvnrQxA0CKjrqpgKvyg8NB0HbrJaQB9KrYJ5MLc
-        XD6W5+9r5ikoZCrPM9baoCUqQqOiXi+yc0H3+zXAHdYdvOnuHAxewKFlesVjk5MPmGazo1qtTHc6mZqctH
-        ZmxmZ79li7e7e1nY5VWWajtVbFKAdkHONUt9GYF/sEoozZi3eqyRgNNzUADbfbWoN5fFxTo6HZWg0AxJo0
-        4qRxBZnfcxMkFEUzOseEPkv4zsTBAElFhy8KhbnCuuKyZCVdBSEAAEvAwU1ZSCC467LcO66skHC4cYPC4m
-        Ksr16NAUzdbgRIZDRtBJr0kCMytdkeY693ntfWAq+ve15e9rHbDQFMS0uer1/3XBTCQWoFGfKQHt6Eced+
-        FvuUHamRP9vtE1ape1GhOb6gGSE78imVYoMXcnJQVVXDAPemEp+Riy2ilzGOyZM08P4UPpelRQqh7FRROO
-        r3K4W0Yl6hTsTYSY2ASzyFk2I3st+kv/L8ScV8HMg5NqCH79CoYjEPqGYpNOnF7zXw9UtGoC0gQt1Wax5X
-        eh4bs2BJZwIBAAZ8yXp/MidKsdigbSBCEqOlLLsfcdmH/00m8SBX4NGveMEXYJCucJuJ6G9PzoGSjjLymg
-        AAAABJRU5ErkJggg==
-      </data>
-		</bitmap>
 		<bitmap name="Howler_Enclosure" path="D:\Pictures\Doomsville\Howler_Enclosure.png">
 			<data encoding="base64">
         iVBORw0KGgoAAAANSUhEUgAAANsAAAFiCAYAAAB/Ma1JAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
@@ -3224,6 +3198,31 @@
         AASUVORK5CYII=
       </data>
 		</bitmap>
+		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAABEAAAAiCAYAAAC5gzL5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASUSURBVEhLzVVPaJxVEJ95733v2002a7K74mKSpsGGQkuNeIkU
+        JW3w0t4UEgRP3gsFBVE8C3oRhKA9aI+CVNCL4EVU/H/IQcU/h4pJkxaXWpsmu192v/d93/M3bzeJaTz24J
+        DJvDdv5vfmzcw3S/eCeCAP0DyRua/ZPJ05N9fd2hrzeX47L4rvHiD65gpRPjDbo0MgZ609H5dKryulHqKi
+        4F6SECQBxOP4Kv69+AXRJ33rPumBDHTG2ovWmEvW2oaJIgVn5bOMC4B57xk31mC2eISovUb0fd/rXyAL1p
+        6LlLoUx7EeqlZVqVxW2lpVpCnnzjH1QSRykQtHiVZWiX4X3wAiOYjL5Q+MMY3RRkPVm01+cGaGjxw/zunW
+        Fm9vbzNl2e7bAxD40SmidxBRoURbn5g4rY05FpVKXKnXeQLOC0tLfGZxkadmZ7ls7V4UwsiLyBnwY2AKIJ
+        1OZ06SmHW7fKfVos2bN/nmxgb/jXW33SaHKIqBsziAAyh4TvwFkc4yv6aYLzJKIgbKGIUKySGnqI5LUzHz
+        ABIdaoUMQWL75mdEL4VIcu+lD1CITJgQkW9vblJnc9PfBRDkAETWt+QwgGCzAg7nIsFebhRDuVHkbgR32a
+        2IfwCpEH0Jww0opRtzrPNs3zCw7EUv52KH9TrC+Er8Q4mvQokGauHgHBh//XAhd6MRR/ztAQCTnkcYP0Hu
+        N9s1ol8miYawfEQMIYMDONt1hHTQO8jlr4neFj+hA22/TvT5OJ6F5SkYGjg6cQanwtC3gP7Kt0RvBYcBIV
+        +H6WGi4WF8SnCcxbYOvgXQH7q45Ee0VTD6X9J/PucPolIcRSfR2EdJqQo518YXvtp27udpIrzqIB0CuV4q
+        PeGVesp4X0XWVZ7nChIpAef5Hc38YS3LQn/s0gGQa43GM7j1vCGKlPcGCKF6nKMmRZHBOAc7dM7HdefeD0
+        6gPZC1ycnH8RFe4CyzAIhQGQ2pFQYSQDxkDpkjGofx1MO4W65nGdplAOLn5816q7WMGdgEkGVjBMggKqUw
+        2XyKNnGu0N1uBrDQM4jtz/u73QsAyMK3cz1NT6mRkWZUrVozOhrret2a8XEbTU9bPTFhVa1mOY6tjyKLfM
+        UAsXBs3h4aOin+AURrfQwR6MLaiMplrYeHTTQ2pk29rrlW0zwyotlajVuRLtKYO0E672W69UFcp1PxmGrU
+        bjMlifKQeZ8V9kzdrtK9HsvTkGxGPiRPrLNsRPxDTtbHx59G6Z5DTmLMNstaW8xcjR5RyAVzp+N1khTsXO
+        aLwgFAvqMe+ujdap5/FEBuVContPev4lkW5YuhirCXkOW3hw2qA1nAWUaAU0XRg0zxjJdLRL/1qwPjv6Lo
+        DTTFFA4slBalNABVEjZ0Xn7BYCq9IlGk2KwC4AXs+z8ZsoDisimKxDiXROBSf70jOty8g7A6ME5wUYJLE4
+        R7WfwG/vu0Q/QkFM/COMKpgaNcIjZh1mIjz+lB8R7Wn4qP0AEQITifwPhaglETjtL2AQQLmW43oL8C/jUY
+        D+gQiJDkCJ/qFJ44hfUQjBLs17Bfwzo84R4T0T8i3C5g2np8OQAAAABJRU5ErkJggg==
+      </data>
+		</bitmap>
 	</bitmaps>
 	<control-tags>
 		<control-tag name="controlID::drive" tag="0" />
@@ -3265,7 +3264,7 @@
 		</gradient>
 	</gradients>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="KickSwitchViewContainer" origin="0, 0" size="53 ,103" transparent="true" sub-controller="KickSwitchController">
-		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="18, 0" size="17, 18" transparent="false" wheel-inc-value="0.1" height-of-one-image="18" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="18, 0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="CKickButton" control-tag="controlID::fx_OnOff_Toggle" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="0, 260" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="CustomKickButtonDU" />
 	</template>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="VariableToolTipKnobViewContainer" origin="0 ,0" size="219, 144" transparent="true" sub-controller="SimpleValueVariableToolTipKnobController">

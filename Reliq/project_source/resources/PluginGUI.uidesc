@@ -6,10 +6,10 @@
 		<color name="kDarkGreyCColor" rgba="#646464ff" />
 	</colors>
 	<template background-color="~ GreyCColor" background-color-draw-style="filled and stroked" class="CViewContainer" maxSize="219, 354" minSize="219, 354" mouse-enabled="true" name="Editor" opacity="1" origin="0, 0" size="219, 354" transparent="false" bitmap="Reliq_Enclosure">
-		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::delayType" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="88 ,131" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
 		<view back-color="kLightGreyCColor" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" custom-view-name="" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ BlackCColor" frame-color="kDarkGreyCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="90,6" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,10" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
-		<view background-offset="0, 0" bitmap="led_red" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="52 ,275" size="9, 9" transparent="false" wheel-inc-value="0.1" height-of-one-image="9" custom-view-name="" />
-		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="35 ,285" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::delayType" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="88, 131" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="led_red" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="52, 275" size="9, 9" transparent="false" wheel-inc-value="0.1" height-of-one-image="9" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="medtoggleswitch" class="COnOffButton" control-tag="controlID::emulateAnalog" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="35, 285" size="42, 42" transparent="false" wheel-inc-value="0.1" height-of-one-image="42" custom-view-name="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="35 ,315" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="44 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="EMULATE" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="35 ,325" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="42 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="ANALOG" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontBig" font-antialias="true" font-color="~ BlackCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="30 ,70" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="64 ,16" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="DELAY" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
@@ -48,45 +48,6 @@
 		<attributes rafx-template-name="LevelKnobGroup" rafxtemplate-type="knobgroup" />
 	</custom>
 	<bitmaps>
-		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
-			<data encoding="base64">
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAAkCAYAAABv2tHkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
-        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASsSURBVEhL7VbNi1xFEK/qj/d2ZnZnM5vsCgm6RldzyWL0YBJP
-        iZ/gTYScvUg8CCLiQS96FE8BEZTE/AViTqIgfiB+BclFJGgImk0i4mYn2a+Zea/f625/1TObzbqClxwttq
-        b6o+rX1VXV9ZZuB/FIbqE3iNSP09OHgnMP1/3+zsr7bgzh7NdEZ7EdhlqbtA3k0Tx/IrP2bZNl+ygEHvT7
-        RHVNPoSI7V9qole/Ifp8qD0kPZKJjhhz3Fj7gdF6RoEoRhWrigPAQoysiHbB4NhdRN0FonMjs02QI3n+mN
-        X6dG6tsWNjanxiQtk8Z++cABEAGW6L5yIfB9APALoktglEYrDYan2YNRp3NJtN1Zqa4tn9+3lyelqVvR4X
-        4Oj9xt1FKPw8CIRTGMcEMjEzc0gb84oxRjXbbTU3P89Hjx3j+w4c4LXFRb525QrXZSmqJIERBu26m+gzAP
-        2BaxL5sjzsi4LdYMBVr0f95WXura2xKwpyuApiIilJ1xEDcBqDHxF7cY2Oav2WYX4JJyitFGeIyUSnw3Ji
-        v9slyRBSLKoRazJKEnziK6LXhp54v1rVdUzsHA1WV+O1hYW4uLBA/fX1WwGijEYg0ROtyEYCgTs/yR4mor
-        RxUsT6rafKXtrHOqZJit0QZILoC6wuARl/ycCPwGSc5Gic9kVP9B3Rl2KfsnOBqLqTSMJ/NAUJBKXkjYBs
-        SCwnIHANoDe/R62I7s1iu4wKRAHNQWFuw4MRi1FirNeQqHz66FuADC3/UfYHiT5eHa7Ny7HwSgzkCpUAQP
-        Yh39lD9Pr5oWeJNrzfQoeJZnHiMxg+BIUdGC+DzxmiM/AATv9P/0X/GtiLrdbMWAgHkaa9wfuWJeph+bcx
-        5862ia4NtTZpCwgyoC5PTT2rQ3iK6zpDNhSjjwgp7+VZOMw/2eH9GRhuTzEAeGF6+kWcftjEaDE3MFAwZk
-        hMKRjnaswqZv5uZ1m+C2NZ3wT5fXb2abSB53BapgUkBIvnrQxA0CKjrqpgKvyg8NB0HbrJaQB9KrYJ5MLc
-        XD6W5+9r5ikoZCrPM9baoCUqQqOiXi+yc0H3+zXAHdYdvOnuHAxewKFlesVjk5MPmGazo1qtTHc6mZqctH
-        ZmxmZ79li7e7e1nY5VWWajtVbFKAdkHONUt9GYF/sEoozZi3eqyRgNNzUADbfbWoN5fFxTo6HZWg0AxJo0
-        4qRxBZnfcxMkFEUzOseEPkv4zsTBAElFhy8KhbnCuuKyZCVdBSEAAEvAwU1ZSCC467LcO66skHC4cYPC4m
-        Ksr16NAUzdbgRIZDRtBJr0kCMytdkeY693ntfWAq+ve15e9rHbDQFMS0uer1/3XBTCQWoFGfKQHt6Eced+
-        FvuUHamRP9vtE1ape1GhOb6gGSE78imVYoMXcnJQVVXDAPemEp+Riy2ilzGOyZM08P4UPpelRQqh7FRROO
-        r3K4W0Yl6hTsTYSY2ASzyFk2I3st+kv/L8ScV8HMg5NqCH79CoYjEPqGYpNOnF7zXw9UtGoC0gQt1Wax5X
-        eh4bs2BJZwIBAAZ8yXp/MidKsdigbSBCEqOlLLsfcdmH/00m8SBX4NGveMEXYJCucJuJ6G9PzoGSjjLymg
-        AAAABJRU5ErkJggg==
-      </data>
-		</bitmap>
-		<bitmap name="led_red" path="D:\Pictures\Doomsville\led_red.png">
-			<data encoding="base64">
-        iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
-        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAAG8SURBVChTrVFNaxNRFD33vTczqal9TRMSGipJCHRTCLoR/0EV
-        /ACX/gkX4sKNK8GP3+BfEI3duBcK7abbLgSRBkNbnZR26Hy8vHneN2ZR9x64c+eeczlzhitxBXeAtS6weQ
-        MwEyBd0CD/uA2sBMAbHh4vOOeADwZ4sQ+cV05D4L0CnvBQE1zcI+43mev9AD7RA60HTsrDQCnhylJkSQKT
-        Zd6uLLnYcVNQrda+trRErXabBltb0FpTIIRfInYj7h26y3kK4DsTK164ksmx03kCDOQ3IOe/+cXkthfs30
-        9YXphzPd0F9qrgHO5ggwcmtc/B5d+ffQU+ev3/wYesMGm1bnF7GBTFBhXFJLD2c8OYA69VSz97vXvSmOc8
-        hLwgyRgr8rxwzr1r5vkXmo5GdRkEYyFlQyoVuosLQXFsXZIUtixnxfLyIxGur/dVs6lVtxup4TBS/X6E1d
-        WIwrCmhNBRnveFPT2Ny+NjKqdTckdHwMkJ5GxGIk3BEchmWVxl+t3pvOID3JdCBMIYSZeXVaaSaOe6MS/5
-        GgCf5TXSdIwkyVyaZpjP+cI0rhvz1uv/4EzrRlyvj86AxoJiAH8AWtytAgPM8JIAAAAASUVORK5CYII=
-      </data>
-		</bitmap>
 		<bitmap name="medtoggleswitch" path="D:\Documents\Source\Repos\RackAFX 7.0\RackAFXProjects\Reliq\Resources\buttons\medtoggleswitch.png">
 			<data encoding="base64">
         iVBORw0KGgoAAAANSUhEUgAAACoAAABUCAYAAAD066XqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
@@ -2111,6 +2072,45 @@
         AASUVORK5CYII=
       </data>
 		</bitmap>
+		<bitmap name="led_red" path="D:\Pictures\Doomsville\led_red.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAASCAYAAACJgPRIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAAHDSURBVChTjVG/axRBFP7mze5NMHrgmVwOjr0TEqxVUmiQgFUa
+        C0WChf4Fwf9BsFWwsEtvIcRAsNEmWATRNBFEQirJHbo5Ti8kJLs3++v5Zi9enccM7833ffPm27c4T6izjD
+        vA5Ry4XwBX5fjTBza2gEPHlaLbwA0PeCvlDAkmQhbiIAMefQa+qWVA94EdEVwTgazyIotQFvamgZvq1crK
+        dSbaDmZnqd5uqw+rq9jZ3ESaJMwj4bxaHD31VRMRimLs0T35X0SCfpdqLy+KXIznjnBZdib47hXgh94XMJ
+        BOAizJLXMmdILfKfD4o+Rx+1tATcgnUgYCdiS/+QIMSvI8Me7UbTbvUlE8VGna8qztqCRZm7b2k+NKUTg3
+        t6yYn2rmClmrVRTlbK3MgF9PxfGa6i8sXEKWvSffr5LnGcSx4jBkOjqyOfNxbWLiHpExLV2tXtS1mvFarY
+        oXBEbOFfi+IebJQRS1Kev1/hZhCLe52wV35MMGA+jhEH6aogL0S09/Go1nMvEH0NqIYdInJznEk2DrF5Lk
+        ufuhsEq9ELPrHEVDiuOheLSK6N1hkrx0/HgELg7q9RljbdNm2a/G6WlvhAL/AH/qxYs+gdNZAAAAAElFTk
+        SuQmCC
+      </data>
+		</bitmap>
+		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAABEAAAAiCAYAAAC5gzL5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASUSURBVEhLzVVPaJxVEJ95733v2002a7K74mKSpsGGQkuNeIkU
+        JW3w0t4UEgRP3gsFBVE8C3oRhKA9aI+CVNCL4EVU/H/IQcU/h4pJkxaXWpsmu192v/d93/M3bzeJaTz24J
+        DJvDdv5vfmzcw3S/eCeCAP0DyRua/ZPJ05N9fd2hrzeX47L4rvHiD65gpRPjDbo0MgZ609H5dKryulHqKi
+        4F6SECQBxOP4Kv69+AXRJ33rPumBDHTG2ovWmEvW2oaJIgVn5bOMC4B57xk31mC2eISovUb0fd/rXyAL1p
+        6LlLoUx7EeqlZVqVxW2lpVpCnnzjH1QSRykQtHiVZWiX4X3wAiOYjL5Q+MMY3RRkPVm01+cGaGjxw/zunW
+        Fm9vbzNl2e7bAxD40SmidxBRoURbn5g4rY05FpVKXKnXeQLOC0tLfGZxkadmZ7ls7V4UwsiLyBnwY2AKIJ
+        1OZ06SmHW7fKfVos2bN/nmxgb/jXW33SaHKIqBsziAAyh4TvwFkc4yv6aYLzJKIgbKGIUKySGnqI5LUzHz
+        ABIdaoUMQWL75mdEL4VIcu+lD1CITJgQkW9vblJnc9PfBRDkAETWt+QwgGCzAg7nIsFebhRDuVHkbgR32a
+        2IfwCpEH0Jww0opRtzrPNs3zCw7EUv52KH9TrC+Er8Q4mvQokGauHgHBh//XAhd6MRR/ztAQCTnkcYP0Hu
+        N9s1ol8miYawfEQMIYMDONt1hHTQO8jlr4neFj+hA22/TvT5OJ6F5SkYGjg6cQanwtC3gP7Kt0RvBYcBIV
+        +H6WGi4WF8SnCcxbYOvgXQH7q45Ee0VTD6X9J/PucPolIcRSfR2EdJqQo518YXvtp27udpIrzqIB0CuV4q
+        PeGVesp4X0XWVZ7nChIpAef5Hc38YS3LQn/s0gGQa43GM7j1vCGKlPcGCKF6nKMmRZHBOAc7dM7HdefeD0
+        6gPZC1ycnH8RFe4CyzAIhQGQ2pFQYSQDxkDpkjGofx1MO4W65nGdplAOLn5816q7WMGdgEkGVjBMggKqUw
+        2XyKNnGu0N1uBrDQM4jtz/u73QsAyMK3cz1NT6mRkWZUrVozOhrret2a8XEbTU9bPTFhVa1mOY6tjyKLfM
+        UAsXBs3h4aOin+AURrfQwR6MLaiMplrYeHTTQ2pk29rrlW0zwyotlajVuRLtKYO0E672W69UFcp1PxmGrU
+        bjMlifKQeZ8V9kzdrtK9HsvTkGxGPiRPrLNsRPxDTtbHx59G6Z5DTmLMNstaW8xcjR5RyAVzp+N1khTsXO
+        aLwgFAvqMe+ujdap5/FEBuVContPev4lkW5YuhirCXkOW3hw2qA1nAWUaAU0XRg0zxjJdLRL/1qwPjv6Lo
+        DTTFFA4slBalNABVEjZ0Xn7BYCq9IlGk2KwC4AXs+z8ZsoDisimKxDiXROBSf70jOty8g7A6ME5wUYJLE4
+        R7WfwG/vu0Q/QkFM/COMKpgaNcIjZh1mIjz+lB8R7Wn4qP0AEQITifwPhaglETjtL2AQQLmW43oL8C/jUY
+        D+gQiJDkCJ/qFJ44hfUQjBLs17Bfwzo84R4T0T8i3C5g2np8OQAAAABJRU5ErkJggg==
+      </data>
+		</bitmap>
 	</bitmaps>
 	<control-tags>
 		<control-tag name="controlID::delayTime_mSec" tag="0" />
@@ -2155,7 +2155,7 @@
 		</gradient>
 	</gradients>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="KickSwitchViewContainer" origin="0, 0" size="53 ,78" transparent="true" sub-controller="KickSwitchController">
-		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="18,0" size="17, 18" transparent="false" wheel-inc-value="0.1" height-of-one-image="18" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="18 ,0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="CKickButton" control-tag="controlID::fx_OnOff_Toggle" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="0,25" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="CustomKickButtonDU" />
 	</template>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="VariableToolTipKnobViewContainer" origin="0, 0" size="219 ,139" transparent="true" sub-controller="VariableToolTipKnobController">

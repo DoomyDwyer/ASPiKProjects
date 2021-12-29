@@ -901,7 +901,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableGainComp, -0.000000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Auto-Wah
