@@ -13,8 +13,8 @@
 #ifndef __pluginCore_h__
 #define __pluginCore_h__
 
-#include "customfxobjects.h"
 #include "pluginbase.h"
+#include "../../../../ASPiKCommon/dsp/customfxobjects.h"
 
 // **--0x7F1F--**
 
@@ -27,7 +27,8 @@ enum controlID {
 	level_dB = 4,
 	delayType = 5,
 	fx_On = 6,
-	emulateAnalog = 7
+	emulateAnalog = 7,
+	fx_OnOff_Toggle = 8
 };
 
 	// **--0x0F1F--**
@@ -169,6 +170,9 @@ private:
 
 	int emulateAnalog = 0;
 	enum class emulateAnalogEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(emulateAnalogEnum::SWITCH_OFF, emulateAnalog)) etc... 
+
+	int fx_OnOff_Toggle = 0;
+	enum class fx_OnOff_ToggleEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnOff_ToggleEnum::SWITCH_OFF, fx_OnOff_Toggle)) etc... 
 
 	// **--0x1A7F--**
     // --- end member variables

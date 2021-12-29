@@ -7,15 +7,12 @@
 		<color name="HowlerGreen" rgba="#01A367ff" />
 	</colors>
 	<template background-color="~ GreyCColor" background-color-draw-style="filled and stroked" class="CViewContainer" maxSize="219, 354" minSize="219, 354" mouse-enabled="true" name="Editor" opacity="1" origin="0, 0" size="219, 354" transparent="false" bitmap="Howler_Enclosure">
-		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="84 ,275" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::drive" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="25,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::tone" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="77 ,80" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::level" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="130 ,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
 		<view back-color="HowlerGreen" background-offset="0, 0" class="COptionMenu" control-tag="SCALE_GUI_SIZE" custom-view-name="" default-value="0.5" font="~ NormalFontVerySmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ WhiteCColor" frame-width="1" max-value="" menu-check-style="false" menu-popup-style="false" min-value="0" mouse-enabled="true" origin="90,5" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,9" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="SEL 1" transparent="false" value-precision="2" wheel-inc-value="0.1" />
-		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="102 ,15" size="17, 18" transparent="false" wheel-inc-value="0.1" height-of-one-image="18" custom-view-name="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontSmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="23 ,73" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="65 ,15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="OVERDRIVE" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontSmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="89 ,65" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="TONE" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextLabel" custom-view-name="UnitsLabel" default-value="0.5" font="~ NormalFontSmall" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" max-value="1" min-value="0" mouse-enabled="true" origin="142 ,73" rafxlabel-type="" round-rect-radius="6" shadow-color="~ RedCColor" size="40 ,15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="false" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="center" text-inset="0, 0" title="LEVEL" transparent="true" value-precision="2" wheel-inc-value="0.1" control-tag="" />
+		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="84, 15" rafxtemplate-type="userViewContainer" size="53 ,313" template="KickSwitchViewContainer" transparent="true" sub-controller="KickSwitchController" />
+		<view background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="0 ,0" rafxtemplate-type="userViewContainer" size="219 ,144" template="VariableToolTipKnobViewContainer" transparent="true" sub-controller="SimpleValueVariableToolTipKnobController" />
 	</template>
 	<custom>
 		<attributes Path="" name="ASPiKEditor" />
@@ -36,95 +33,10 @@
 		<attributes RAFXAutosize="false" />
 		<attributes RAFXCanvasWidth="219" />
 		<attributes RAFXCanvasHeight="354" />
-		<attributes rafx-template-name="User ViewContainer 0" rafxtemplate-type="userViewContainer" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
-		<attributes rafx-template-name="User ViewContainer 0" />
+		<attributes rafx-template-name="KickSwitchViewContainer" rafxtemplate-type="userViewContainer" />
+		<attributes rafx-template-name="VariableToolTipKnobViewContainer" rafxtemplate-type="userViewContainer" />
 	</custom>
 	<bitmaps>
-		<bitmap name="Kick_Switch_trace_2_states" path="D:\Pictures\Doomsville\Kick_Switch_trace_2_states.png">
-			<data encoding="base64">
-        iVBORw0KGgoAAAANSUhEUgAAADUAAABqCAYAAAAcPhlSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
-        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AABEASURBVHhe7dprqFbltgfw11V2s7IyTU0tPKkbNDCtvrgN0qA4
-        JfWhQgiEsg6bEvxkn6x9YROx/VQYZ3NOEYRBUaRmGyK0ArONhSllGVraVcuuVnaz7IzfdP3ds9XStDrnfH
-        kHPGvO5zLG+P/HGM8z3/ddc0DnN5S9e/cO+/77739ft1MHDBgw8dtvvx1bbcSePXsG1/jAanuq7TriiCN2
-        1PzWgQMHvnzkkUeuq/bMCSecsHOflV8vv5pUERlZ7aq6nVVtZoHufPrpp513332389VXX3UKcKcAd4477r
-        hOkWl02vLll192vv76604RXFXrVpxyyikPDRo0aHvv9C+SX0yqMiAbc+t2Tl0Hfffdd51PPvmk8+abb3Y+
-        +ugjZJt1H3zwQWf37t0NqZEjR3aGDh3aKdCdnp6ehgziRDAqo8Z3jxgx4r5ae0+tW9dMHqYcNqkffvhhbB
-        GYX7fzikxP9ZvMvPfee52PP/6488UXX+wnFDGGMOInnXRSp7LRZK30m3nj7JBjjz22c/zxxxvbW5lbPH78
-        +DtqbGszeYhyWKTK0Q3lfEGBGacv0m+99Vbn888/b0CJPrBKTuS/+eabZjz3yYqSEwhXAWBn8ODBncpQ5+
-        STT26yav1nn33G1pZJkyYtGj169H83yocgh0SqgA0vQguLzE29Q01033777QYUEhpSEYBC1lolqRlTZm1h
-        w3oZHDNmTKcINOOIWYt0Eb5rypQpfy0M7zWTB5GfJVWGp1T0b63by/eN7BNAOSMIZX+I/vvvv9+UIwL6H3
-        74YQMwgnxaSpCuDCk9B8tpp53WOeaYYxo/AqMVweUzZsz4S2XzhUbpAHJQUnUYTC/Hf6zbmftGfiqibL/s
-        2rWrydzrr7/eRB2IiD2VUiNlt7N169YGMCIy5PCw3xASDOWJtINl1KhRzT39Cs6qSy+99M+nn3766sZYP3
-        JAUr0Z+lvdzhRF7aijjmoiGQEOIQeEK/DAJIP2V/YYQGwgn2xu3ry5mT/xxBObfeceAfuL7WSb7vDhwzvj
-        xo1z9LOz6pprrrl52LBh/WasX1L2UDn5e91eziiwKYuIYxoR+0TdAy7qiMuSbJmnD6CsuAJ49NFHNwTMe5
-        698847TXkKCBkyZEjTEOV7586djU0+ZHTixInml994441/6G+P9UuqQC7OoSCigDqVIgCLuL0CZMoH6O3b
-        t3eee+65Bugbb7zRZAdp5aO8kHEPYEW60TMv28m4voxUiTV7TmYFT2BSCdOmTevU/rpr9uzZ83ph7ZefkC
-        rFG+ryX+4ZZ0xdAyNanMqSh6oxJxUASumRRx5pgHGudJIddoBTZkpLBlKiCMocgoInUHQR4e+ss85q7Auk
-        jPHtXjAuuOCCzvXXX/8fdeT/6Lj/0eeWMjK2Iv+fBWCIDCDAobICBEEgXRGqB2PjePny5Z0nnniicUZcgU
-        aGyApSdOmRnJaIK1E2lZoAegAjlQypBGMJksavfgXhdytWrPjH7bff/kljuORHpBYuXPincv7vCMkEZdFl
-        IBngRH/ChAkNiPvvv7/z6quvNqQ1OqKJhMiLsns6SFrjipC1bJo35p4uEvYwUvpKPaVq71lH6NexP6R0By
-        xduvTxZrBk/9OyFkytyzxAN2zY0Fm/fn0TVUYQAUbm9J1C7u+9997OSy+91BAWbUDNI6CsNDZy+rkCZJ0+
-        UMhodPT5Zwsxe8qzSla3bdvWVM2pp57akOvF3GBbu3btvNrL8DeyP1Pz58+/pYyd/9prrzXPGsoMc4iQzD
-        GgxgFbsmRJQ4hhINqkAKZDECPGZE0zljUae/qIaTIkGCk52ULM6QsXTMjT0Wp8QK35/rHHHvtH49OfGhhZ
-        hubYiB6KxGlH2f7w+c7mZVBJPfroo51169Y1BEj2SUBqSiqE9HMPdLKnRYBDgE2AZcZxT88WgMWYdXAoT3
-        ZTJVVdcyrwI9kKqavK2SBlZxHgoo6kpqZFzSZ2XK9cubKZJ9ZyLAPKQ1/JAEJk0lrRZzsPXyCRoxOCbCCd
-        9UocUQFmV3/Hjh2NnjGBQwypCsagwuZ73T5SNTBLimWFM6CIlIsaZd+FPHuWLVvWlIN1QCrXPPmTEQCAE9
-        Wcgvok2dFHOFklOREj+oJgrexYZ2sgLABOZQKPueeff94X1U5PgRlW1+Ybq0hYABQgSBpHkiF7SEmYMy6K
-        kewt4+4B6rtGVjgPIc28K78p53ZZsiN4IaEfErJlbWxV+c3Ex5c8vyk0Dj2tRZeBnEIh6ZBYs2ZNY8zpY9
-        MqAwQDhi7yyABOlx3zwLjm3lq67mWHTsRcyFrDhj6fcMoe0RdwusYkYdOmTb/vKcfNUciQTLlyxJCFjALq
-        WYRk9o8rUsDTCaiATUDYCklzWkSw2BGottDvm0UBR8h62NikJ1NsJjBFampPfbabiAwCnJhgzIbcuHFj0x
-        hxKgKIoI8yKbW+gPTpAwYA0e9PzPPpENKAFjBA23YFRBYQNC7b2Xt04EiF1L6f2FMLxhrgOMckIzY/oojY
-        nEhap8+o9dYC5aTLA1HUzBMOjVuXyIdwSstV0OjJPFIh6hpBBpGQig/r2IHNfGEe21MGR0QJiOwFewgpfc
-        e6bDKkT5JuRn2EMa7fNytqHjjjCIRMmxxdttlMnyRbiPKTPj3rXdlniy5iFfwRMjWYEQq+GogYQqnjGKLQ
-        VwRBAyQik/ociTx77fm2mA9pAgc9NtISLDbYyrpUTAKQNVWmg3vKyECLgRcR99nglNS9EgIeACeOmmdMdB
-        DX9LMfSEopjulnLsKnMXPWRqxHDlD3CYw1OVj0gzE6xgrTwJ76s4cB4jkQgxYzApy9xnG+gphPCShRmUWQ
-        czoiz3Hs2nPm6LgSZNp7Jr4iWZdK0afDf0jxiVik1/6enlq0ywIK7Y82jPhCR5Hk6R0jiToHjGmRRE3JAk
-        rHPEAREeeDfZVhrSDQzTxdxAVUtQgiGw6W2E+VEGO1fldPgdrBKSUfRRgzKXLKjVPK+pwCEiMhRpIpEgJa
-        b/SatSGSauA3mYjN9FNmxuGw39lgLwFAEtaItXWg7OgpZlsBUkbKTHQoIgEARSefaIkQIJpxetYSa41z0s
-        4Ie04uINM4TwD4UQXsAx+xLmVsfUqTbbqek3xpCYjxESNGbO2pCLwMmIcbUIk+Z8kSwoxyTIxpyYLGudYm
-        BJjPZ3GacgpAkmi3s06sMSYgdOBpk+BbsNuB5X/y5Mkbe0aNGrUOEJNqmwHiChSiokIS5RwA7ukmqn3FGM
-        LWpIRUg/UEiPbVeO75QAwZ5NynUiLIwGZfZf0555zzQk99pXhGJ0BTAo5uBjlijIEcFiRg6dJxjYgmMc8p
-        8sCwI8N06SQQySRCxlzpCjK/cMCXA6U/YRO+8ePHP9NT4HfWIbEqKTRhAeMaI0D6+O80FG1iDefZLxF2zB
-        HANOusaZeafshYQ0/ftZ0tfet95RGg2O5PzjzzTP+429mgGTNmzIqQcgpSBgABDu0pKUbQWLJpj9EzLhMc
-        pgHkapyt2CdAI5DqAFo2+Io+0hof2dttG31FpVx99dUr3DekJkyY8FAZ3s05I4zbhJz78QUwmfJrrXmb3x
-        Uwa0nAGNNkhD1j1mSdOfa0jKV00yfG7D/bwIdr6+n2J3BWFe2++OKLH9JvSFV2tg8dOvQ+ERE1gH0qFxm/
-        aSMBpF+UjOeHjwijIg1ISLi2I6svM+05Vy1gkx1lz77mwzRCOaz6E+tnzJhxHx76+zfDueeee09t5L0+8i
-        hBUUYAUJ/C7SdAjMlifklViokocimpACZA5x5ogUvJ0XVPgPOpRnUYczAofe1AWSLle++CBQvu6e3+i1Tt
-        lXXDhw9f7IRCINHxgz/gSHAo0sas8xugAACTciOAI0iQaZdVG1zfOX4QEiyElJ29nID0JwJzxRVXLK5TfP
-        8/vfeTIhdeeOEdlZktHIk4kB7KIsWRUhRZTpxG/qvh52f/OwKWDjJIZZ9YmzGSdVkrw4KCUB7UfmdUEXwf
-        LEP0y/eWW2+99Y7eoUZ+RKqytXXatGmLZEkG8lxBylibmDGvFzz77LON40mTJjXkABQ9+5KEYDvawKSs8x
-        u5KpCVTZs2NYT4+zmhc+eddy6Cu3eokX89MXvl7rvvfuHaa68dWg7Oz6mDWMCmASuSGhAA+S+g3wdFH2gl
-        aV07W+wg4XdyJZ3jOv98U3YHy05EgK+88sq7brrppr/2Du2XfYXfRypDwxctWvT31atXX64UOLFxnXpqXl
-        kqUcc84oABDjBC/gktm7KVskt2rHPg0JHtBIbNQyFD2J06deryhx9++A/l59D+k0jqhJtyyy23/G3Dhg0z
-        PZ+AARBYDUgkRDn/fZctwKzj2D6xxr31JHtVUwXtY/9QhL2JEyeuWrZs2c21Bw/9f76RekZM/2PJK6+8Ml
-        OJ5aSSNSdke+94niCVz3p9BSnN3KFmpK/wdfbZZ6964IEH/lx7cXXv8E/kJ3uqLVWCbz399NMbt23bNrwy
-        8rucWsiJsmjLoLJycrkS8wlAW34pGaKsp0+fvnzJkiULaxus7R3uVw5Kitx22207Hn/88aeLxLH1YD4/B0
-        CAp4yQtXmzd2QTif7IHY4oZXt5zpw5d1WQb64K2dI7dUA5aPn1lfXr199QR+iCOqnG2Us+WSCVDCCjISiD
-        BCmHgna44htDPeC3LFy4cNEll1zy276b1JYCN/bBBx+cv3Tp0nl177f4Zi+FXAiIsINCkzVj1h2KOAzqa/
-        ne2bNnL547d+4d9fz733uLrC3+x1rE5j755JNz6hEwCDmHBPAe2q6yZHN7YMug59CB9pWyVb71nNs9a9as
-        +6677rp7zjjjjP+b9/36in9Jrlmz5qqVK1fO2rx580yE7Dnliaj9hpjo65tDTCY14w6ByZMnr6rPcCsuu+
-        yy/783M/uTeoie+uKLL0576qmnztu4caP/pvxbkRtRpTm4yDTv0FYp7iqSO0aPHv36eeed9/JFF120dsqU
-        Kf+sTH3Ya+ZXy29Kqg6H7ovBRJkq0SLYfTH4YHLYpGqTd18MNp77ZEXJCYSrALDjs2T3xeCDyM+SKsPdF4
-        O7LwZ3Xwzuvhj8YynF7ovBHHdfDK41rghZy6Z5Y+7pImEPI6Wv1FOq9p51hH4d+90XgxvDHCIkcwx0Xwzu
-        JaSfe6CTPS0CHAJsAtx9MbhIVTC6LwY3JBnqvhhcwOmyYx4Y19xbS9e97NCJmAtZa9jQ5xNO2SP6Ak7XmC
-        R0Xwzuvhhc84RD49Yl8iGc0nIVNHoyj1SIukaQQSSk4sM6dmAzX5i7LwY317YIggZIRCb1ORJ59trzbTEf
-        0gQOemykJVhssJV1qZgEIGuqTLsvBu//CmI+JaBEZRZBzumIPMexa8+Zo+NKkGnvmfiKZF0qRZ8O/yHFJ2
-        KRXvvdF4Mbp4DESIiRZIqEgNYbvWZtiKQa+E0mYjP9lJlxOOx3NthLAJCENWJtHSjdF4Mbx8SYlixonGtt
-        QoD5fBanKacAJIl2O+vEGmMCQgeeNgm+BbsdWP67LwYzkMOCBCxdOq4R0STmOUUeGHZkmC6dBCKZRMiYK1
-        1B5hcO+HKg9Cdswtd9MViKETSWbNpj9IzLBIdpALkaZyv2CdAIpDqAlg2+oo+0xkf2dttGX1Ep3ReDkQDS
-        L0rG88NHhFGRBiQkXNuR1ZeZ9pyrFrDJjrJnX/NhGqEcVv2J9d0Xg7svBpcOMkhln1ibMZJ1WSvDgoJQHt
-        TdF4O7LwZ3Xwzuvhh8yBnpK3x1Xww+kHRfDC4yGoIySJByKGiHK74xdF8M7pXDJhXpvhhcxERf3xxiMqkZ
-        dwh0Xww+qHQ6/wP9gvuQUIVaHgAAAABJRU5ErkJggg==
-      </data>
-		</bitmap>
 		<bitmap name="Black_pedal_7_sides" path="D:\Pictures\Doomsville\Black_pedal_7_sides.png">
 			<data encoding="base64">
         iVBORw0KGgoAAAANSUhEUgAAAEAAAAfACAYAAABxfluIAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
@@ -1279,32 +1191,6 @@
         tw/IC+hbPxT2XIB5XyT4z4dH6wn2wkF0wAXda7F41cVzD2IXUFZfU65/k7JVdqwVv/BxMFOX4Ap8gcP4Ck
         AqLuYcsIeU+pKEg3i/y+jx+wy2jQ6lKZTBSKLhbWVDaOmPgB9U0sQ7qS20FbBp02dgSPiI/6+AEltwOVD+
         IHaB8H8QNoc4C1YDL5/453hent6v3wAAAAAElFTkSuQmCC
-      </data>
-		</bitmap>
-		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
-			<data encoding="base64">
-        iVBORw0KGgoAAAANSUhEUgAAABEAAAAkCAYAAABv2tHkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
-        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASsSURBVEhL7VbNi1xFEK/qj/d2ZnZnM5vsCgm6RldzyWL0YBJP
-        iZ/gTYScvUg8CCLiQS96FE8BEZTE/AViTqIgfiB+BclFJGgImk0i4mYn2a+Zea/f625/1TObzbqClxwttq
-        b6o+rX1VXV9ZZuB/FIbqE3iNSP09OHgnMP1/3+zsr7bgzh7NdEZ7EdhlqbtA3k0Tx/IrP2bZNl+ygEHvT7
-        RHVNPoSI7V9qole/Ifp8qD0kPZKJjhhz3Fj7gdF6RoEoRhWrigPAQoysiHbB4NhdRN0FonMjs02QI3n+mN
-        X6dG6tsWNjanxiQtk8Z++cABEAGW6L5yIfB9APALoktglEYrDYan2YNRp3NJtN1Zqa4tn9+3lyelqVvR4X
-        4Oj9xt1FKPw8CIRTGMcEMjEzc0gb84oxRjXbbTU3P89Hjx3j+w4c4LXFRb525QrXZSmqJIERBu26m+gzAP
-        2BaxL5sjzsi4LdYMBVr0f95WXura2xKwpyuApiIilJ1xEDcBqDHxF7cY2Oav2WYX4JJyitFGeIyUSnw3Ji
-        v9slyRBSLKoRazJKEnziK6LXhp54v1rVdUzsHA1WV+O1hYW4uLBA/fX1WwGijEYg0ROtyEYCgTs/yR4mor
-        RxUsT6rafKXtrHOqZJit0QZILoC6wuARl/ycCPwGSc5Gic9kVP9B3Rl2KfsnOBqLqTSMJ/NAUJBKXkjYBs
-        SCwnIHANoDe/R62I7s1iu4wKRAHNQWFuw4MRi1FirNeQqHz66FuADC3/UfYHiT5eHa7Ny7HwSgzkCpUAQP
-        Yh39lD9Pr5oWeJNrzfQoeJZnHiMxg+BIUdGC+DzxmiM/AATv9P/0X/GtiLrdbMWAgHkaa9wfuWJeph+bcx
-        5862ia4NtTZpCwgyoC5PTT2rQ3iK6zpDNhSjjwgp7+VZOMw/2eH9GRhuTzEAeGF6+kWcftjEaDE3MFAwZk
-        hMKRjnaswqZv5uZ1m+C2NZ3wT5fXb2abSB53BapgUkBIvnrQxA0CKjrqpgKvyg8NB0HbrJaQB9KrYJ5MLc
-        XD6W5+9r5ikoZCrPM9baoCUqQqOiXi+yc0H3+zXAHdYdvOnuHAxewKFlesVjk5MPmGazo1qtTHc6mZqctH
-        ZmxmZ79li7e7e1nY5VWWajtVbFKAdkHONUt9GYF/sEoozZi3eqyRgNNzUADbfbWoN5fFxTo6HZWg0AxJo0
-        4qRxBZnfcxMkFEUzOseEPkv4zsTBAElFhy8KhbnCuuKyZCVdBSEAAEvAwU1ZSCC467LcO66skHC4cYPC4m
-        Ksr16NAUzdbgRIZDRtBJr0kCMytdkeY693ntfWAq+ve15e9rHbDQFMS0uer1/3XBTCQWoFGfKQHt6Eced+
-        FvuUHamRP9vtE1ape1GhOb6gGSE78imVYoMXcnJQVVXDAPemEp+Riy2ilzGOyZM08P4UPpelRQqh7FRROO
-        r3K4W0Yl6hTsTYSY2ASzyFk2I3st+kv/L8ScV8HMg5NqCH79CoYjEPqGYpNOnF7zXw9UtGoC0gQt1Wax5X
-        eh4bs2BJZwIBAAZ8yXp/MidKsdigbSBCEqOlLLsfcdmH/00m8SBX4NGveMEXYJCucJuJ6G9PzoGSjjLymg
-        AAAABJRU5ErkJggg==
       </data>
 		</bitmap>
 		<bitmap name="Howler_Enclosure" path="D:\Pictures\Doomsville\Howler_Enclosure.png">
@@ -3212,12 +3098,138 @@
         vFWAJ4Zf8e7c3NzeT37ykzMhaEfj8l+ZoJVSyv8HRrkwLEeyVIQAAAAASUVORK5CYII=
       </data>
 		</bitmap>
+		<bitmap name="Kick_Switch_trace_2_states" path="D:\Pictures\Doomsville\Kick_Switch_trace_2_states.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAADUAAABqCAYAAAAcPhlSAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AABZxSURBVHhe7dxryFbVtgfwx7fcXazsZmlliScr0CC1+uIuKIPi
+        lNSHbhAIZW02FfTJPln77HM2EVv6kFhns7ddiIKiKC8FEtoFs5OVJWUXtOyu3cvKbpad8Vu+f/fy9dUerf
+        bhgANma605xxzj/x9jzLnWs95lAzq/omzYsOGgH3/88fd1On7AgAGjv//++5HVhq1fv35w9Q+str7a2l12
+        2WVNja8aOHDgS7vuuuvSak/svffeH2608svlF5MqIodUO69OJ1WbWKA7n3/+eee9997rfPPNN50C3CnAnT
+        333LNTZJo5bfn666873377bacILiy9efvvv/+9gwYNWt07vEOyw6QqA7IxpU4n13HQDz/80Pnss886b731
+        VueTTz5BttH76KOPOuvWrWtIHXLIIZ0hQ4Z0CnSnp6enIYM4EYzKqP51w4YNu6N0bym9pc3gdsp2k/rpp5
+        9GFoGr6vTKItNT101m3n///c6nn37a+eqrrzYRiuhDGPF99923U9loslbzm3H97JA99tijs9dee+nbUJmb
+        edRRR91YfauawS5lu0iVo8vK+dQCM8q1SL/99tudL7/8sgEl+sAqOZH/7rvvmv6cJytKTiAcBYCdwYMHdy
+        pDnf3226/JKv0vvviCrZVjxoyZPnz48H80k7uQrkgVsKFFaFqRuaK3q4nuO++804BCQkMqAlDI0lWSmj5l
+        1hY26Mvg4Ycf3ikCTT9idJEuwjeNGzfuL4Xh/WZwG/KzpMrwuIr+tXV69saejQIoZwShrA/R/+CDD5pyRM
+        D1xx9/3ACMIJ+WEjRXhpSejeXggw/u7L777o0fgdGK4JxTTz31PyubzzWTtiLbJFWbwUnl+E91OnFjz5Yi
+        ytbL2rVrm8y9/vrrTdSBiFhTKTVSdjurVq1qACMiQzYP6w0hwVCeSNtYDjvssObc/ArOwjPPPPPPhx566K
+        LGWD+yVVK9GfprnU4URe13v/tdE8kIcAjZIByBByYZtL6yxgBiA/lkc8WKFc34Pvvs06w75whYX2wn2+YO
+        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
+        AASUVORK5CYII=
+      </data>
+		</bitmap>
+		<bitmap name="red_led_large" path="D:\Pictures\Doomsville\red_led_large.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAABEAAAAiCAYAAAC5gzL5AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAASUSURBVEhLzVVPaJxVEJ95733v2002a7K74mKSpsGGQkuNeIkU
+        JW3w0t4UEgRP3gsFBVE8C3oRhKA9aI+CVNCL4EVU/H/IQcU/h4pJkxaXWpsmu192v/d93/M3bzeJaTz24J
+        DJvDdv5vfmzcw3S/eCeCAP0DyRua/ZPJ05N9fd2hrzeX47L4rvHiD65gpRPjDbo0MgZ609H5dKryulHqKi
+        4F6SECQBxOP4Kv69+AXRJ33rPumBDHTG2ovWmEvW2oaJIgVn5bOMC4B57xk31mC2eISovUb0fd/rXyAL1p
+        6LlLoUx7EeqlZVqVxW2lpVpCnnzjH1QSRykQtHiVZWiX4X3wAiOYjL5Q+MMY3RRkPVm01+cGaGjxw/zunW
+        Fm9vbzNl2e7bAxD40SmidxBRoURbn5g4rY05FpVKXKnXeQLOC0tLfGZxkadmZ7ls7V4UwsiLyBnwY2AKIJ
+        1OZ06SmHW7fKfVos2bN/nmxgb/jXW33SaHKIqBsziAAyh4TvwFkc4yv6aYLzJKIgbKGIUKySGnqI5LUzHz
+        ABIdaoUMQWL75mdEL4VIcu+lD1CITJgQkW9vblJnc9PfBRDkAETWt+QwgGCzAg7nIsFebhRDuVHkbgR32a
+        2IfwCpEH0Jww0opRtzrPNs3zCw7EUv52KH9TrC+Er8Q4mvQokGauHgHBh//XAhd6MRR/ztAQCTnkcYP0Hu
+        N9s1ol8miYawfEQMIYMDONt1hHTQO8jlr4neFj+hA22/TvT5OJ6F5SkYGjg6cQanwtC3gP7Kt0RvBYcBIV
+        +H6WGi4WF8SnCcxbYOvgXQH7q45Ee0VTD6X9J/PucPolIcRSfR2EdJqQo518YXvtp27udpIrzqIB0CuV4q
+        PeGVesp4X0XWVZ7nChIpAef5Hc38YS3LQn/s0gGQa43GM7j1vCGKlPcGCKF6nKMmRZHBOAc7dM7HdefeD0
+        6gPZC1ycnH8RFe4CyzAIhQGQ2pFQYSQDxkDpkjGofx1MO4W65nGdplAOLn5816q7WMGdgEkGVjBMggKqUw
+        2XyKNnGu0N1uBrDQM4jtz/u73QsAyMK3cz1NT6mRkWZUrVozOhrret2a8XEbTU9bPTFhVa1mOY6tjyKLfM
+        UAsXBs3h4aOin+AURrfQwR6MLaiMplrYeHTTQ2pk29rrlW0zwyotlajVuRLtKYO0E672W69UFcp1PxmGrU
+        bjMlifKQeZ8V9kzdrtK9HsvTkGxGPiRPrLNsRPxDTtbHx59G6Z5DTmLMNstaW8xcjR5RyAVzp+N1khTsXO
+        aLwgFAvqMe+ujdap5/FEBuVContPev4lkW5YuhirCXkOW3hw2qA1nAWUaAU0XRg0zxjJdLRL/1qwPjv6Lo
+        DTTFFA4slBalNABVEjZ0Xn7BYCq9IlGk2KwC4AXs+z8ZsoDisimKxDiXROBSf70jOty8g7A6ME5wUYJLE4
+        R7WfwG/vu0Q/QkFM/COMKpgaNcIjZh1mIjz+lB8R7Wn4qP0AEQITifwPhaglETjtL2AQQLmW43oL8C/jUY
+        D+gQiJDkCJ/qFJ44hfUQjBLs17Bfwzo84R4T0T8i3C5g2np8OQAAAABJRU5ErkJggg==
+      </data>
+		</bitmap>
 	</bitmaps>
 	<control-tags>
 		<control-tag name="controlID::drive" tag="0" />
 		<control-tag name="controlID::tone" tag="1" />
 		<control-tag name="controlID::level" tag="2" />
 		<control-tag name="controlID::fx_On" tag="3" />
+		<control-tag name="controlID::fx_OnOff_Toggle" tag="4" />
 		<control-tag name="XY_TRACKPAD" tag="131073" />
 		<control-tag name="VECTOR_JOYSTICK" tag="131074" />
 		<control-tag name="PRESET_NAME" tag="131075" />
@@ -3251,4 +3263,13 @@
 			<color-stop rgba="#646464ff" start="1" />
 		</gradient>
 	</gradients>
+	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="KickSwitchViewContainer" origin="0, 0" size="53 ,103" transparent="true" sub-controller="KickSwitchController">
+		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="18, 0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="CKickButton" control-tag="controlID::fx_OnOff_Toggle" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="0, 260" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="CustomKickButtonDU" />
+	</template>
+	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="VariableToolTipKnobViewContainer" origin="0 ,0" size="219, 144" transparent="true" sub-controller="SimpleValueVariableToolTipKnobController">
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::drive" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="25,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::tone" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="77 ,80" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_7_sides" circle-drawing="false" class="CAnimKnob" control-tag="controlID::level" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="130 ,10" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+	</template>
 </vstgui-ui-description>

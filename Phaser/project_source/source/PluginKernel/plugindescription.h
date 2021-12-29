@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_96164657743F3E578C49DDCE471DAF12
-#define AU_COCOA_VIEW_NAME AUCocoaView_96164657743F3E578C49DDCE471DAF12
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_EF6594AB51073B39B3410ABECDB297FC
+#define AU_COCOA_VIEW_NAME AUCocoaView_EF6594AB51073B39B3410ABECDB297FC
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.phaser.bundleID";
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{96164657-743f-3e57-8c49-ddce471daf12}";
+const char* kVSTFUID = "{ef6594ab-5107-3b39-b341-0abecdb297fc}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'FAZE';

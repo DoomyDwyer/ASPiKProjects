@@ -47,11 +47,8 @@ set(kernel_sources
 #
 # ---------------------------------------------------------------------------------
 set(plugin_object_sources
-	${OBJECTS_SOURCE_ROOT}/customfxobjects.h
 	${OBJECTS_SOURCE_ROOT}/fxobjects.h
 	${OBJECTS_SOURCE_ROOT}/filters.h
-	${OBJECTS_SOURCE_ROOT}/utilities.h
-	${OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
 )
 

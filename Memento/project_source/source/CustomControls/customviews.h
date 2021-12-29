@@ -28,7 +28,6 @@ const int DATA_QUEUE_LEN = 4096;
 const unsigned int MESSAGE_SET_STRINGLIST = 0;
 const unsigned int MESSAGE_SET_STRING = 1;
 
-
 /**
 \class WaveView
 \ingroup Custom-Views

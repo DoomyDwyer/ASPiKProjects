@@ -12,7 +12,6 @@
 // -----------------------------------------------------------------------------
 #include "plugincore.h"
 #include "plugindescription.h"
-#include "utilities.h"
 #pragma warning (disable : 4244)
 
 /**
@@ -769,6 +768,12 @@ bool PluginCore::initPluginParameters()
 	piParam->setIsDiscreteSwitch(true);
 	addPluginParameter(piParam);
 
+	// --- discrete control: On/Off
+	piParam = new PluginParameter(controlID::fx_OnOff_Toggle, "On/Off", "SWITCH OFF,SWITCH ON", "SWITCH OFF");
+	piParam->setBoundVariable(&fx_OnOff_Toggle, boundVariableType::kInt);
+	piParam->setIsDiscreteSwitch(true);
+	addPluginParameter(piParam);
+
 	// --- Aux Attributes
 	AuxParameterAttribute auxAttribute;
 
@@ -843,6 +848,11 @@ bool PluginCore::initPluginParameters()
 	auxAttribute.setUintAttribute(805306368);
 	setParamAuxAttribute(controlID::enableGainComp, auxAttribute);
 
+	// --- controlID::fx_OnOff_Toggle
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(1610612736);
+	setParamAuxAttribute(controlID::fx_OnOff_Toggle, auxAttribute);
+
 
 	// **--0xEDA5--**
 
@@ -891,6 +901,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableGainComp, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Auto-Wah
@@ -909,6 +920,45 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	addPreset(preset);
+
+	// --- Preset: Auto-Wah II
+	preset = new PresetInfo(index++, "Auto-Wah II");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::filterFc_Hz, 1168.085205);
+	setPresetParameter(preset->presetParameters, controlID::filterQ, 10.546430);
+	setPresetParameter(preset->presetParameters, controlID::attackTime_mSec, 29.959999);
+	setPresetParameter(preset->presetParameters, controlID::releaseTime_mSec, 310.095032);
+	setPresetParameter(preset->presetParameters, controlID::threshold_dB, -9.299999);
+	setPresetParameter(preset->presetParameters, controlID::sensitivity, 0.473478);
+	setPresetParameter(preset->presetParameters, controlID::filterOutputGain_dB, 7.040001);
+	setPresetParameter(preset->presetParameters, controlID::matchAnalogNyquistLPF, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::selfOscillate, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	addPreset(preset);
+
+	// --- Preset: Funky Punky
+	preset = new PresetInfo(index++, "Funky Punky");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::filterFc_Hz, 1000.000000);
+	setPresetParameter(preset->presetParameters, controlID::filterQ, 13.343911);
+	setPresetParameter(preset->presetParameters, controlID::attackTime_mSec, 24.979998);
+	setPresetParameter(preset->presetParameters, controlID::releaseTime_mSec, 140.180054);
+	setPresetParameter(preset->presetParameters, controlID::threshold_dB, -9.699999);
+	setPresetParameter(preset->presetParameters, controlID::sensitivity, 0.624772);
+	setPresetParameter(preset->presetParameters, controlID::filterOutputGain_dB, 3.040001);
+	setPresetParameter(preset->presetParameters, controlID::matchAnalogNyquistLPF, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::selfOscillate, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
 	addPreset(preset);
 
 

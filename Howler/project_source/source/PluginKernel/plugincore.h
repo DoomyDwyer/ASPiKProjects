@@ -13,7 +13,7 @@
 #ifndef __pluginCore_h__
 #define __pluginCore_h__
 
-#include "customfxobjects.h"
+#include "../../../../ASPiKCommon/dsp/customfxobjects.h"
 #include "pluginbase.h"
 
 // **--0x7F1F--**
@@ -24,7 +24,8 @@ enum controlID {
 	drive = 0,
 	tone = 1,
 	level = 2,
-	fx_On = 3
+	fx_On = 3,
+	fx_OnOff_Toggle = 4
 };
 
 	// **--0x0F1F--**
@@ -142,6 +143,9 @@ private:
 	// --- Discrete Plugin Variables 
 	int fx_On = 0;
 	enum class fx_OnEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnEnum::SWITCH_OFF, fx_On)) etc... 
+
+	int fx_OnOff_Toggle = 0;
+	enum class fx_OnOff_ToggleEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnOff_ToggleEnum::SWITCH_OFF, fx_OnOff_Toggle)) etc... 
 
 	// **--0x1A7F--**
     // --- end member variables

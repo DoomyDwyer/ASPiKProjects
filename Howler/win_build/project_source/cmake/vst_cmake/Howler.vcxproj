@@ -333,9 +333,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\fxobjects.h" />
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\filters.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\fxobjects.cpp" />
-    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\customfxobjects.h" />
-    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\customfxobjects.cpp" />
-    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\PluginObjects\utilities.h" />
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\ASPiKCommon\dsp\customfxobjects.h" />
+    <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\ASPiKCommon\dsp\customfxobjects.cpp" />
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\ASPiKCommon\dsp\utilities.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\vst_source\factory.cpp" />
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\vst_source\customparameters.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\vst_source\customparameters.cpp" />
@@ -348,6 +348,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\CustomControls\customviews.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\CustomControls\customcontrols.cpp" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\myprojects\Howler\project_source\source\CustomControls\customviews.cpp" />
+    <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\ASPiKCommon\gui\custompedalviews.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.cpp" />
     <ClInclude Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\vst\vstsinglecomponenteffect.h" />
     <ClCompile Include="D:\Documents\Source\Repos\VST_SDK\VST3_SDK\public.sdk\source\main\dllmain.cpp" />

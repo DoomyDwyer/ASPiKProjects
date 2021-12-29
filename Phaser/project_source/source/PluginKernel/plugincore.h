@@ -13,7 +13,7 @@
 #ifndef __pluginCore_h__
 #define __pluginCore_h__
 
-#include "customfxobjects.h"
+#include "../../../../ASPiKCommon/dsp/customfxobjects.h"
 #include "fxobjects.h"
 #include "pluginbase.h"
 
@@ -27,7 +27,8 @@ enum controlID {
 	intensity_Pct = 2,
 	lfoWaveform = 3,
 	quadPhaseLFO = 4,
-	fx_On = 5
+	fx_On = 5,
+	fx_OnOff_Toggle = 6
 };
 
 	// **--0x0F1F--**
@@ -150,6 +151,9 @@ private:
 
 	int fx_On = 0;
 	enum class fx_OnEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnEnum::SWITCH_OFF, fx_On)) etc... 
+
+	int fx_OnOff_Toggle = 0;
+	enum class fx_OnOff_ToggleEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnOff_ToggleEnum::SWITCH_OFF, fx_OnOff_Toggle)) etc... 
 
 	// **--0x1A7F--**
     // --- end member variables
