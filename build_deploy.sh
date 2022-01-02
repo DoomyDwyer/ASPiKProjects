@@ -42,7 +42,7 @@ buildfile=VST3/$configuration/$vst3file
 
 developer_id=$(cat ../../developer_id.txt)
 echo "Signing $buildfile as $developer_id"
-codesign --deep --force --verify --verbose --sign "$developer_id" --arch $arch $buildfile --timestamp
+codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $buildfile --timestamp
 codesign -d --deep -vvv $buildfile
 
 echo Copying $buildfile to $targetdir

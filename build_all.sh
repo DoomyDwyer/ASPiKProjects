@@ -20,3 +20,10 @@ if [[ -d $plugins_dir/$x86_64_dir ]] then
   sudo mv $plugins_dir/$x86_64_dir $plugins_dir/_$x86_64_dir 
 fi
 
+version=$(cat version.txt)
+pushd $plugins_dir/_$x86_64_dir/
+zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_x86_64_$version.zip *
+popd
+pushd $plugins_dir/arm64/
+zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_arm64_$version.zip *
+popd
