@@ -9,10 +9,10 @@ fi
 
 for dir in $(cat vst3_releases.txt); 
 do 
-  pushd $dir/mac_build; 
-  ../../build_deploy.sh Release x86_64; 
-  ../../build_deploy.sh Release; 
-  popd ; 
+  pushd $dir/mac_build
+  ../../build_deploy.sh Release x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
+  ../../build_deploy.sh Release
+  popd
 done
 
 if [[ -d $plugins_dir/$x86_64_dir ]] then

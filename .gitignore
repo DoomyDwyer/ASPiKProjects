@@ -315,6 +315,9 @@ _deps
 # vstgui4
 vstgui4
 
+# Personal details
+developer_id.txt
+
 # mac_build directory
 **/mac_build/bin/*
 **/mac_build/build/*
