@@ -7,11 +7,16 @@ if [[ -d $plugins_dir/_$x86_64_dir ]] then
   sudo mv $plugins_dir/_$x86_64_dir $plugins_dir/$x86_64_dir 
 fi
 
+# Can be Debug or Release
+configuration=$1
+if [[ -z $configuration ]] ; then configuration=Release fi
+shift
+
 for dir in $(cat vst3_releases.txt); 
 do 
   pushd $dir/mac_build
-  ../../build_deploy.sh Release x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
-  ../../build_deploy.sh Release
+  ../../build_deploy.sh $configuration x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
+  ../../build_deploy.sh $configuration 
   popd
 done
 
@@ -20,10 +25,13 @@ if [[ -d $plugins_dir/$x86_64_dir ]] then
   sudo mv $plugins_dir/$x86_64_dir $plugins_dir/_$x86_64_dir 
 fi
 
-version=$(cat version.txt)
-pushd $plugins_dir/_$x86_64_dir/
-zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_x86_64_$version.zip *
-popd
-pushd $plugins_dir/arm64/
-zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_arm64_$version.zip *
-popd
+# Only create zip file for Release builds
+if [[ "$configuration" == "Release" ]] then
+  version=$(cat version.txt)
+  pushd $plugins_dir/_$x86_64_dir/
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_x86_64_$version.zip *
+  popd
+  pushd $plugins_dir/arm64/
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_arm64_$version.zip *
+  popd
+fi

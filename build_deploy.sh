@@ -40,14 +40,16 @@ xcodebuild -configuration $configuration -arch $arch $extra_args
 
 buildfile=VST3/$configuration/$vst3file
 
-developer_id=$(cat ../../developer_id.txt)
-echo "Signing $buildfile as $developer_id"
-codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $buildfile --timestamp
-codesign -d --deep -vvv $buildfile
+# Only bother signing Release builds
+if [[ "$configuration" == "Release" ]] then
+  developer_id=$(cat ../../developer_id.txt)
+  echo "Signing $buildfile as $developer_id"
+  codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $buildfile --timestamp
+  codesign -d --deep -vvv $buildfile
+fi
 
 echo Copying $buildfile to $targetdir
 sudo cp -R $buildfile $targetdir
 
 echo "Build completed $(date)"
 echo "New file: $(ls -lad $targetfile)"
-
