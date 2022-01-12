@@ -10,8 +10,8 @@ if %errorLevel% == 0 (
     EXIT /b 1
 )
 
-set target=%1
-IF %1.==. set target=Release
+set configuration=%1
+IF %1.==. set configuration=Release
 
 for %%I in (..) do set project=%%~nxI
 echo Building project %project% in %cd%...
@@ -19,12 +19,12 @@ echo Building project %project% in %cd%...
 set projectFile=%project%.sln
 IF NOT EXIST %projectFile% cmake -G"Visual Studio 16 2019" ../
 
-msbuild %projectFile% /p:Configuration=%target%
+msbuild %projectFile% /p:Configuration=%configuration%
 
 set targetdir=C:\Program Files\Common Files\VST3\Doomsville
 IF NOT EXIST "%targetdir%" mkdir "%targetdir%"
 
-copy /y VST3\%target%\%project%.vst3\Contents\x86_64-win\%project%.vst3 "%targetdir%"
+copy /y VST3\%configuration%\%project%.vst3\Contents\x86_64-win\%project%.vst3 "%targetdir%"
 
 echo Build completed %date% %time%
 echo New file:
