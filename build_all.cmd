@@ -18,7 +18,7 @@ if "%configuration%" == "Release" (
   set /p version=<version.txt
   for /f "tokens=*" %%p in (vst3_releases.txt) do (
     pushd %targetdir%
-    zip %userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_x86_64_win_%version%.zip %%p.vst3
+    zip %userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_VST3_x86_64_win_%version%.zip %%p.vst3
     popd
   )
 )
