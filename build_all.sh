@@ -29,9 +29,9 @@ fi
 if [[ "$configuration" == "Release" ]] then
   version=$(cat version.txt)
   pushd $plugins_dir/_$x86_64_dir/
-  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_x86_64_$version.zip *
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_VST3_MacOS_x86_64_$version.zip *
   popd
   pushd $plugins_dir/arm64/
-  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_MacOS_arm64_$version.zip *
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_VST3_MacOS_arm64_$version.zip *
   popd
 fi
