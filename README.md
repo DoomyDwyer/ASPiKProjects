@@ -17,28 +17,28 @@ Current VST3 Plugins, available for Windows 64 and MacOS (Intel x86_64 and Silic
 
 ## *"Unphased" Stereo Phaser* ##
 
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Phaser_screenshot.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Phaser_screenshot_macos.png)
 
 ----------
 
 ## *"Howler" Circuit Modeled Overdrive* ##
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Howler_screenshot.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Howler_screenshot_macos.png)
 
 ----------
 
 ## "*Reliq" Digital Stereo Delay* ##
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Reliq_screenshot.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Reliq_screenshot_macos.png)
 
 ----------
 
 ## *"Memento" Ducking Delay* ##
 
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Memento_screenshot.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Memento_screenshot_macos.png)
 
 ----------
 
 ## *"AutoQ" Envelope Follower* ##
 
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot_macos.png)
 
 ----------
