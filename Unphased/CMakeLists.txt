@@ -35,11 +35,11 @@ set(UNI_VST3_SDK_FOLDER 	VST_SDK/VST3_SDK)
 
 # --- Universal Build Flag - when using combined SDKs; can still build independently
 #                            with individual flags below
-set(UNIVERSAL_SDK_BUILD FALSE) 	# <-- set TRUE or FALSE
+set(UNIVERSAL_SDK_BUILD TRUE) 	# <-- set TRUE or FALSE
 
 # --- Individual project builds
 set(AAX_SDK_BUILD FALSE)# <-- set TRUE or FALSE
-set(AU_SDK_BUILD FALSE)# <-- set TRUE or FALSE
+set(AU_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 
 # ---------------------------------------------------------------------------------
@@ -48,10 +48,10 @@ set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 #
 # ---------------------------------------------------------------------------------
 # --- the name of the project must be valid CMAKE name: must not contain spaces or numbers
-set(PLUGIN_PROJECT_NAME Phaser)	# <-- set PROJECT NAME with or without quotes
+set(PLUGIN_PROJECT_NAME Unphased)	# <-- set PROJECT NAME with or without quotes
 
 # --- the name of the PLUGIN as you want it to appear in DAW menus for the user
-set(PLUGIN_NAME "Phaser")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
+set(PLUGIN_NAME "Unphased")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
 
 # --- Synth Flag: FALSE = FX plugin, TRUE = Synth Plugin
 set(IS_SYNTH_PLUGIN FALSE)		# <-- set Synth Flag to TRUE only for an output-only (synth) plugin

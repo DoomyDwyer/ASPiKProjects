@@ -11,8 +11,8 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_8740A94246353F6082B14E1CD61BB84E
-#define AU_COCOA_VIEW_NAME AUCocoaView_8740A94246353F6082B14E1CD61BB84E
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_D4DCB75A88D0391EA2418476C7339595
+#define AU_COCOA_VIEW_NAME AUCocoaView_D4DCB75A88D0391EA2418476C7339595
 
 // --- BUNDLE IDs (MacOS Only) 
 const char* kAAXBundleID = "developer.aax.memento.bundleID";
@@ -22,9 +22,9 @@ const char* kVST3BundleID = "developer.vst3.memento.bundleID";
 // --- Plugin Names 
 const char* kPluginName = "Memento";
 const char* kShortPluginName = "Memento";
-const char* kAUBundleName = "Memento";
-const char* kAAXBundleName = "Memento";
-const char* kVSTBundleName = "Memento";
+const char* kAUBundleName = "Memento_AU";
+const char* kAAXBundleName = "Memento_AAX";
+const char* kVSTBundleName = "Memento_VST";
 
 // --- bundle name helper 
 inline static const char* getPluginDescBundleName() 
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{8740a942-4635-3f60-82b1-4e1cd61bb84e}";
+const char* kVSTFUID = "{d4dcb75a-88d0-391e-a241-8476c7339595}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'MEMO';

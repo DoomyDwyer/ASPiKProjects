@@ -11,20 +11,20 @@
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
 // --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_EF6594AB51073B39B3410ABECDB297FC
-#define AU_COCOA_VIEW_NAME AUCocoaView_EF6594AB51073B39B3410ABECDB297FC
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_23AEBF6940B435AD9BC8322730D3F178
+#define AU_COCOA_VIEW_NAME AUCocoaView_23AEBF6940B435AD9BC8322730D3F178
 
 // --- BUNDLE IDs (MacOS Only) 
-const char* kAAXBundleID = "developer.aax.phaser.bundleID";
-const char* kAUBundleID = "developer.au.phaser.bundleID";
-const char* kVST3BundleID = "developer.vst3.phaser.bundleID";
+const char* kAAXBundleID = "developer.aax.unphased.bundleID";
+const char* kAUBundleID = "developer.au.unphased.bundleID";
+const char* kVST3BundleID = "developer.vst3.unphased.bundleID";
 
 // --- Plugin Names 
-const char* kPluginName = "Phaser";
-const char* kShortPluginName = "Phaser";
-const char* kAUBundleName = "Phaser";
-const char* kAAXBundleName = "Phaser";
-const char* kVSTBundleName = "Phaser";
+const char* kPluginName = "Unphased";
+const char* kShortPluginName = "Unphased";
+const char* kAUBundleName = "Unphased_AU";
+const char* kAAXBundleName = "Unphased_AAX";
+const char* kVSTBundleName = "Unphased_VST";
 
 // --- bundle name helper 
 inline static const char* getPluginDescBundleName() 
@@ -49,7 +49,7 @@ inline static const char* getPluginDescBundleName()
 const pluginType kPluginType = pluginType::kFXPlugin;
 
 // --- VST3 UUID 
-const char* kVSTFUID = "{ef6594ab-5107-3b39-b341-0abecdb297fc}";
+const char* kVSTFUID = "{23aebf69-40b4-35ad-9bc8-322730d3f178}";
 
 // --- 4-char codes 
 const int32_t kFourCharCode = 'FAZE';

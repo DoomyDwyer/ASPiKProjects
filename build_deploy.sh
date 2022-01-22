@@ -5,6 +5,11 @@ echo Building in $(pwd)
 project=$(basename $(dirname $(pwd)))
 projectFile=${project}.xcodeproj
 
+plugintype=aumf
+pluginsubtype=$1
+pluginmanufacturer=DOOM
+shift
+
 # Can be Debug or Release
 configuration=$1
 if [[ -z $configuration ]] ; then configuration=Release fi
@@ -37,6 +42,8 @@ if [[ ! -e $projectFile ]] then
 fi
 
 xcodebuild -configuration $configuration -arch $arch $extra_args
+
+auval -v $plugintype $pluginsubtype $pluginmanufacturer
 
 buildfile=VST3/$configuration/$vst3file
 

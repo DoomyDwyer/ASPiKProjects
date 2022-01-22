@@ -35,11 +35,11 @@ set(UNI_VST3_SDK_FOLDER 	VST_SDK/VST3_SDK)
 
 # --- Universal Build Flag - when using combined SDKs; can still build independently
 #                            with individual flags below
-set(UNIVERSAL_SDK_BUILD FALSE) 	# <-- set TRUE or FALSE
+set(UNIVERSAL_SDK_BUILD TRUE) 	# <-- set TRUE or FALSE
 
 # --- Individual project builds
 set(AAX_SDK_BUILD FALSE)# <-- set TRUE or FALSE
-set(AU_SDK_BUILD FALSE)# <-- set TRUE or FALSE
+set(AU_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 
 # ---------------------------------------------------------------------------------

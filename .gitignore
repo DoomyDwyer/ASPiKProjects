@@ -323,6 +323,7 @@ developer_id.txt
 **/win_build/bin/*
 **/win_build/*.sln
 **/win_build/*.vcxproj
+**/win_build/*.filters
 **/win_build/cmake/*
 **/win_build/project_source/*
 
