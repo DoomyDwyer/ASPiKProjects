@@ -18,15 +18,25 @@ echo Building project %project% in %cd%...
 
 set projectFile=%project%.sln
 IF NOT EXIST %projectFile% cmake -G"Visual Studio 16 2019" ../
+echo Project file %projectFile% not created, so assuming it's a universal project: working with %project%_UNIVERSAL.sln
+IF NOT EXIST %projectFile% set projectFile=%project%_UNIVERSAL.sln
 
 msbuild %projectFile% /p:Configuration=%configuration%
 
 set targetdir=C:\Program Files\Common Files\VST3\Doomsville
 IF NOT EXIST "%targetdir%" mkdir "%targetdir%"
 
-copy /y VST3\%configuration%\%project%.vst3\Contents\x86_64-win\%project%.vst3 "%targetdir%"
+set vst3=%project%.vst3
+set buildfile=VST3\%configuration%\%vst3%\Contents\x86_64-win\%vst3%
+IF NOT EXIST %buildfile% (
+    set vst3=%project%_VST.vst3
+    set buildfile=VST3\%configuration%\%project%_VST.vst3\Contents\x86_64-win\%project%_VST.vst3
+)
+
+echo Copying build file %buildfile% to %targetdir%\%vst3%
+copy /y %buildfile% "%targetdir%"
 
 echo Build completed %date% %time%
 echo New file:
-dir "%targetdir%\%project%.vst3"
+dir "%targetdir%\%vst3%"
 
