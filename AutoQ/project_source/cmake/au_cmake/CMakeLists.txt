@@ -55,7 +55,7 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
-	${COMMON_OBJECTS_SOURCE_ROOT}/utilities
+	${COMMON_OBJECTS_SOURCE_ROOT}/utilities.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -286,6 +286,10 @@ endif()
 
 # --- output folder for the plugin
 set_target_properties(${target} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER})
+
+# Set AU file name
+set_target_properties(${target} PROPERTIES OUTPUT_NAME ${PLUGIN_PROJECT_NAME})
+message(STATUS "set_target_properties ---> OUTPUT_NAME is set to : " ${PLUGIN_PROJECT_NAME})
 
 # --- add the exported symbol file
 if(IS_SYNTH_PLUGIN)

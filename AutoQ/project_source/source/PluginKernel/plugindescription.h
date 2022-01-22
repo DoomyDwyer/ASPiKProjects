@@ -10,68 +10,66 @@
 #define AU_COCOA_VIEWFACTORY_STRING STR(AU_COCOA_VIEWFACTORY_NAME)
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
-// --- AU Plugin Cocoa View Names (flat namespace)
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_919FACCD32764793B7D6B219A7E9870E
-#define AU_COCOA_VIEW_NAME AUCocoaView_919FACCD32764793B7D6B219A7E9870E
+// --- AU Plugin Cocoa View Names (flat namespace) 
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_1F4E49DA47703F51AE4FBD952C172D58
+#define AU_COCOA_VIEW_NAME AUCocoaView_1F4E49DA47703F51AE4FBD952C172D58
 
-// --- BUNDLE IDs (MacOS Only)
-const char* kAAXBundleID = "doomsvillesoundscapes.aax.Auto-Q.bundleID";
-const char* kAUBundleID = "doomsvillesoundscapes.au.Auto-Q.bundleID";
-const char* kVST3BundleID = "doomsvillesoundscapes.vst3.Auto-Q.bundleID";
+// --- BUNDLE IDs (MacOS Only) 
+const char* kAAXBundleID = "developer.aax.autoq.bundleID";
+const char* kAUBundleID = "developer.au.autoq.bundleID";
+const char* kVST3BundleID = "developer.vst3.autoq.bundleID";
 
-// --- Plugin Names
-const char* kPluginName = "Auto-Q";
-const char* kShortPluginName = "Auto-Q";
-const char* kAUBundleName = "Auto-Q";
-const char* kAAXBundleName = "Auto-Q";
-const char* kVSTBundleName = "Auto-Q";
+// --- Plugin Names 
+const char* kPluginName = "Auto-Q Envelope Follower";
+const char* kShortPluginName = "Auto-Q Envelope";
+const char* kAUBundleName = "AutoQ";
+const char* kAAXBundleName = "AutoQ";
+const char* kVSTBundleName = "AutoQ";
 
-// --- bundle name helper
-inline static const char* getPluginDescBundleName()
-{
-#ifdef AUPLUGIN
-	return kAUBundleName;
-#endif
+// --- bundle name helper 
+inline static const char* getPluginDescBundleName() 
+{ 
+#ifdef AUPLUGIN 
+	return kAUBundleName; 
+#endif 
 
-#ifdef AAXPLUGIN
-	return kAAXBundleName;
-#endif
+#ifdef AAXPLUGIN 
+	return kAAXBundleName; 
+#endif 
 
-#ifdef VSTPLUGIN
-	return kVSTBundleName;
-#endif
+#ifdef VSTPLUGIN 
+	return kVSTBundleName; 
+#endif 
 
-	// --- should never get here
-	return kPluginName;
-}
+	// --- should never get here 
+	return kPluginName; 
+} 
 
-// --- Plugin Type
+// --- Plugin Type 
 const pluginType kPluginType = pluginType::kFXPlugin;
 
-// --- VST3 UUID
-const char* kVSTFUID = "{919FACCD-3276-4793-B7D6-B219A7E9870E}";
+// --- VST3 UUID 
+const char* kVSTFUID = "{1f4e49da-4770-3f51-ae4f-bd952c172d58}";
 
-// --- 4-char codes
+// --- 4-char codes 
 const int32_t kFourCharCode = 'AUTQ';
 const int32_t kAAXProductID = 'AUTQ';
 const int32_t kManufacturerID = 'DOOM';
 
-// --- Vendor information
+// --- Vendor information 
 const char* kVendorName = "Doomsville Soundscapes";
 const char* kVendorURL = "github.com/DoomyDwyer";
 const char* kVendorEmail = "doomy@puscii.nl";
 
-// --- Plugin Options
+// --- Plugin Options 
 const bool kProcessFrames = true;
 const uint32_t kBlockSize = DEFAULT_AUDIO_BLOCK_SIZE;
 const bool kWantSidechain = true;
 const uint32_t kLatencyInSamples = 0;
-const double kTailTimeMsec = 0.000;
+const double kTailTimeMsec = 0.000000;
 const bool kVSTInfiniteTail = false;
 const bool kVSTSAA = false;
 const uint32_t kVST3SAAGranularity = 1;
-const uint32_t kAAXCategory = 0;
+const uint32_t kAAXCategory = aaxPlugInCategory_None;
 
 #endif
-
-

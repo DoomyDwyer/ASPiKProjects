@@ -28,10 +28,6 @@ IF NOT EXIST "%targetdir%" mkdir "%targetdir%"
 
 set vst3=%project%.vst3
 set buildfile=VST3\%configuration%\%vst3%\Contents\x86_64-win\%vst3%
-IF NOT EXIST %buildfile% (
-    set vst3=%project%_VST.vst3
-    set buildfile=VST3\%configuration%\%project%_VST.vst3\Contents\x86_64-win\%project%_VST.vst3
-)
 
 echo Copying build file %buildfile% to %targetdir%\%vst3%
 copy /y %buildfile% "%targetdir%"
@@ -39,4 +35,3 @@ copy /y %buildfile% "%targetdir%"
 echo Build completed %date% %time%
 echo New file:
 dir "%targetdir%\%vst3%"
-
