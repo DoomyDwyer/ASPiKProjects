@@ -319,6 +319,7 @@ vstgui4
 developer_id.txt
 
 # win_build directory
+**/win_build/readme.txt
 **/win_build/bin/*
 **/win_build/*.sln
 **/win_build/*.vcxproj
