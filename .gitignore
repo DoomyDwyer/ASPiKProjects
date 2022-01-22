@@ -318,6 +318,13 @@ vstgui4
 # Personal details
 developer_id.txt
 
+# win_build directory
+**/win_build/bin/*
+**/win_build/*.sln
+**/win_build/*.vcxproj
+**/win_build/cmake/*
+**/win_build/project_source/*
+
 # mac_build directory
 **/mac_build/bin/*
 **/mac_build/build/*
