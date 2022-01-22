@@ -10,66 +10,68 @@
 #define AU_COCOA_VIEWFACTORY_STRING STR(AU_COCOA_VIEWFACTORY_NAME)
 #define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)
 
-// --- AU Plugin Cocoa View Names (flat namespace) 
-#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_D4DCB75A88D0391EA2418476C7339595
-#define AU_COCOA_VIEW_NAME AUCocoaView_D4DCB75A88D0391EA2418476C7339595
+// --- AU Plugin Cocoa View Names (flat namespace)
+#define AU_COCOA_VIEWFACTORY_NAME AUCocoaViewFactory_E3CC20DF94F44256A654A5CD8068AF01
+#define AU_COCOA_VIEW_NAME AUCocoaView_E3CC20DF94F44256A654A5CD8068AF01
 
-// --- BUNDLE IDs (MacOS Only) 
-const char* kAAXBundleID = "developer.aax.memento.bundleID";
-const char* kAUBundleID = "developer.au.memento.bundleID";
-const char* kVST3BundleID = "developer.vst3.memento.bundleID";
+// --- BUNDLE IDs (MacOS Only)
+const char* kAAXBundleID = "doomsvillesoundscapes.aax.Memento.bundleID";
+const char* kAUBundleID = "doomsvillesoundscapes.au.Memento.bundleID";
+const char* kVST3BundleID = "doomsvillesoundscapes.vst3.Memento.bundleID";
 
-// --- Plugin Names 
+// --- Plugin Names
 const char* kPluginName = "Memento";
 const char* kShortPluginName = "Memento";
-const char* kAUBundleName = "Memento_AU";
-const char* kAAXBundleName = "Memento_AAX";
-const char* kVSTBundleName = "Memento_VST";
+const char* kAUBundleName = "Memento";
+const char* kAAXBundleName = "Memento";
+const char* kVSTBundleName = "Memento";
 
-// --- bundle name helper 
-inline static const char* getPluginDescBundleName() 
-{ 
-#ifdef AUPLUGIN 
-	return kAUBundleName; 
-#endif 
+// --- bundle name helper
+inline static const char* getPluginDescBundleName()
+{
+#ifdef AUPLUGIN
+	return kAUBundleName;
+#endif
 
-#ifdef AAXPLUGIN 
-	return kAAXBundleName; 
-#endif 
+#ifdef AAXPLUGIN
+	return kAAXBundleName;
+#endif
 
-#ifdef VSTPLUGIN 
-	return kVSTBundleName; 
-#endif 
+#ifdef VSTPLUGIN
+	return kVSTBundleName;
+#endif
 
-	// --- should never get here 
-	return kPluginName; 
-} 
+	// --- should never get here
+	return kPluginName;
+}
 
-// --- Plugin Type 
+// --- Plugin Type
 const pluginType kPluginType = pluginType::kFXPlugin;
 
-// --- VST3 UUID 
-const char* kVSTFUID = "{d4dcb75a-88d0-391e-a241-8476c7339595}";
+// --- VST3 UUID
+const char* kVSTFUID = "{E3CC20DF-94F4-4256-A654-A5CD8068AF01}";
 
-// --- 4-char codes 
+// --- 4-char codes
 const int32_t kFourCharCode = 'MEMO';
 const int32_t kAAXProductID = 'MEMO';
 const int32_t kManufacturerID = 'DOOM';
 
-// --- Vendor information 
+// --- Vendor information
 const char* kVendorName = "Doomsville Soundscapes";
 const char* kVendorURL = "github.com/DoomyDwyer";
 const char* kVendorEmail = "doomy@puscii.nl";
 
-// --- Plugin Options 
+// --- Plugin Options
 const bool kProcessFrames = true;
 const uint32_t kBlockSize = DEFAULT_AUDIO_BLOCK_SIZE;
 const bool kWantSidechain = true;
 const uint32_t kLatencyInSamples = 0;
-const double kTailTimeMsec = 0.000000;
+const double kTailTimeMsec = 0.000;
 const bool kVSTInfiniteTail = false;
 const bool kVSTSAA = false;
 const uint32_t kVST3SAAGranularity = 1;
-const uint32_t kAAXCategory = aaxPlugInCategory_None;
+const uint32_t kAAXCategory = 0;
 
 #endif
+
+

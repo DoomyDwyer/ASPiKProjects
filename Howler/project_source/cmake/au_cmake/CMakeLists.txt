@@ -14,6 +14,7 @@ set(MAC_ROOT "../../mac/au")
 set(SOURCE_ROOT "../../source")
 set(RESOURCE_ROOT "../../resources")
 set(FFTW_SOURCE_ROOT "${SOURCE_ROOT}/FFTW")
+set(COMMON_SOURCE_ROOT "../../../../../../ASPiKCommon")
 
 # --- local roots
 set(KERNEL_SOURCE_ROOT "${SOURCE_ROOT}/PluginKernel")
@@ -21,6 +22,8 @@ set(OBJECTS_SOURCE_ROOT "${SOURCE_ROOT}/PluginObjects")
 set(VSTGUI_SOURCE_ROOT "${SOURCE_ROOT}/CustomControls")
 set(AU_SOURCE_ROOT "${SOURCE_ROOT}/au_source")
 set(COCOA_SOURCE_ROOT "${SOURCE_ROOT}/au_source/cocoa_ui")
+set(COMMON_OBJECTS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/dsp")
+set(COMMON_VSTGUI_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/gui")
 
 # ---------------------------------------------------------------------------------
 #
@@ -50,6 +53,9 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.h
 	${OBJECTS_SOURCE_ROOT}/filters.h
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
+	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
+	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
+	${COMMON_OBJECTS_SOURCE_ROOT}/utilities
 )
 
 # ---------------------------------------------------------------------------------
@@ -64,6 +70,7 @@ set(custom_vstgui_sources
 	${VSTGUI_SOURCE_ROOT}/customviews.h
 	${VSTGUI_SOURCE_ROOT}/customcontrols.cpp
 	${VSTGUI_SOURCE_ROOT}/customviews.cpp
+	${COMMON_VSTGUI_SOURCE_ROOT}/custompedalviews.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -429,4 +436,5 @@ if(XCODE)
 	add_custom_command(TARGET ${target} POST_BUILD COMMAND ${CMAKE_COMMAND} -E remove_directory ${PLUGIN_FOLDER})
 	add_custom_command(TARGET ${target} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory "$<$<CONFIG:Debug>:${TARGET_PATH_DEBUG}>$<$<CONFIG:Release>:${TARGET_PATH_RELEASE}>" ${PLUGIN_FOLDER})
 endif()
+
 
