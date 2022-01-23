@@ -51,7 +51,7 @@ set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 set(PLUGIN_PROJECT_NAME AutoQ)	# <-- set PROJECT NAME with or without quotes
 
 # --- the name of the PLUGIN as you want it to appear in DAW menus for the user
-set(PLUGIN_NAME "Auto-Q Envelope Follower")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
+set(PLUGIN_NAME "Auto-Q Enveloper Follower")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
 
 # --- Synth Flag: FALSE = FX plugin, TRUE = Synth Plugin
 set(IS_SYNTH_PLUGIN FALSE)		# <-- set Synth Flag to TRUE only for an output-only (synth) plugin
@@ -252,20 +252,19 @@ string(CONCAT AU_BUNDLE_ID_ASVAR "const char* kAUBundleID = \"" ${AU_BUNDLE_ID} 
 string(CONCAT VST_BUNDLE_ID_ASVAR "const char* kVST3BundleID = \"" ${VST_BUNDLE_ID} "\"")
 
 # --- added v1.6.4 for correct bundle naming of Cocoa component in AU universal builds
-#if(UNIVERSAL_SDK_BUILD)
-#	string(CONCAT AU_BUNDLE_NAME_ASVAR_P1 "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME})
-#	string(CONCAT AU_BUNDLE_NAME_ASVAR ${AU_BUNDLE_NAME_ASVAR_P1} "_AU\"")
-#	
-#	string(CONCAT AAX_BUNDLE_NAME_ASVAR_P1 "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME})
-#	string(CONCAT AAX_BUNDLE_NAME_ASVAR ${AAX_BUNDLE_NAME_ASVAR_P1} "_AAX\"")
-#	
-#	string(CONCAT VST_BUNDLE_NAME_ASVAR_P1 "const char* kVSTBundleName = \"" ${PLUGIN_PROJECT_NAME})
-#	string(CONCAT VST_BUNDLE_NAME_ASVAR ${VST_BUNDLE_NAME_ASVAR_P1} "_VST\"")
-#else()
+if(UNIVERSAL_SDK_BUILD)
+	string(CONCAT AU_BUNDLE_NAME_ASVAR_P1 "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME})
+	string(CONCAT AU_BUNDLE_NAME_ASVAR ${AU_BUNDLE_NAME_ASVAR_P1} "_AU\"")
+	
+	string(CONCAT AAX_BUNDLE_NAME_ASVAR_P1 "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME})
+	string(CONCAT AAX_BUNDLE_NAME_ASVAR ${AAX_BUNDLE_NAME_ASVAR_P1} "_AAX\"")
+	
+	string(CONCAT VST_BUNDLE_NAME_ASVAR "const char* kVSTBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
+else()
 	string(CONCAT AU_BUNDLE_NAME_ASVAR "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
 	string(CONCAT VST_BUNDLE_NAME_ASVAR "const char* kVSTBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
-#endif()
+endif()
 
 # --- short AAX plugin name
 string(SUBSTRING ${PLUGIN_NAME} 0 15 PLUGIN_NAME_SHORT)
