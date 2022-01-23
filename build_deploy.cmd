@@ -17,9 +17,11 @@ for %%I in (..) do set project=%%~nxI
 echo Building project %project% in %cd%...
 
 set projectFile=%project%.sln
-IF NOT EXIST %projectFile% cmake -G"Visual Studio 16 2019" ../
-echo Project file %projectFile% not created, so assuming it's a universal project: working with %project%_UNIVERSAL.sln
-IF NOT EXIST %projectFile% set projectFile=%project%_UNIVERSAL.sln
+IF NOT EXIST "*.sln" cmake -G"Visual Studio 16 2019" ../
+IF NOT EXIST %projectFile% (
+  echo Project file %projectFile% not created, so assuming it's a universal project: working with %project%_UNIVERSAL.sln
+  set projectFile=%project%_UNIVERSAL.sln
+)
 
 msbuild %projectFile% /p:Configuration=%configuration%
 

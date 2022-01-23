@@ -51,7 +51,7 @@ set(VST_SDK_BUILD TRUE)# <-- set TRUE or FALSE
 set(PLUGIN_PROJECT_NAME Reliq)	# <-- set PROJECT NAME with or without quotes
 
 # --- the name of the PLUGIN as you want it to appear in DAW menus for the user
-set(PLUGIN_NAME "Reliq")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
+set(PLUGIN_NAME "Reliq - Digital Delay")	# <-- set PLUGIN NAME with quotes; ok to have spaces or numbers if you like
 
 # --- Synth Flag: FALSE = FX plugin, TRUE = Synth Plugin
 set(IS_SYNTH_PLUGIN FALSE)		# <-- set Synth Flag to TRUE only for an output-only (synth) plugin
@@ -259,8 +259,7 @@ if(UNIVERSAL_SDK_BUILD)
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR_P1 "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME})
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR ${AAX_BUNDLE_NAME_ASVAR_P1} "_AAX\"")
 	
-	string(CONCAT VST_BUNDLE_NAME_ASVAR_P1 "const char* kVSTBundleName = \"" ${PLUGIN_PROJECT_NAME})
-	string(CONCAT VST_BUNDLE_NAME_ASVAR ${VST_BUNDLE_NAME_ASVAR_P1} "_VST\"")
+	string(CONCAT VST_BUNDLE_NAME_ASVAR "const char* kVSTBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
 else()
 	string(CONCAT AU_BUNDLE_NAME_ASVAR "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")

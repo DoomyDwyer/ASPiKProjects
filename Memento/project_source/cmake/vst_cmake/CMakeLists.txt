@@ -53,7 +53,7 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
-	${COMMON_OBJECTS_SOURCE_ROOT}/utilities
+	${COMMON_OBJECTS_SOURCE_ROOT}/utilities.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -105,8 +105,9 @@ set(target ${EXP_SUBPROJECT_NAME_VST})
 # --- 3.6.13 this is the proper default path; for MacOS it is the VST3 plugin default location, for Win it is empty ""
 smtg_get_default_vst3_path(DEFAULT_VST3_FOLDER)
 set(PLUGIN_TARGET_PATH "${DEFAULT_VST3_FOLDER}" CACHE PATH "Here you can redefine the VST3 plug-ins folder")
+message(STATUS "set_target_properties ---> PLUGIN_TARGET_PATH is set to : " ${PLUGIN_TARGET_PATH})
 set(SMTG_PLUGIN_TARGET_PATH ${PLUGIN_TARGET_PATH})
-# --- message(STATUS "set_target_properties ---> SMTG_PLUGIN_TARGET_PATH is set to : " ${SMTG_PLUGIN_TARGET_PATH})
+message(STATUS "set_target_properties ---> SMTG_PLUGIN_TARGET_PATH is set to : " ${SMTG_PLUGIN_TARGET_PATH})
 
 # --- note this is placed *before* smtg_add_vst3plugin( ) on purpose!
 if(LINK_FFTW)
@@ -117,9 +118,9 @@ endif()
 
 # --- add the plugin source and link to lib, etc... smtg_add_vst3plugin does all the setup
 if(INCLUDE_FX_OBJECTS)
-	smtg_add_vst3plugin(${target} ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
 else()
-	smtg_add_vst3plugin(${target} ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
 endif()
 
 # --- VST3 SDK 3.7.2 addition
@@ -222,6 +223,10 @@ endif()
 # fix missing VSTPluginMain symbol when also building VST 2 version
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_EXPORTED_SYMBOLS_FILE "")
 
+# Set VST3 file name
+set_target_properties(${target} PROPERTIES OUTPUT_NAME ${PLUGIN_PROJECT_NAME})
+message(STATUS "set_target_properties ---> OUTPUT_NAME is set to : " ${PLUGIN_PROJECT_NAME})
+
 if (WIN)
 	add_definitions(-D_CRT_SECURE_NO_WARNINGS)
 endif()
@@ -230,7 +235,7 @@ endif()
 if(XCODE)
 	# --- info.pList files
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
-	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=$(EXECUTABLE_NAME) PRODUCT_BUNDLE_IDENTIFIER=${VST_BUNDLE_ID}")
+	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=${PLUGIN_PROJECT_NAME} PRODUCT_BUNDLE_IDENTIFIER=${VST_BUNDLE_ID}")
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 endif()
 
