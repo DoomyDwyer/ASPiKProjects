@@ -10,13 +10,13 @@
 			<key>factoryFunction</key>
 			<string>AUFXPluginFactory</string>
 			<key>manufacturer</key>
-			<string>VENDOR_4CHAR_CODE</string>
+			<string>DOOM</string>
 			<key>name</key>
-      <string>ASPiK User: Plugin Template</string>
+      <string>Doomsville Soundscapes: Auto-Q - Envelope Follower</string>
       <key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>
-			<string>PI_4CHAR_CODE</string>
+			<string>AUTQ</string>
 			<key>type</key>
 			<string>AU_TYPE_CODE</string>
 			<key>version</key>

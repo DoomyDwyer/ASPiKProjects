@@ -8,11 +8,13 @@ if [[ -d $vst3_plugins_dir/_$x86_64_dir ]] then
   sudo mv $vst3_plugins_dir/_$x86_64_dir $vst3_plugins_dir/$x86_64_dir 
 fi
 
-#au_plugins_dir=~/Library/Audio/Plug-Ins/Components/Doomsville
-#if [[ -d $au_plugins_dir/_$x86_64_dir ]] then
-#  # Move _x86_64 to x86_64
-#  sudo mv $au_plugins_dir/_$x86_64_dir $au_plugins_dir/$x86_64_dir 
-#fi
+au_distrodir=~/Documents/Doomsville/Releases/MacOS/AU/$arch/
+# Only create distribution directory for Release builds
+if [[ "$configuration" == "Release" ]] then
+  if [[ ! -d $au_distrodir ]] then
+    sudo mkdir -p $au_distrodir
+  fi
+fi
 
 # Can be Debug or Release
 configuration=$1
@@ -22,9 +24,9 @@ shift
 for entry in $(cat plugin_releases.txt); 
 do 
   IFS=';'
-  read -ra arr <<< "$entry"
-  dir=${arr[0]}
-  pluginsubtype=${arr[1]}
+  read -rA arr <<< "$entry"
+  dir=${arr[1]}
+  pluginsubtype=${arr[2]}
   pushd $dir/mac_build
   ../../build_deploy.sh $pluginsubtype $configuration x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
   ../../build_deploy.sh $pluginsubtype $configuration 
@@ -44,5 +46,12 @@ if [[ "$configuration" == "Release" ]] then
   popd
   pushd $vst3_plugins_dir/arm64/
   zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_VST3_MacOS_arm64_$version.zip *
+  popd
+
+  pushd $au_distrodir/$x86_64_dir/
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_AU_MacOS_x86_64_$version.zip *
+  popd
+  pushd $au_distrodir/arm64/
+  zip -r ~/Documents/Doomsville/Releases/MacOS/Doomsville_AU_MacOS_arm64_$version.zip *
   popd
 fi

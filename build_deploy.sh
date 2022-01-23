@@ -2,10 +2,21 @@
 
 echo Building in $(pwd)
 
-project=$(basename $(dirname $(pwd)))
-projectFile=${project}.xcodeproj
+if ls *.xcodeproj 1> /dev/null 2>&1; then
+else
+  cmake -GXcode ../
+fi
 
-plugintype=aumf
+project=$(basename $(dirname $(pwd)))
+projectName=$project
+projectFile=${projectName}.xcodeproj
+
+if [[ ! -e $projectFile ]] then
+  projectName=${project}_UNIVERSAL
+  projectFile=${projectName}.xcodeproj
+fi
+
+plugintype=aufx
 pluginsubtype=$1
 pluginmanufacturer=DOOM
 shift
@@ -20,43 +31,94 @@ arch=$1
 if [[ -z $arch ]] ; then arch=arm64 fi
 shift
 
-targetdir=/Library/Audio/Plug-Ins/VST3/Doomsville/$arch/
-if [[ ! -d $targetdir ]] then
-  sudo mkdir -p $targetdir
-fi
-
 # Can pass in extra args for xcodebuild, such as -xcconfig filename
 extra_args=""
 for arg in "$@"; do extra_args=($extra_args $arg) ; done
 
+vst3_targetdir=/Library/Audio/Plug-Ins/VST3/Doomsville/$arch/
+if [[ ! -d $vst3_targetdir ]] then
+  sudo mkdir -p $vst3_targetdir
+fi
+
+au_targetdir=~/Library/Audio/Plug-Ins/Components/
+if [[ ! -d $au_targetdir ]] then
+  sudo mkdir -p $au_targetdir
+fi
+
+au_distrodir=~/Documents/Doomsville/Releases/MacOS/AU/$arch/
+# Only create distribution directory for Release builds
+if [[ "$configuration" == "Release" ]] then
+  if [[ ! -d $au_distrodir ]] then
+    sudo mkdir -p $au_distrodir
+  fi
+fi
+
 vst3file=$project.vst3
-targetfile=${targetdir}$vst3file
+vst3_targetfile=${vst3_targetdir}$vst3file
 
-if [[ -e $targetfile ]] then
-  echo Deleting previous version of $vst3file from $targetdir 
-  sudo rm -R $targetfile
+if [[ -e $vst3_targetfile ]] then
+  echo Deleting previous version of $vst3file from $vst3_targetdir 
+  sudo rm -R $vst3_targetfile
 fi
 
-if [[ ! -e $projectFile ]] then
-  cmake -GXcode ../
+au_file=${project}_AU.component
+au_targetfile=${au_targetdir}$au_file
+au_distrofile=${au_distrodir}$au_file
+
+if [[ -e $au_targetfile ]] then
+  echo Deleting previous version of $au_file from $au_targetdir 
+  sudo rm -R $au_targetfile
 fi
 
-xcodebuild -configuration $configuration -arch $arch $extra_args
+xcodebuild -target ${project}_VST -configuration $configuration -arch $arch $extra_args
+xcodebuild -target ${project}_AU_CocoaUI -configuration $configuration -arch $arch $extra_args
+xcodebuild -target ${project}_AU -configuration $configuration -arch $arch $extra_args
+#xcodebuild -target ALL_BUILD -configuration $configuration -arch $arch $extra_args
 
-auval -v $plugintype $pluginsubtype $pluginmanufacturer
+vst3_buildfile=VST3/$configuration/$vst3file
+au_buildfile=AU/$configuration/$au_file
+au_bundlefile=AU/$configuration/${project}_AU.bundle
 
-buildfile=VST3/$configuration/$vst3file
+# Copy bundle into component directory
+echo Adding bundle file $au_bundlefile to Component $au_buildfile
+cp -R $au_bundlefile $au_buildfile/Contents/Resources
 
 # Only bother signing Release builds
 if [[ "$configuration" == "Release" ]] then
   developer_id=$(cat ../../developer_id.txt)
-  echo "Signing $buildfile as $developer_id"
-  codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $buildfile --timestamp
-  codesign -d --deep -vvv $buildfile
+  echo "Signing $vst3_buildfile as $developer_id"
+  codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $vst3_buildfile --timestamp
+  codesign -d --deep -vvv $vst3_buildfile
+
+  echo "Signing $au_buildfile as $developer_id"
+  codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $au_buildfile --timestamp
+  codesign -d --deep -vvv $au_buildfile
 fi
 
-echo Copying $buildfile to $targetdir
-sudo cp -R $buildfile $targetdir
+echo Copying $vst3_buildfile to $vst3_targetdir
+sudo cp -R $vst3_buildfile $vst3_targetdir
 
-echo "Build completed $(date)"
-echo "New file: $(ls -lad $targetfile)"
+echo Copying $au_buildfile to $au_targetdir
+sudo cp -R $au_buildfile $au_targetdir
+
+# Only copy to distribution directory for Release builds
+if [[ "$configuration" == "Release" ]] then
+  echo Copying $au_buildfile to $au_distrodir
+  sudo cp -R $au_buildfile $au_distrodir
+fi
+
+echo "Waiting for 6 seconds for file copy to complete prior to AU validation..."
+read -t 6
+
+auval -v $plugintype $pluginsubtype $pluginmanufacturer
+
+echo "VST3 build completed $(date)"
+echo "New file: $(ls -lad $vst3_targetfile)"
+
+echo "AU build completed $(date)"
+echo "New file: $(ls -lad $au_targetfile)"
+
+# Only copy to distribution directory for Release builds
+if [[ "$configuration" == "Release" ]] then
+  echo "File (for distribution): $(ls -lad $au_distrofile)"
+fi
