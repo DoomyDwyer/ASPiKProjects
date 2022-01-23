@@ -237,7 +237,7 @@ set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INSTALL_PATH "$(
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_NAME ${EXP_SUBPROJECT_NAME_AU})
 
 # --- save product name for later
-get_target_property(COCOAPRODUCT_NAME ${cocoatarget} XCODE_ATTRIBUTE_PRODUCT_NAME)
+get_target_property(COCOAPRODUCT_NAME ${PLUGIN_PROJECT_NAME} XCODE_ATTRIBUTE_PRODUCT_NAME)
 
 # --- setup project
 if(XCODE)
@@ -422,10 +422,10 @@ set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPRO
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 
 # --- copy folders (.bundle and .component are directories, so use remove/copy directory)
-set(TARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${target}.component")
+set(TARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${PLUGIN_PROJECT_NAME}.component")
 set(COCOATARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${COCOAPRODUCT_NAME}.bundle")
 
-set(TARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${target}.component")
+set(TARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${PLUGIN_PROJECT_NAME}.component")
 set(COCOATARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${COCOAPRODUCT_NAME}.bundle") 
 
 set(COCOA_IN_RSRSC_PATH_DEBUG ${TARGET_PATH_DEBUG}/Contents/Resources/${COCOAPRODUCT_NAME}.bundle)
