@@ -3264,7 +3264,7 @@
 		</gradient>
 	</gradients>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="KickSwitchViewContainer" origin="0, 0" size="53 ,103" transparent="true" sub-controller="KickSwitchController">
-		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="18, 0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="18, 0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="CKickButton" control-tag="controlID::fx_OnOff_Toggle" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="0, 260" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="CustomKickButtonDU" />
 	</template>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="VariableToolTipKnobViewContainer" origin="0 ,0" size="219, 144" transparent="true" sub-controller="SimpleValueVariableToolTipKnobController">
