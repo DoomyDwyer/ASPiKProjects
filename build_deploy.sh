@@ -73,7 +73,6 @@ fi
 xcodebuild -target ${project}_VST -configuration $configuration -arch $arch $extra_args
 xcodebuild -target ${project}_AU_CocoaUI -configuration $configuration -arch $arch $extra_args
 xcodebuild -target ${project}_AU -configuration $configuration -arch $arch $extra_args
-#xcodebuild -target ALL_BUILD -configuration $configuration -arch $arch $extra_args
 
 vst3_buildfile=VST3/$configuration/$vst3file
 au_buildfile=AU/$configuration/$au_file
@@ -96,15 +95,15 @@ if [[ "$configuration" == "Release" ]] then
 fi
 
 echo Copying $vst3_buildfile to $vst3_targetdir
-sudo cp -R $vst3_buildfile $vst3_targetdir
+sudo cp -Rp $vst3_buildfile $vst3_targetdir
 
 echo Copying $au_buildfile to $au_targetdir
-sudo cp -R $au_buildfile $au_targetdir
+sudo cp -Rp $au_buildfile $au_targetdir
 
 # Only copy to distribution directory for Release builds
 if [[ "$configuration" == "Release" ]] then
   echo Copying $au_buildfile to $au_distrodir
-  sudo cp -R $au_buildfile $au_distrodir
+  sudo cp -Rp $au_buildfile $au_distrodir
 fi
 
 echo "Waiting for 6 seconds for file copy to complete prior to AU validation..."

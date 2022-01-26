@@ -28,8 +28,8 @@ do
   dir=${arr[1]}
   pluginsubtype=${arr[2]}
   pushd $dir/mac_build
-  ../../build_deploy.sh $pluginsubtype $configuration x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
   ../../build_deploy.sh $pluginsubtype $configuration 
+  ../../build_deploy.sh $pluginsubtype $configuration x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
   popd
 done
 
