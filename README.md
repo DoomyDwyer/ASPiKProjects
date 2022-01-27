@@ -9,7 +9,11 @@ Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://gi
 
 User Guides: [https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides](https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides "User Guides")
 
-Current VST3 Plugins, available for Windows 64 and MacOS (Intel x86_64 and Silicon arm64):
+## Known Issues ##
+[Presets in Cubase](https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides/workaround_cubase_presets.md)
+[Signing and Notarization on MacOS](https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides/workaround_macos_notarization.md)
+
+Current VST3 and Audio Units Plugins, available for Windows 64 (VST3 only) and MacOS (Intel x86_64 and Silicon arm64):
 
 ## Pedals ##
 
