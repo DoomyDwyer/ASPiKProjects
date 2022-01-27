@@ -7,7 +7,7 @@ DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://w
 
 Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://github.com/DoomyDwyer/ASPiKProjects/releases "Download")
 
-User Guides: [UserGuides](UserGuides/ "User Guides")
+[User Guides](UserGuides/ "User Guides")
 
 ## Known Issues (with workarounds) ##
 - [Presets in Cubase](UserGuides/workaround_cubase_presets.md)
