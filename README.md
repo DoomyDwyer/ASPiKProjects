@@ -9,7 +9,7 @@ Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://gi
 
 User Guides: [https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides](https://github.com/DoomyDwyer/ASPiKProjects/tree/main/UserGuides "User Guides")
 
-## Known Issues ##
+## Known Issues (with workarounds) ##
 - [Presets in Cubase](UserGuides/workaround_cubase_presets.md)
 - [Signing and Notarization on MacOS](UserGuides/workaround_macos_notarization.md)
 
