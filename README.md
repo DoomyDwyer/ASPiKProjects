@@ -1,6 +1,6 @@
 ![Doomsville Soundscapes](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/DoomsvilleSoundscapes_Merkurius_logo_large.png)
 
-# Audio Plugins (VST3)
+# Audio Plugins (VST3 and MacOS Audio Units)
 Audio Plugins created using the ASPiK framework.
 
 DSP code from Will Pirkle (https://www.willpirkle.com/) and Eric Tarr (https://www.hackaudio.com/), adapted by Steve Dwyer. GUI design by Steve Dwyer. Adriator font in "Memento" Ducking Delay used by kind permission of Raymond Larabie (https://typodermicfonts.com/).
