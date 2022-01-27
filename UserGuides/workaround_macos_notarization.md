@@ -1,4 +1,4 @@
-# Signing and Notarization on MacOS #
+## Signing and Notarization on MacOS ##
 
 All Plugins, both VST3 and Audio Units, need signing to be able to run in a DAW on MacOS. These plugins are signed with a valid Apple "Developer ID Application" certificate. If you download the Zip files from the Internet though, MacOS expects them also to have been *notarized*. I've given up trying to notarize these plugins for now, as no matter which options I tried, the process always failed.
 
