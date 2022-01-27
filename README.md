@@ -45,3 +45,5 @@ Current VST3 and Audio Units Plugins, available for Windows 64 (VST3 only) and M
 ![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot_macos.png)
 
 ----------
+
+If you encounter any issues running these plugins, either on Windows or MacOS, feel free to raise an [issue](https://github.com/DoomyDwyer/ASPiKProjects/issues). The MacOS plugins should work on all versions of MacOS >= 10.9. The Windows VST3s should work on any 64-bit Windows system.
