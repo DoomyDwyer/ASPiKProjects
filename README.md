@@ -11,7 +11,7 @@ Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://gi
 #### [User Guides](UserGuides/ "User Guides") available [here](UserGuides/ "User Guides"). ####
 
 ## Known Issues (with workarounds) ##
-- [Presets in Cubase](UserGuides/workaround_cubase_presets.md)
+- [Factory Presets in Cubase, Ableton Live & PreSonus Studio One](UserGuides/workaround_factory_presets.md)
 - [Signing and Notarization on MacOS](UserGuides/workaround_macos_notarization.md)
 
 ## Pedals ##
