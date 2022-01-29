@@ -21,8 +21,7 @@ Current VST3 and Audio Units Plugins, available for Windows 64 (VST3 only) and M
 
 ## *"Unphased" Stereo Phaser* ##
 
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Phaser_screenshot_macos.png)
-
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Unphased_screenshot_macos.png)
 ----------
 
 ## *"Howler" Circuit Modeled Overdrive* ##
@@ -41,9 +40,9 @@ Current VST3 and Audio Units Plugins, available for Windows 64 (VST3 only) and M
 
 ----------
 
-## *"AutoQ" Envelope Follower* ##
+## *"Auto-Q" Envelope Follower* ##
 
-![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/AutoQ_screenshot_macos.png)
+![](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/pics/Auto-Q_screenshot_macos.png)
 
 ----------
 
