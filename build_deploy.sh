@@ -97,6 +97,12 @@ fi
 echo Copying $vst3_buildfile to $vst3_targetdir
 sudo cp -Rp $vst3_buildfile $vst3_targetdir
 
+# Delete symbolic link to VST3 created during build
+vst3_linkdir=~/Library/Audio/Plug-Ins/VST3/
+vst3_linkfile=${vst3_linkdir}$vst3file
+echo "Deleting symbolic link $vst3_linkfile"
+rm -R $vst3_linkfile
+
 echo Copying $au_buildfile to $au_targetdir
 sudo cp -Rp $au_buildfile $au_targetdir
 
