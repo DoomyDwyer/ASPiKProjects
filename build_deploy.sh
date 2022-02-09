@@ -78,9 +78,17 @@ vst3_buildfile=VST3/$configuration/$vst3file
 au_buildfile=AU/$configuration/$au_file
 au_bundlefile=AU/$configuration/${project}_AU.bundle
 
+# Sign the AU bundle prior to copying it - only bother with Release builds
+if [[ "$configuration" == "Release" ]] then
+  developer_id=$(cat ../../developer_id.txt)
+  echo "Signing $au_bundlefile as $developer_id"
+  codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $au_bundlefile --timestamp
+  codesign -d --deep -vvv $au_bundlefile
+fi
+
 # Copy bundle into component directory
 echo Adding bundle file $au_bundlefile to Component $au_buildfile
-cp -R $au_bundlefile $au_buildfile/Contents/Resources
+cp -Rp $au_bundlefile $au_buildfile/Contents/Resources
 
 # Only bother signing Release builds
 if [[ "$configuration" == "Release" ]] then
