@@ -97,6 +97,20 @@ set(custom_vstgui_sources
 
 # ---------------------------------------------------------------------------------
 #
+# ---  Custom Source files
+#
+# ---------------------------------------------------------------------------------
+configure_file("${RESOURCE_ROOT}/version.h.in" "version.h")
+message(STATUS "${RESOURCE_ROOT}/version.h processed.")
+message(STATUS "Sources here ${CMAKE_CURRENT_SOURCE_DIR}.")
+message(STATUS "Binaries here ${CMAKE_CURRENT_BINARY_DIR}.")
+file(COPY ${CMAKE_CURRENT_BINARY_DIR}/version.h DESTINATION ${CMAKE_CURRENT_SOURCE_DIR}/${SOURCE_ROOT})
+
+set(custom_sources
+	${SOURCE_ROOT}/version.h
+)
+# ---------------------------------------------------------------------------------
+#
 # ---  VST3 target:
 #
 # ---------------------------------------------------------------------------------
@@ -118,9 +132,9 @@ endif()
 
 # --- add the plugin source and link to lib, etc... smtg_add_vst3plugin does all the setup
 if(INCLUDE_FX_OBJECTS)
-	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${custom_sources})
 else()
-	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${custom_sources})
 endif()
 
 # --- VST3 SDK 3.7.2 addition
@@ -260,4 +274,5 @@ source_group(PluginObjects FILES ${plugin_object_sources})
 source_group(CustomVSTGUI FILES ${custom_vstgui_sources})
 source_group(VST3Core FILES ${vst_core_sources})
 source_group(VST3SDK FILES ${vstsdk_sources})
+
 
