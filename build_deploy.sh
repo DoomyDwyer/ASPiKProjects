@@ -61,7 +61,7 @@ if [[ -e $vst3_targetfile ]] then
   sudo rm -R $vst3_targetfile
 fi
 
-au_file=${project}_AU.component
+au_file=${project}.component
 au_targetfile=${au_targetdir}$au_file
 au_distrofile=${au_distrodir}$au_file
 
@@ -76,7 +76,7 @@ xcodebuild -target ${project}_AU -configuration $configuration -arch $arch $extr
 
 vst3_buildfile=VST3/$configuration/$vst3file
 au_buildfile=AU/$configuration/$au_file
-au_bundlefile=AU/$configuration/${project}_AU.bundle
+au_bundlefile=AU/$configuration/${project}.bundle
 
 # Sign the AU bundle prior to copying it - only bother with Release builds
 if [[ "$configuration" == "Release" ]] then
