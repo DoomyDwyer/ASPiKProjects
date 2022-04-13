@@ -12,7 +12,7 @@
 			<key>manufacturer</key>
 			<string>VENDOR_4CHAR_CODE</string>
 			<key>name</key>
-			<string>VENDOR_NAME</string>
+			<string>VENDOR_NAME: EXECUTABLE_NAME</string>
 			<key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>

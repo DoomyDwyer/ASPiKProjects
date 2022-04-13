@@ -378,46 +378,46 @@ set_source_files_properties(${resource_sources} PROPERTIES MACOSX_PACKAGE_LOCATI
 # --- set folder/filter
 source_group(Resources FILES ${resource_sources})
 
-# --- info.pList file for target
-set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
-
-# --- need to edit this manually due to error with CMake placing returns in whitespaces in the formatted "Your Company : My Plugin" string...
-if(IS_SYNTH_PLUGIN)
-	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTSA)
-	string(REPLACE "AUFXPluginFactory" "AUSynthPluginFactory" INFOPLIST_FILE_GUTS ${INFOPLIST_FILE_GUTSA})
-else()
-	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTS)
-endif()
-
-string(LENGTH ${INFOPLIST_FILE_GUTS} TOTAL_GUTS_LEN)
-
-# --- get left half
-set(LEFT_CHUNK_TAG "<key>name</key>")
-string(LENGTH ${LEFT_CHUNK_TAG} LEFT_CHUNK_TAG_LEN)
-string(FIND ${INFOPLIST_FILE_GUTS} "<key>name</key>" LEFT_CHUNK_END)
-MATH(EXPR LEFT_CHUNK_POS "${LEFT_CHUNK_END} + ${LEFT_CHUNK_TAG_LEN}")
-string(SUBSTRING ${INFOPLIST_FILE_GUTS} 0 ${LEFT_CHUNK_POS} INFOPLIST_FILE_LEFT_CHUNK)
-
-# --- get right half
-string(FIND ${INFOPLIST_FILE_GUTS} "<key>sandboxSafe</key>" RIGHT_CHUNK_START)
-MATH(EXPR RIGHT_CHUNK_LEN "${TOTAL_GUTS_LEN} - ${RIGHT_CHUNK_START}")
-string(SUBSTRING ${INFOPLIST_FILE_GUTS} ${RIGHT_CHUNK_START} ${RIGHT_CHUNK_LEN} INFOPLIST_FILE_RIGHT_CHUNK)
-
-# --- form substring string
-string(CONCAT INFO_LIST_COMP_NAME "<string>" ${INFOPLIST_PI_VENDOR_COLON_NAME_CODE} "</string>")
-
-# --- form completed string
-string(CONCAT INFOPLIST_FILE_GUTS_MODIFIED ${INFOPLIST_FILE_LEFT_CHUNK} "\n      " ${INFO_LIST_COMP_NAME} "\n      " ${INFOPLIST_FILE_RIGHT_CHUNK})
-
-# --- update the file (destructive)
-file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS_MODIFIED})
+## --- info.pList file for target
+#set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
+#
+## --- need to edit this manually due to error with CMake placing returns in whitespaces in the formatted "Your Company : My Plugin" string...
+#if(IS_SYNTH_PLUGIN)
+#	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTSA)
+#	string(REPLACE "AUFXPluginFactory" "AUSynthPluginFactory" INFOPLIST_FILE_GUTS ${INFOPLIST_FILE_GUTSA})
+#else()
+#	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTS)
+#endif()
+#
+#string(LENGTH ${INFOPLIST_FILE_GUTS} TOTAL_GUTS_LEN)
+#
+## --- get left half
+#set(LEFT_CHUNK_TAG "<key>name</key>")
+#string(LENGTH ${LEFT_CHUNK_TAG} LEFT_CHUNK_TAG_LEN)
+#string(FIND ${INFOPLIST_FILE_GUTS} "<key>name</key>" LEFT_CHUNK_END)
+#MATH(EXPR LEFT_CHUNK_POS "${LEFT_CHUNK_END} + ${LEFT_CHUNK_TAG_LEN}")
+#string(SUBSTRING ${INFOPLIST_FILE_GUTS} 0 ${LEFT_CHUNK_POS} INFOPLIST_FILE_LEFT_CHUNK)
+#
+## --- get right half
+#string(FIND ${INFOPLIST_FILE_GUTS} "<key>sandboxSafe</key>" RIGHT_CHUNK_START)
+#MATH(EXPR RIGHT_CHUNK_LEN "${TOTAL_GUTS_LEN} - ${RIGHT_CHUNK_START}")
+#string(SUBSTRING ${INFOPLIST_FILE_GUTS} ${RIGHT_CHUNK_START} ${RIGHT_CHUNK_LEN} INFOPLIST_FILE_RIGHT_CHUNK)
+#
+## --- form substring string
+#string(CONCAT INFO_LIST_COMP_NAME "<string>" ${INFOPLIST_PI_VENDOR_COLON_NAME_CODE} "</string>")
+#
+## --- form completed string
+#string(CONCAT INFOPLIST_FILE_GUTS_MODIFIED ${INFOPLIST_FILE_LEFT_CHUNK} "\n      " ${INFO_LIST_COMP_NAME} "\n      " ${INFOPLIST_FILE_RIGHT_CHUNK})
+#
+## --- update the file (destructive)
+#file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS_MODIFIED})
 
 # --- this eliminates a warning that looks suspicious when debugging but is acutally not a problem
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${AU_BUNDLE_ID}")
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${AU_BUNDLE_ID}")
 
 # --- preprocessor defines (can NOT include spaces in any strings)
-set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=${PRODUCT_NAME} PRODUCT_BUNDLE_IDENTIFIER=${AU_BUNDLE_ID} VENDOR_4CHAR_CODE=${4CHAR_AAX_MANUFACTURER_ID_PROPER} PI_4CHAR_CODE=${4CHAR_CODE_PROPER} AU_TYPE_CODE=${INFOPLIST_AU_TYPE_CODE} VENDOR_NAME=${VENDOR_NAME} VERSION_AU=${VERSION_AU}")
+set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=${PRODUCT_NAME} PRODUCT_BUNDLE_IDENTIFIER=${AU_BUNDLE_ID} VENDOR_4CHAR_CODE=${4CHAR_AAX_MANUFACTURER_ID_PROPER} PI_4CHAR_CODE=${4CHAR_CODE_PROPER} AU_TYPE_CODE=${INFOPLIST_AU_TYPE_CODE} VENDOR_NAME=${CLEAN_VENDOR_NAME} VERSION_AU=${VERSION_AU}")
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 
 # --- info.pList file for cocoa GUI target
