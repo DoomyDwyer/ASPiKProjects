@@ -66,6 +66,7 @@ set(HAS_AAX_GR_METER FALSE)		# <-- for special Pro-Tools AAX Gain Reduction Mete
 set(VENDOR_NAME "Doomsville Soundscapes")			# <-- required!
 set(VENDOR_URL "github.com/DoomyDwyer")			# <-- OPTIONAL (ok if blank)
 set(VENDOR_EMAIL "doomy@puscii.nl")		# <-- OPTIONAL (ok if blank)
+message(STATUS "VENDOR_NAME is set to : " ${VENDOR_NAME})
 
 # --- 4-Character Codes (for AAX and VST3)
 set(4CHAR_CODE "HOWL")				# MUST be unique for each plugin your company creates/sells
