@@ -109,6 +109,7 @@ file(COPY ${CMAKE_CURRENT_BINARY_DIR}/version.h DESTINATION ${CMAKE_CURRENT_SOUR
 set(custom_sources
 	${SOURCE_ROOT}/version.h
 )
+
 # ---------------------------------------------------------------------------------
 #
 # ---  VST3 target:
@@ -249,7 +250,7 @@ endif()
 if(XCODE)
 	# --- info.pList files
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
-	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=${PLUGIN_PROJECT_NAME} PRODUCT_BUNDLE_IDENTIFIER=${VST_BUNDLE_ID}")
+	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=${PLUGIN_PROJECT_NAME} PRODUCT_BUNDLE_IDENTIFIER=${VST_BUNDLE_ID} VENDOR_NAME=${VENDOR_NAME} VERSION_STRING=${VERSION_STRING}")
 	set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 endif()
 

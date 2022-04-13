@@ -15,7 +15,7 @@
 	<key>CFBundleLongVersionString</key>
 	<string>VERSION_STRING</string>
 	<key>CFBundleName</key>
-	<string>PLUGIN_NAME</string>
+	<string>EXECUTABLE_NAME</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -27,6 +27,6 @@
 	<key>CSResourcesFileMapped</key>
 	<true/>
 	<key>NSHumanReadableCopyright</key>
-	<string>© 2022 VENDOR_NAME_ASVAR</string>
+	<string>© 2022 VENDOR_NAME</string>
 </dict>
 </plist>
