@@ -36,11 +36,11 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>VERSION_AU</string>
+	<string>1.2</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>VERSION_AU</string>
+	<string>1.2</string>
 	<key>CSResourcesFileMapped</key>
 	<true/>
 </dict>
