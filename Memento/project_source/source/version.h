@@ -43,11 +43,11 @@
 // Version without build number (example "1.0.3")
 #define VERSION_STR "1.0.5"
 
-#define stringOriginalFilename	"AutoQ.vst3"
+#define stringOriginalFilename	"Memento.vst3"
 #if SMTG_PLATFORM_64
-#define stringFileDescription	"Auto-Q VST3-SDK (64Bit)"
+#define stringFileDescription	"Memento VST3-SDK (64Bit)"
 #else
-#define stringFileDescription	"Auto-Q VST3-SDK"
+#define stringFileDescription	"Memento VST3-SDK"
 #endif
 #define stringCompanyName	"Doomsville Soundscapes\0"
 #define stringLegalCopyright	"© 2022 Doomsville Soundscapes"

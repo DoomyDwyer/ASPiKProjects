@@ -9,7 +9,7 @@
 #
 # ---------------------------------------------------------------------------------
 cmake_minimum_required (VERSION 3.4.3)
-
+option(OVERWRITE_PLUGINDESC "Whether to clobber the existing plugindescription.h file" OFF)
 # ---------------------------------------------------------------------------------
 # --- BEGIN USER INPUT
 # ---------------------------------------------------------------------------------
@@ -239,13 +239,31 @@ set(VST_CMAKE_FOLDER cmake/vst_cmake)
 # --- BUNDLE IDs and other variables for <plugindescription.h>
 #
 # ---------------------------------------------------------------------------------
+
+# Read in version.txt and set up variables appropriately
+file (STRINGS "../version.txt" VERSION_STRING)
+# Report results to the console
+message(STATUS "VERSION_STRING is set to : " ${VERSION_STRING})
+# Perform some maths to get the version number in a correct format for Audio Unit Info.plist files
+string(REPLACE "." ";" VERSION_LIST ${VERSION_STRING})
+list(GET VERSION_LIST 0 VERSION_MAJOR)
+list(GET VERSION_LIST 1 VERSION_MINOR)
+list(GET VERSION_LIST 2 VERSION_PATCH)
+# Then perform the actual calculation
+math(EXPR VERSION_AU "${VERSION_PATCH} + ${VERSION_MINOR} * 256 + ${VERSION_MAJOR} * 65536" OUTPUT_FORMAT DECIMAL)
+# Report results to the console
+message(STATUS "VERSION_AU is set to : " ${VERSION_AU})
+
 string(REPLACE "_" "" CLEAN_PROJECT_NAME ${PLUGIN_PROJECT_NAME})
 string(TOLOWER ${CLEAN_PROJECT_NAME} CLEAN_PROJECT_NAME_LC)
 
+string(REPLACE " " "" CLEAN_VENDOR_NAME ${VENDOR_NAME})
+string(TOLOWER ${CLEAN_VENDOR_NAME} BUNDLE_DEVELOPER_NAME)
+
 # --- BUNDLE ID Values: one for each API
-string(CONCAT AAX_BUNDLE_ID "developer.aax." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
-string(CONCAT AU_BUNDLE_ID "developer.au." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
-string(CONCAT VST_BUNDLE_ID "developer.vst3." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
+string(CONCAT AAX_BUNDLE_ID ${BUNDLE_DEVELOPER_NAME} ".aax." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
+string(CONCAT AU_BUNDLE_ID ${BUNDLE_DEVELOPER_NAME} ".au." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
+string(CONCAT VST_BUNDLE_ID ${BUNDLE_DEVELOPER_NAME} ".vst3." ${CLEAN_PROJECT_NAME_LC} ".bundleID")
 
 string(CONCAT AAX_BUNDLE_ID_ASVAR "const char* kAAXBundleID = \"" ${AAX_BUNDLE_ID} "\"")
 string(CONCAT AU_BUNDLE_ID_ASVAR "const char* kAUBundleID = \"" ${AU_BUNDLE_ID} "\"")
@@ -253,8 +271,7 @@ string(CONCAT VST_BUNDLE_ID_ASVAR "const char* kVST3BundleID = \"" ${VST_BUNDLE_
 
 # --- added v1.6.4 for correct bundle naming of Cocoa component in AU universal builds
 if(UNIVERSAL_SDK_BUILD)
-	string(CONCAT AU_BUNDLE_NAME_ASVAR_P1 "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME})
-	string(CONCAT AU_BUNDLE_NAME_ASVAR ${AU_BUNDLE_NAME_ASVAR_P1} "_AU\"")
+	string(CONCAT AU_BUNDLE_NAME_ASVAR "const char* kAUBundleName = \"" ${PLUGIN_PROJECT_NAME} "\"")
 	
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR_P1 "const char* kAAXBundleName = \"" ${PLUGIN_PROJECT_NAME})
 	string(CONCAT AAX_BUNDLE_NAME_ASVAR ${AAX_BUNDLE_NAME_ASVAR_P1} "_AAX\"")
@@ -273,16 +290,27 @@ string(CONCAT PLUGIN_NAME_ASVAR "const char* kPluginName = \"" ${PLUGIN_NAME} "\
 string(CONCAT SHORT_PLUGIN_NAME_ASVAR "const char* kShortPluginName = \"" ${PLUGIN_NAME_SHORT} "\"")
 
 # --- GUID for VST3 and for creating unique name for Cocoa GUI (AU only)
-set(UUID_SEED 6ba7b810-9dad-11d1-80b4-00c04fd430c8)
-string(TIMESTAMP CONFIG_DATE)
-string(RANDOM a)
-string(CONCAT UUID_DIRT ${CONFIG_DATE} ${a})
-string(
-    UUID NEW_VST_UUID
-    NAMESPACE ${UUID_SEED}
-    NAME ${UUID_DIRT}
-    TYPE MD5
-)
+if(OVERWRITE_PLUGINDESC)
+	set(UUID_SEED 6ba7b810-9dad-11d1-80b4-00c04fd430c8)
+	string(TIMESTAMP CONFIG_DATE)
+	string(RANDOM a)
+	string(CONCAT UUID_DIRT ${CONFIG_DATE} ${a})
+	string(
+	    UUID NEW_VST_UUID
+	    NAMESPACE ${UUID_SEED}
+	    NAME ${UUID_DIRT}
+	    TYPE MD5
+	)
+	message(STATUS "Generated new GUI for Info.plist" ${NEW_VST_UUID})
+else()
+	file(READ "project_source/source/PluginKernel/plugindescription.h" PLUGINDESC_FILE_GUTS)
+	set(SEARCH_STRING "const char* kVSTFUID = \"{")
+	string(LENGTH ${SEARCH_STRING} SEARCH_STRING_LENGTH)
+	string(FIND "${PLUGINDESC_FILE_GUTS}" "${SEARCH_STRING}" SEARCH_STRING_START)
+	MATH(EXPR GUID_START "${SEARCH_STRING_START} + ${SEARCH_STRING_LENGTH}")
+	string(SUBSTRING "${PLUGINDESC_FILE_GUTS}" ${GUID_START} 36 NEW_VST_UUID)
+	message(STATUS "Extract GUI for Info.plist " ${NEW_VST_UUID})
+endif()
 
 string(REPLACE "-" "" CLEAN_UUID ${NEW_VST_UUID})
 string(TOUPPER ${CLEAN_UUID} CLEAN_UUID_UC)
@@ -356,92 +384,91 @@ if(PROCESS_BLOCKS)
 	string(CONCAT BLOCK_SIZE_ASVAR "const uint32_t kBlockSize = " ${BLOCK_SIZE})
 endif()
 
+if(OVERWRITE_PLUGINDESC)
+	# --- the plugindescription.h file - this is edited to contain your string settings for the project!
+	set(PI_DESCRIPTION_H_FILE project_source/source/PluginKernel/plugindescription.h)
+	file(WRITE ${PI_DESCRIPTION_H_FILE} "")
 
-# --- the plugindescription.h file - this is edited to contain your string settings for the project!
-set(PI_DESCRIPTION_H_FILE project_source/source/PluginKernel/plugindescription.h)
-file(WRITE ${PI_DESCRIPTION_H_FILE} "")
+	# --- header part
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- CMAKE generated variables for your plugin\n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#include \"pluginstructures.h\"\n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifndef _plugindescription_h\n#define _plugindescription_h\n\n")
 
-# --- header part
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- CMAKE generated variables for your plugin\n\n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#include \"pluginstructures.h\"\n\n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifndef _plugindescription_h\n#define _plugindescription_h\n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#define QUOTE(name) #name\n#define STR(macro) QUOTE(macro)\n#define AU_COCOA_VIEWFACTORY_STRING STR(AU_COCOA_VIEWFACTORY_NAME)\n#define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)\n\n")
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#define QUOTE(name) #name\n#define STR(macro) QUOTE(macro)\n#define AU_COCOA_VIEWFACTORY_STRING STR(AU_COCOA_VIEWFACTORY_NAME)\n#define AU_COCOA_VIEW_STRING STR(AU_COCOA_VIEW_NAME)\n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- AU Plugin Cocoa View Names (flat namespace) \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_COCOA_VIEWFACTORY_DEFINE}\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_COCOA_VIEW_DEFINE}\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- AU Plugin Cocoa View Names (flat namespace) \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_COCOA_VIEWFACTORY_DEFINE}\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_COCOA_VIEW_DEFINE}\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- BUNDLE IDs (MacOS Only) \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_BUNDLE_ID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_BUNDLE_ID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST_BUNDLE_ID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- BUNDLE IDs (MacOS Only) \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_BUNDLE_ID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_BUNDLE_ID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST_BUNDLE_ID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Names \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${PLUGIN_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${SHORT_PLUGIN_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_BUNDLE_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_BUNDLE_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST_BUNDLE_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Names \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${PLUGIN_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${SHORT_PLUGIN_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AU_BUNDLE_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_BUNDLE_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST_BUNDLE_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- bundle name helper \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "inline static const char* getPluginDescBundleName() \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "{ \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef AUPLUGIN \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kAUBundleName; \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef AAXPLUGIN \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kAAXBundleName; \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef VSTPLUGIN \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kVSTBundleName; \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "\t// --- should never get here \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kPluginName; \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "} \n\n")
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- bundle name helper \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "inline static const char* getPluginDescBundleName() \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "{ \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef AUPLUGIN \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kAUBundleName; \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef AAXPLUGIN \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kAAXBundleName; \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#ifdef VSTPLUGIN \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kVSTBundleName; \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif \n\n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "\t// --- should never get here \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "\treturn kPluginName; \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} "} \n\n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Type \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${PLUGIN_TYPE_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Type \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${PLUGIN_TYPE_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- VST3 UUID \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_UUID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- VST3 UUID \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_UUID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- 4-char codes \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_CODE_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_AAX_PRODUCT_ID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_AAX_MANUFACTURER_ID_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- 4-char codes \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_CODE_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_AAX_PRODUCT_ID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${4CHAR_AAX_MANUFACTURER_ID_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Vendor information \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_NAME_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_URL_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_EMAIL_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Vendor information \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_NAME_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_URL_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VENDOR_EMAIL_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Options \n")
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${PROCESS_FRAMES_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${BLOCK_SIZE_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${EXPOSE_SIDECHAIN_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${LATENCY_IN_SAMPLES_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${TAIL_TIME_MSEC_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_INFINITE_TAIL_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_SAMPLE_ACCURATE_AUTOMATION_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_SAMPLE_ACCURATE_GRANULARITY_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_CAT_ASVAR}\;\n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} "// --- Plugin Options \n")
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${PROCESS_FRAMES_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${BLOCK_SIZE_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${EXPOSE_SIDECHAIN_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${LATENCY_IN_SAMPLES_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${TAIL_TIME_MSEC_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_INFINITE_TAIL_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_SAMPLE_ACCURATE_AUTOMATION_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${VST3_SAMPLE_ACCURATE_GRANULARITY_ASVAR}\;\n)
-file(APPEND ${PI_DESCRIPTION_H_FILE} ${AAX_CAT_ASVAR}\;\n)
+	file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
 
-file(APPEND ${PI_DESCRIPTION_H_FILE} \n)
-
-
-# --- the EOF
-file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif\n")
-message(STATUS "--- Updated File: " ${PI_DESCRIPTION_H_FILE})
-message(STATUS "")
-
+	# --- the EOF
+	file(APPEND ${PI_DESCRIPTION_H_FILE} "#endif\n")
+	message(STATUS "--- Updated File: " ${PI_DESCRIPTION_H_FILE})
+	message(STATUS "")
+endif()
 
 # --- you can rename the plugin output folders; VST is set to VST3 (see below)
 set(AAX_PLUGIN_FOLDER AAX)
