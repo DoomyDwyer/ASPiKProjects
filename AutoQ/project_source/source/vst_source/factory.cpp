@@ -15,6 +15,7 @@
     		- http://www.willpirkle.com
 */
 // -----------------------------------------------------------------------------
+#include "version.h"
 #include "public.sdk/source/main/pluginfactory.h"
 #include "vst3plugin.h"
 /**
@@ -35,7 +36,7 @@ BEGIN_FACTORY_DEF (Steinberg::Vst::ASPiK::VST3Plugin::getVendorName(),
 				Steinberg::Vst::ASPiK::VST3Plugin::getPluginName(),		// Plug-in name
 				0,                                                      // single component effects can not be destributed across CPUs so this is zero
                 Steinberg::Vst::ASPiK::VST3Plugin::getPluginType(),		// Subcategory for this Plug-in
-				"1.0.0.001",                                            // Plug-in version
+				VERSION_STR,                                            // Plug-in version
 				kVstVersionString,                                      // the VST 3 SDK version
 				Steinberg::Vst::ASPiK::VST3Plugin::createInstance)		// function pointer called when this component should be instanciated
 END_FACTORY

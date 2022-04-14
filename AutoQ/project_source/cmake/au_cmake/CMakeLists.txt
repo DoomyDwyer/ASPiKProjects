@@ -234,7 +234,7 @@ set_target_properties(${cocoatarget} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INSTALL_PATH "$(USER_LIBRARY_DIR)/Bundles" XCODE_ATTRIBUTE_SKIP_INSTALL "Yes")
 
 # --- product name matches AU plugin target name
-set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_NAME ${EXP_SUBPROJECT_NAME_AU})
+set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_NAME ${PLUGIN_PROJECT_NAME})
 
 # --- save product name for later
 get_target_property(COCOAPRODUCT_NAME ${cocoatarget} XCODE_ATTRIBUTE_PRODUCT_NAME)
@@ -290,6 +290,10 @@ set_target_properties(${target} PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINA
 # Set AU file name
 #set_target_properties(${target} PROPERTIES OUTPUT_NAME ${PLUGIN_PROJECT_NAME})
 #message(STATUS "set_target_properties ---> OUTPUT_NAME is set to : " ${PLUGIN_PROJECT_NAME})
+set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_NAME ${PLUGIN_PROJECT_NAME})
+
+# --- save product name for later
+get_target_property(PRODUCT_NAME ${target} XCODE_ATTRIBUTE_PRODUCT_NAME)
 
 # --- add the exported symbol file
 if(IS_SYNTH_PLUGIN)
@@ -374,46 +378,46 @@ set_source_files_properties(${resource_sources} PROPERTIES MACOSX_PACKAGE_LOCATI
 # --- set folder/filter
 source_group(Resources FILES ${resource_sources})
 
-# --- info.pList file for target
-set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
-
-# --- need to edit this manually due to error with CMake placing returns in whitespaces in the formatted "Your Company : My Plugin" string...
-if(IS_SYNTH_PLUGIN)
-	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTSA)
-	string(REPLACE "AUFXPluginFactory" "AUSynthPluginFactory" INFOPLIST_FILE_GUTS ${INFOPLIST_FILE_GUTSA})
-else()
-	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTS)
-endif()
-
-string(LENGTH ${INFOPLIST_FILE_GUTS} TOTAL_GUTS_LEN)
-
-# --- get left half
-set(LEFT_CHUNK_TAG "<key>name</key>")
-string(LENGTH ${LEFT_CHUNK_TAG} LEFT_CHUNK_TAG_LEN)
-string(FIND ${INFOPLIST_FILE_GUTS} "<key>name</key>" LEFT_CHUNK_END)
-MATH(EXPR LEFT_CHUNK_POS "${LEFT_CHUNK_END} + ${LEFT_CHUNK_TAG_LEN}")
-string(SUBSTRING ${INFOPLIST_FILE_GUTS} 0 ${LEFT_CHUNK_POS} INFOPLIST_FILE_LEFT_CHUNK)
-
-# --- get right half
-string(FIND ${INFOPLIST_FILE_GUTS} "<key>sandboxSafe</key>" RIGHT_CHUNK_START)
-MATH(EXPR RIGHT_CHUNK_LEN "${TOTAL_GUTS_LEN} - ${RIGHT_CHUNK_START}")
-string(SUBSTRING ${INFOPLIST_FILE_GUTS} ${RIGHT_CHUNK_START} ${RIGHT_CHUNK_LEN} INFOPLIST_FILE_RIGHT_CHUNK)
-
-# --- form substring string
-string(CONCAT INFO_LIST_COMP_NAME "<string>" ${INFOPLIST_PI_VENDOR_COLON_NAME_CODE} "</string>")
-
-# --- form completed string
-string(CONCAT INFOPLIST_FILE_GUTS_MODIFIED ${INFOPLIST_FILE_LEFT_CHUNK} "\n      " ${INFO_LIST_COMP_NAME} "\n      " ${INFOPLIST_FILE_RIGHT_CHUNK})
-
-# --- update the file (destructive)
-file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS_MODIFIED})
+## --- info.pList file for target
+#set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist")
+#
+## --- need to edit this manually due to error with CMake placing returns in whitespaces in the formatted "Your Company : My Plugin" string...
+#if(IS_SYNTH_PLUGIN)
+#	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTSA)
+#	string(REPLACE "AUFXPluginFactory" "AUSynthPluginFactory" INFOPLIST_FILE_GUTS ${INFOPLIST_FILE_GUTSA})
+#else()
+#	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTS)
+#endif()
+#
+#string(LENGTH ${INFOPLIST_FILE_GUTS} TOTAL_GUTS_LEN)
+#
+## --- get left half
+#set(LEFT_CHUNK_TAG "<key>name</key>")
+#string(LENGTH ${LEFT_CHUNK_TAG} LEFT_CHUNK_TAG_LEN)
+#string(FIND ${INFOPLIST_FILE_GUTS} "<key>name</key>" LEFT_CHUNK_END)
+#MATH(EXPR LEFT_CHUNK_POS "${LEFT_CHUNK_END} + ${LEFT_CHUNK_TAG_LEN}")
+#string(SUBSTRING ${INFOPLIST_FILE_GUTS} 0 ${LEFT_CHUNK_POS} INFOPLIST_FILE_LEFT_CHUNK)
+#
+## --- get right half
+#string(FIND ${INFOPLIST_FILE_GUTS} "<key>sandboxSafe</key>" RIGHT_CHUNK_START)
+#MATH(EXPR RIGHT_CHUNK_LEN "${TOTAL_GUTS_LEN} - ${RIGHT_CHUNK_START}")
+#string(SUBSTRING ${INFOPLIST_FILE_GUTS} ${RIGHT_CHUNK_START} ${RIGHT_CHUNK_LEN} INFOPLIST_FILE_RIGHT_CHUNK)
+#
+## --- form substring string
+#string(CONCAT INFO_LIST_COMP_NAME "<string>" ${INFOPLIST_PI_VENDOR_COLON_NAME_CODE} "</string>")
+#
+## --- form completed string
+#string(CONCAT INFOPLIST_FILE_GUTS_MODIFIED ${INFOPLIST_FILE_LEFT_CHUNK} "\n      " ${INFO_LIST_COMP_NAME} "\n      " ${INFOPLIST_FILE_RIGHT_CHUNK})
+#
+## --- update the file (destructive)
+#file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS_MODIFIED})
 
 # --- this eliminates a warning that looks suspicious when debugging but is acutally not a problem
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${AU_BUNDLE_ID}")
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${AU_BUNDLE_ID}")
 
 # --- preprocessor defines (can NOT include spaces in any strings)
-set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=$(EXECUTABLE_NAME) PRODUCT_BUNDLE_IDENTIFIER=${AU_BUNDLE_ID} VENDOR_4CHAR_CODE=${4CHAR_AAX_MANUFACTURER_ID_PROPER} PI_4CHAR_CODE=${4CHAR_CODE_PROPER} AU_TYPE_CODE=${INFOPLIST_AU_TYPE_CODE}")
+set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESSOR_DEFINITIONS "EXECUTABLE_NAME=$(EXECUTABLE_NAME) PRODUCT_BUNDLE_IDENTIFIER=${AU_BUNDLE_ID} VENDOR_4CHAR_CODE=${4CHAR_AAX_MANUFACTURER_ID_PROPER} PI_4CHAR_CODE=${4CHAR_CODE_PROPER} AU_TYPE_CODE=${INFOPLIST_AU_TYPE_CODE} VENDOR_NAME=${CLEAN_VENDOR_NAME} VERSION_AU=${VERSION_AU}")
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 
 # --- info.pList file for cocoa GUI target
@@ -422,10 +426,10 @@ set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPRO
 set_target_properties(${cocoatarget} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_PREPROCESS "YES")
 
 # --- copy folders (.bundle and .component are directories, so use remove/copy directory)
-set(TARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${target}.component")
+set(TARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${PRODUCT_NAME}.component")
 set(COCOATARGET_PATH_DEBUG "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Debug/${COCOAPRODUCT_NAME}.bundle")
 
-set(TARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${target}.component")
+set(TARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${PRODUCT_NAME}.component")
 set(COCOATARGET_PATH_RELEASE "${CMAKE_BINARY_DIR}/${AU_PLUGIN_FOLDER}/Release/${COCOAPRODUCT_NAME}.bundle") 
 
 set(COCOA_IN_RSRSC_PATH_DEBUG ${TARGET_PATH_DEBUG}/Contents/Resources/${COCOAPRODUCT_NAME}.bundle)
@@ -436,7 +440,7 @@ if(XCODE)
 	add_custom_command(TARGET ${target} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory "$<$<CONFIG:Debug>:${COCOATARGET_PATH_DEBUG}>$<$<CONFIG:Release>:${COCOATARGET_PATH_RELEASE}>" "$<$<CONFIG:Debug>:${COCOA_IN_RSRSC_PATH_DEBUG}>$<$<CONFIG:Release>:${COCOA_IN_RSRSC_PATH_RELEASE}>")
 
 	# --- copy plugin into library folder
-	set(PLUGIN_FOLDER ~/Library/Audio/Plug-Ins/Components/${target}.component)
+	set(PLUGIN_FOLDER ~/Library/Audio/Plug-Ins/Components/${PRODUCT_NAME}.component)
 	add_custom_command(TARGET ${target} POST_BUILD COMMAND ${CMAKE_COMMAND} -E remove_directory ${PLUGIN_FOLDER})
 	add_custom_command(TARGET ${target} POST_BUILD COMMAND ${CMAKE_COMMAND} -E copy_directory "$<$<CONFIG:Debug>:${TARGET_PATH_DEBUG}>$<$<CONFIG:Release>:${TARGET_PATH_RELEASE}>" ${PLUGIN_FOLDER})
 endif()
