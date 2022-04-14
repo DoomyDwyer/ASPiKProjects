@@ -290,16 +290,27 @@ string(CONCAT PLUGIN_NAME_ASVAR "const char* kPluginName = \"" ${PLUGIN_NAME} "\
 string(CONCAT SHORT_PLUGIN_NAME_ASVAR "const char* kShortPluginName = \"" ${PLUGIN_NAME_SHORT} "\"")
 
 # --- GUID for VST3 and for creating unique name for Cocoa GUI (AU only)
-set(UUID_SEED 6ba7b810-9dad-11d1-80b4-00c04fd430c8)
-string(TIMESTAMP CONFIG_DATE)
-string(RANDOM a)
-string(CONCAT UUID_DIRT ${CONFIG_DATE} ${a})
-string(
-    UUID NEW_VST_UUID
-    NAMESPACE ${UUID_SEED}
-    NAME ${UUID_DIRT}
-    TYPE MD5
-)
+if(OVERWRITE_PLUGINDESC)
+	set(UUID_SEED 6ba7b810-9dad-11d1-80b4-00c04fd430c8)
+	string(TIMESTAMP CONFIG_DATE)
+	string(RANDOM a)
+	string(CONCAT UUID_DIRT ${CONFIG_DATE} ${a})
+	string(
+	    UUID NEW_VST_UUID
+	    NAMESPACE ${UUID_SEED}
+	    NAME ${UUID_DIRT}
+	    TYPE MD5
+	)
+	message(STATUS "Generated new GUI for Info.plist" ${NEW_VST_UUID})
+else()
+	file(READ "project_source/source/PluginKernel/plugindescription.h" PLUGINDESC_FILE_GUTS)
+	set(SEARCH_STRING "const char* kVSTFUID = \"{")
+	string(LENGTH ${SEARCH_STRING} SEARCH_STRING_LENGTH)
+	string(FIND "${PLUGINDESC_FILE_GUTS}" "${SEARCH_STRING}" SEARCH_STRING_START)
+	MATH(EXPR GUID_START "${SEARCH_STRING_START} + ${SEARCH_STRING_LENGTH}")
+	string(SUBSTRING "${PLUGINDESC_FILE_GUTS}" ${GUID_START} 36 NEW_VST_UUID)
+	message(STATUS "Extract GUI for Info.plist " ${NEW_VST_UUID})
+endif()
 
 string(REPLACE "-" "" CLEAN_UUID ${NEW_VST_UUID})
 string(TOUPPER ${CLEAN_UUID} CLEAN_UUID_UC)
