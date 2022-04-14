@@ -385,9 +385,32 @@ set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_INFOPLIST_FILE "${CMA
 if(IS_SYNTH_PLUGIN)
 	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTSA)
 	string(REPLACE "AUFXPluginFactory" "AUSynthPluginFactory" INFOPLIST_FILE_GUTS ${INFOPLIST_FILE_GUTSA})
-	# --- update the file (destructive)
-	file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS})
+else()
+	file(READ "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" INFOPLIST_FILE_GUTS)
 endif()
+
+string(LENGTH ${INFOPLIST_FILE_GUTS} TOTAL_GUTS_LEN)
+
+# --- get left half
+set(LEFT_CHUNK_TAG "<key>name</key>")
+string(LENGTH ${LEFT_CHUNK_TAG} LEFT_CHUNK_TAG_LEN)
+string(FIND ${INFOPLIST_FILE_GUTS} "<key>name</key>" LEFT_CHUNK_END)
+MATH(EXPR LEFT_CHUNK_POS "${LEFT_CHUNK_END} + ${LEFT_CHUNK_TAG_LEN}")
+string(SUBSTRING ${INFOPLIST_FILE_GUTS} 0 ${LEFT_CHUNK_POS} INFOPLIST_FILE_LEFT_CHUNK)
+
+# --- get right half
+string(FIND ${INFOPLIST_FILE_GUTS} "<key>sandboxSafe</key>" RIGHT_CHUNK_START)
+MATH(EXPR RIGHT_CHUNK_LEN "${TOTAL_GUTS_LEN} - ${RIGHT_CHUNK_START}")
+string(SUBSTRING ${INFOPLIST_FILE_GUTS} ${RIGHT_CHUNK_START} ${RIGHT_CHUNK_LEN} INFOPLIST_FILE_RIGHT_CHUNK)
+
+# --- form substring string
+string(CONCAT INFO_LIST_COMP_NAME "<string>" ${INFOPLIST_PI_VENDOR_COLON_NAME_CODE} "</string>")
+
+# --- form completed string
+string(CONCAT INFOPLIST_FILE_GUTS_MODIFIED ${INFOPLIST_FILE_LEFT_CHUNK} "\n      " ${INFO_LIST_COMP_NAME} "\n      " ${INFOPLIST_FILE_RIGHT_CHUNK})
+
+# --- update the file (destructive)
+file(WRITE "${CMAKE_CURRENT_LIST_DIR}/${MAC_ROOT}/Info.plist" ${INFOPLIST_FILE_GUTS_MODIFIED})
 
 # --- this eliminates a warning that looks suspicious when debugging but is acutally not a problem
 set_target_properties(${target} PROPERTIES XCODE_ATTRIBUTE_PRODUCT_BUNDLE_IDENTIFIER "${AU_BUNDLE_ID}")
