@@ -766,6 +766,56 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
+	// --- Preset: Proto Punk
+	preset = new PresetInfo(index++, "Proto Punk");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 0.730000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 0.950000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.520000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Proto Punk II
+	preset = new PresetInfo(index++, "Proto Punk II");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 0.350000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 0.950000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.520000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Squealer
+	preset = new PresetInfo(index++, "Squealer");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.520000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Blues Rock
+	preset = new PresetInfo(index++, "Blues Rock");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 0.915000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.520000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Metal
+	preset = new PresetInfo(index++, "Metal");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::drive, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::tone, 0.510000);
+	setPresetParameter(preset->presetParameters, controlID::level, 0.520000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
 
 	// **--0xA7FF--**
 

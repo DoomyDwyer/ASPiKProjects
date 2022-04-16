@@ -695,7 +695,7 @@ bool PluginCore::initPluginParameters()
 	PluginParameter* piParam = nullptr;
 
 	// --- continuous control: Delay
-	piParam = new PluginParameter(controlID::delayTime_mSec, "Delay", "mSec", controlVariableType::kDouble, 0.000000, 2000.000000, 250.000000, taper::kLinearTaper);
+	piParam = new PluginParameter(controlID::delayTime_mSec, "Delay", "mSec", controlVariableType::kDouble, 10.000000, 2000.000000, 250.000000, taper::kLinearTaper);
 	piParam->setParameterSmoothing(true);
 	piParam->setSmoothingTimeMsec(1500.00);
 	piParam->setBoundVariable(&delayTime_mSec, boundVariableType::kDouble);
@@ -832,6 +832,32 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::level_dB, -3.000000);
 	setPresetParameter(preset->presetParameters, controlID::delayType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_On, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Total Recall
+	preset = new PresetInfo(index++, "Total Recall");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::delayTime_mSec, 250.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayFeedback_Pct, 85.839996);
+	setPresetParameter(preset->presetParameters, controlID::mix, 0.750000);
+	setPresetParameter(preset->presetParameters, controlID::level_dB, -0.040001);
+	setPresetParameter(preset->presetParameters, controlID::delayType, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
+	// --- Preset: Metal Head
+	preset = new PresetInfo(index++, "Metal Head");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::delayTime_mSec, 10.000000);
+	setPresetParameter(preset->presetParameters, controlID::delayFeedback_Pct, 90.000000);
+	setPresetParameter(preset->presetParameters, controlID::mix, 0.840000);
+	setPresetParameter(preset->presetParameters, controlID::level_dB, -4.719997);
+	setPresetParameter(preset->presetParameters, controlID::delayType, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::emulateAnalog, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);

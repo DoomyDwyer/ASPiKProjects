@@ -807,6 +807,18 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
 	addPreset(preset);
 
+	// --- Preset: Wobbly Edge
+	preset = new PresetInfo(index++, "Wobbly Edge");
+	initPresetParameters(preset->presetParameters);
+	setPresetParameter(preset->presetParameters, controlID::lfoRate_Hz, 3.910000);
+	setPresetParameter(preset->presetParameters, controlID::lfoDepth_Pct, 62.110001);
+	setPresetParameter(preset->presetParameters, controlID::intensity_Pct, 51.840000);
+	setPresetParameter(preset->presetParameters, controlID::lfoWaveform, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::quadPhaseLFO, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	addPreset(preset);
+
 
 	// **--0xA7FF--**
 
