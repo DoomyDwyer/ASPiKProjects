@@ -50,4 +50,4 @@ If you encounter any issues running these plugins, either on Windows or MacOS, f
 
 ----------
 
-Are you interested in how these Plugins were designed? Read the two case studies concerning the [design of the sidechain processor in the Memento Ducking Delay](docs/Case Study - A Ducking Delay.pdf) and [how the kick switch and tooltips were built to enhance the user experience](docs/Case Study - An enhanced user experience.pdf).
+Are you interested in how these Plugins were designed? Read the two case studies concerning the [design of the sidechain processor in the Memento Ducking Delay](blob/main/docs/Case%20Study%20-%20A%20Ducking%20Delay.pdf) and [how the kick switch and tooltips were built to enhance the user experience](blob/main/docs/Case%20Study%20-%20An%20enhanced%20user%20experience.pdf).
