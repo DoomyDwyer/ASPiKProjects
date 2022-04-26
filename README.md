@@ -11,8 +11,8 @@ Download here: [https://github.com/DoomyDwyer/ASPiKProjects/releases](https://gi
 #### [User Guides](UserGuides/ "User Guides") available [here](UserGuides/ "User Guides"). ####
 
 ## Known Issues (with workarounds) ##
-- [Factory Presets in Cubase, Ableton Live & PreSonus Studio One](UserGuides/workaround_factory_presets.md)
-- [Signing and Notarization on MacOS](UserGuides/workaround_macos_notarization.md)
+- [Factory Presets in Cubase, Ableton Live & PreSonus Studio One](docs/workaround_factory_presets.md)
+- [Other gotchas, incl. various DAW idiosyncrasies](docs/gotchas.md)
 
 ## Pedals ##
 Current VST3 and Audio Units Plugins, available for Windows 64 (VST3 only) and MacOS (Intel x86_64 and Silicon arm64):
