@@ -14,6 +14,7 @@
 #define __pluginCore_h__
 
 #include "../../../../ASPiKCommon/dsp/customfxobjects.h"
+#include "../../../../ASPiKCommon/utils/observer.h"
 #include "fxobjects.h"
 #include "pluginbase.h"
 
@@ -36,7 +37,8 @@ enum controlID {
 	filterType = 15,
 	vuMeter = 16,
 	enableGainComp = 11,
-	fx_OnOff_Toggle = 7
+	fx_OnOff_Toggle = 7,
+	thresholdExceeded = 17
 };
 
 	// **--0x0F1F--**
@@ -61,7 +63,7 @@ PluginCore Operations:
 \version Revision : 1.0
 \date Date : 2018 / 09 / 7
 */
-class PluginCore : public PluginBase
+class PluginCore : public PluginBase, Observer
 {
 public:
     PluginCore();
@@ -142,6 +144,8 @@ protected:
 	AutoQEnvelopeFollower envFollowers[NUM_CHANNELS];
     int const FILTER_ENUM_OFFSET = 3;
     void updateParameters();
+    void update(Observable* observable) override;
+    void registerEnvelopeFollowerObservers();
 
 private:
 	//  **--0x07FD--**
@@ -179,6 +183,7 @@ private:
 
 	// --- Meter Plugin Variables
 	float vuMeter = 0.f;
+	float thresholdExceeded = 0.f;
 
 	// **--0x1A7F--**
     // --- end member variables

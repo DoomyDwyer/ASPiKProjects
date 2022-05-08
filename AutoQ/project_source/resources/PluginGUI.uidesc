@@ -4613,6 +4613,19 @@
         SuQmCC
       </data>
 		</bitmap>
+		<bitmap name="led_red" path="D:\Pictures\Doomsville\led_red.png">
+			<data encoding="base64">
+        iVBORw0KGgoAAAANSUhEUgAAAAkAAAARCAYAAAAPFIbmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQ
+        UAAAAJcEhZcwAADE0AAAxNAdLOrU4AAAG6SURBVChTlVHPaxNBFP7ezGS2KTY2aYhQWmkDUnvqQfRUyK2I
+        JxHFf0DwXDx47NlD6R/QQ/8DvQbxIIgglgqeRA+F0kApyRpMmp3d7cxO32yKePXBx5v93sf3fizhn7gPLD
+        Cx5IHeIRBf0yhF94CbEfBGAI9ZIJgsOL+7BF5/BUYyiO4ABwp4zqIqExHnGc4bjPYJ8JaetFptkvKHFEIo
+        xp84RpokoUVRMNjtrsisbV5mGTFFUmuwkII9i8IopIEmdYAbbH/MzDyDn9PgmYLTsMItJffMbwMnTD5i+F
+        BkOBbkDnj5EfgeLMvYLJfEC0abEZz3PwHfQu3/4r1SO1+iqHektT9UqvdBiJ3r0vSYn2u13brW27wJUZ5D
+        WAtvrR84t/fAuVfkOx31q9+PZ7yvScUnTVPQeIzi4gLWubE05pboVyqrUbNZU8vL0Ovr0GtrEPU6ZBRBST
+        k322isCorjiRgOEwwGKM7O4M/Pwd8gY6CsTYo0HZYz/Wy1ulWiLf4rxAXQZAKf5z7lfVasfVheuOHcs8yY
+        LowxNstA1poM6FatfRrqf48Zore4uDCbJEuiKE7nR6PfUxa4AgLFqydb5FFVAAAAAElFTkSuQmCC
+      </data>
+		</bitmap>
 	</bitmaps>
 	<control-tags>
 		<control-tag name="controlID::fx_On" tag="0" />
@@ -4630,6 +4643,7 @@
 		<control-tag name="controlID::vuMeter" tag="16" />
 		<control-tag name="controlID::enableGainComp" tag="11" />
 		<control-tag name="controlID::fx_OnOff_Toggle" tag="7" />
+		<control-tag name="controlID::thresholdExceeded" tag="17" />
 		<control-tag name="XY_TRACKPAD" tag="131073" />
 		<control-tag name="VECTOR_JOYSTICK" tag="131074" />
 		<control-tag name="PRESET_NAME" tag="131075" />
@@ -4664,7 +4678,7 @@
 		</gradient>
 	</gradients>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="KickSwitchViewContainer" origin="0, 0" size="53 ,158" transparent="true" sub-controller="KickSwitchController">
-		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="18, 0" size="17, 17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
+		<view background-offset="0, 0" bitmap="red_led_large" class="COnOffButton" control-tag="controlID::fx_On" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="18 ,0" size="17 ,17" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
 		<view background-offset="0, 0" bitmap="Kick_Switch_trace_2_states" class="CKickButton" control-tag="controlID::fx_OnOff_Toggle" default-value="0" max-value="1" min-value="0" mouse-enabled="true" origin="0, 105" size="53, 53" transparent="false" wheel-inc-value="0.1" height-of-one-image="53" custom-view-name="CustomKickButtonDU" />
 	</template>
 	<template background-color="~ BlackCColor" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="VariableToolTipKnobViewContainer" origin="0, 0" size="482 ,169" transparent="true" sub-controller="VariableToolTipKnobController">
@@ -4673,7 +4687,7 @@
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="210 ,30" size="64, 64" rafxtemplate-type="knobgroup" template="CutoffKnobGroup" transparent="true" sub-controller="" />
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="270 ,30" size="64, 64" rafxtemplate-type="knobgroup" template="PeakKnobGroup" transparent="true" sub-controller="" />
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="330 ,30" size="64, 64" rafxtemplate-type="knobgroup" template="GainKnobGroup" transparent="true" sub-controller="" />
-		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="150 ,105" size="64, 64" rafxtemplate-type="knobgroup" template="ThresholdKnobGroup" transparent="true" sub-controller="" />
+		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="150 ,105" size="64 ,64" rafxtemplate-type="knobgroup" template="ThresholdKnobGroup" transparent="true" sub-controller="" />
 		<view background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" origin="270 ,105" size="64, 64" rafxtemplate-type="knobgroup" template="SensitivityKnobGroup" transparent="true" sub-controller="" />
 	</template>
 	<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="AttackKnobGroup" origin="0, 0" size="64 ,80" transparent="true" sub-controller="">
@@ -4696,9 +4710,10 @@
 		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::filterOutputGain_dB" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="0, 0" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextEdit" control-tag="controlID::filterOutputGain_dB" custom-view-name="UnitsEdit" default-value="0" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" origin="0, 65" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="1234.56" tooltip="" transparent="true" value-precision="2" wheel-inc-value="0.1" />
 	</template>
-	<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="ThresholdKnobGroup" origin="0, 0" size="64 ,80" transparent="true" sub-controller="">
-		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::threshold_dB" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="0, 0" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
+	<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="ThresholdKnobGroup" origin="0, 0" size="64 ,64" transparent="true" sub-controller="">
+		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::threshold_dB" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="0, 0" size="64 ,64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />
 		<view back-color="~ BlackCColor" background-offset="0, 0" class="CTextEdit" control-tag="controlID::threshold_dB" custom-view-name="UnitsEdit" default-value="0" font="~ NormalFontSmaller" font-antialias="true" font-color="~ WhiteCColor" frame-color="~ BlackCColor" frame-width="1" immediate-text-change="false" max-value="1" min-value="0" mouse-enabled="true" origin="0, 65" round-rect-radius="6" shadow-color="~ RedCColor" size="75, 15" style-3D-in="false" style-3D-out="false" style-no-draw="false" style-no-frame="true" style-no-text="false" style-round-rect="false" style-shadow-text="false" sub-controller="" text-alignment="" text-inset="0, 0" title="1234.56" tooltip="" transparent="true" value-precision="2" wheel-inc-value="0.1" />
+		<view background-offset="0, 0" bitmap="led_red" class="COnOffButton" control-tag="controlID::thresholdExceeded" default-value="0" max-value="1" min-value="0" mouse-enabled="false" origin="50, 5" size="9, 9" transparent="false" wheel-inc-value="0.1" height-of-one-image="17" custom-view-name="" />
 	</template>
 	<template background-color="" background-color-draw-style="filled and stroked" bitmap="" class="CViewContainer" custom-view-name="" mouse-enabled="true" name="SensitivityKnobGroup" origin="0, 0" size="64 ,80" transparent="true" sub-controller="">
 		<view angle-range="270" angle-start="135" background-offset="0, 0" bitmap="Black_pedal_small" circle-drawing="false" class="CAnimKnob" control-tag="controlID::sensitivity" corona-color="~ WhiteCColor" corona-dash-dot="false" corona-drawing="false" corona-from-center="false" corona-inset="0" corona-inverted="false" corona-outline="false" custom-view-name="" default-value="0.5" handle-color="~ WhiteCColor" handle-line-width="1" handle-shadow-color="~ GreyCColor" height-of-one-image="64" max-value="1" min-value="0" mouse-enabled="true" origin="0, 0" size="64, 64" sub-controller="" sub-pixmaps="31" tooltip="" transparent="false" value-inset="0" wheel-inc-value="0.1" zoom-factor="10.0" />

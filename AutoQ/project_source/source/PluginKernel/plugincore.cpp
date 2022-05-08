@@ -51,6 +51,9 @@ PluginCore::PluginCore()
 
     // --- create the presets
     initPluginPresets();
+
+    // Register this plugin as an observer to the EnvelopeFollowers
+    registerEnvelopeFollowerObservers();
 }
 
 void PluginCore::updateParameters()
@@ -76,6 +79,25 @@ void PluginCore::updateParameters()
     for (auto& envFollower : envFollowers)
     {
 	    envFollower.setParameters(params);
+    }
+}
+
+void PluginCore::update(Observable* observable)
+{
+    auto* subject = dynamic_cast<BooleanStateChangeManager*>(observable);
+
+    // --- push back knob onto list
+    if (subject)
+    {
+        thresholdExceeded = subject->getState() ? 1 : 0;
+    }
+}
+
+void PluginCore::registerEnvelopeFollowerObservers()
+{
+    for (auto& envFollower : envFollowers)
+    {
+        envFollower.getThresholdStateChangeManager()->attach(this);
     }
 }
 
@@ -234,6 +256,15 @@ bool PluginCore::processAudioFrame(ProcessFrameInfo& processFrameInfo)
 	    {
 		    // Bypass
 		    processFrameInfo.audioOutputFrame[i] = processFrameInfo.audioInputFrame[i];
+            // Ensure Envelope Follower Threshold Exceeded LED is always off when bypass is activated
+            if (isEqual(thresholdExceeded, 1.0f))
+            {
+                thresholdExceeded = 0;
+                for (auto& envFollower : envFollowers)
+                {
+                    envFollower.getThresholdStateChangeManager()->setState(false);
+                }
+            }
 	    }
     }
 
@@ -774,6 +805,11 @@ bool PluginCore::initPluginParameters()
 	piParam->setIsDiscreteSwitch(true);
 	addPluginParameter(piParam);
 
+	// --- meter control: Threshold Exceeded
+	piParam = new PluginParameter(controlID::thresholdExceeded, "Threshold Exceeded", 10.00, 10.00, ENVELOPE_DETECT_MODE_RMS, meterCal::kLinearMeter);
+	piParam->setBoundVariable(&thresholdExceeded, boundVariableType::kFloat);
+	addPluginParameter(piParam);
+
 	// --- Aux Attributes
 	AuxParameterAttribute auxAttribute;
 
@@ -853,6 +889,11 @@ bool PluginCore::initPluginParameters()
 	auxAttribute.setUintAttribute(1610612736);
 	setParamAuxAttribute(controlID::fx_OnOff_Toggle, auxAttribute);
 
+	// --- controlID::thresholdExceeded
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(134217728);
+	setParamAuxAttribute(controlID::thresholdExceeded, auxAttribute);
+
 
 	// **--0xEDA5--**
 
@@ -920,7 +961,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 1.000000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Auto-Wah II
@@ -939,7 +980,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 1.000000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Funky Punky
@@ -957,8 +998,8 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::selfOscillate, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::enableNLP, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::filterType, -0.000000);
-	setPresetParameter(preset->presetParameters, controlID::enableGainComp, 0.000000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::enableGainComp, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 
