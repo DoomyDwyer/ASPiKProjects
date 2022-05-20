@@ -38,10 +38,10 @@
 #pragma once
 
 // Version with build number (example "1.0.3.342")
-#define FULL_VERSION_STR "2.0.0"
+#define FULL_VERSION_STR "2.1.0"
 
 // Version without build number (example "1.0.3")
-#define VERSION_STR "2.0.0"
+#define VERSION_STR "2.1.0"
 
 #define stringOriginalFilename	"Reliq.vst3"
 #if SMTG_PLATFORM_64

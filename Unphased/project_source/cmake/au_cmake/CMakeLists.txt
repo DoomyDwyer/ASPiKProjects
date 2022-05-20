@@ -24,6 +24,7 @@ set(AU_SOURCE_ROOT "${SOURCE_ROOT}/au_source")
 set(COCOA_SOURCE_ROOT "${SOURCE_ROOT}/au_source/cocoa_ui")
 set(COMMON_OBJECTS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/dsp")
 set(COMMON_VSTGUI_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/gui")
+set(COMMON_UTILS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/utils")
 
 # ---------------------------------------------------------------------------------
 #
@@ -55,7 +56,19 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
-	${COMMON_OBJECTS_SOURCE_ROOT}/utilities.h
+)
+
+# ---------------------------------------------------------------------------------
+#
+# ---  Utilities
+#
+# ---------------------------------------------------------------------------------
+set(utility_sources
+	${COMMON_UTILS_SOURCE_ROOT}/observer.h
+	${COMMON_UTILS_SOURCE_ROOT}/observer.cpp
+	${COMMON_UTILS_SOURCE_ROOT}/observable.h
+	${COMMON_UTILS_SOURCE_ROOT}/observable.cpp
+	${COMMON_UTILS_SOURCE_ROOT}/utilities.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -207,6 +220,8 @@ set(vstgui_sources
 source_group(PluginKernel FILES ${kernel_sources})
 source_group(PluginObjects FILES ${plugin_object_sources})
 source_group(CustomVSTGUI FILES ${custom_vstgui_sources})
+source_group(OtherSources FILES ${custom_sources})
+source_group(Utilities FILES ${utility_sources})
 source_group(AUCore FILES ${au_core_sources})
 source_group(vstgui4 FILES ${vstgui_sources})
 source_group(AUSDK\\AUBase FILES ${aubase_sources})
@@ -279,9 +294,9 @@ endif()
 
 # ---  add the plugin source
 if(INCLUDE_FX_OBJECTS)
-	add_library(${target} MODULE ${kernel_sources} ${plugin_object_sources} ${au_core_sources} ${vstgui_sources} ${custom_vstgui_sources} ${aubase_sources} ${auinstbase_sources} ${auotherbase_sources} ${auutility_sources} ${aupublicutility_sources})
+	add_library(${target} MODULE ${kernel_sources} ${plugin_object_sources} ${au_core_sources} ${vstgui_sources} ${custom_vstgui_sources} ${utility_sources} ${aubase_sources} ${auinstbase_sources} ${auotherbase_sources} ${auutility_sources} ${aupublicutility_sources})
 else()
-	add_library(${target} MODULE ${kernel_sources} ${au_core_sources} ${vstgui_sources} ${custom_vstgui_sources} ${aubase_sources} ${auinstbase_sources} ${auotherbase_sources} ${auutility_sources} ${aupublicutility_sources})
+	add_library(${target} MODULE ${kernel_sources} ${au_core_sources} ${vstgui_sources} ${custom_vstgui_sources} ${utility_sources} ${aubase_sources} ${auinstbase_sources} ${auotherbase_sources} ${auutility_sources} ${aupublicutility_sources})
 endif()
 
 # --- output folder for the plugin
@@ -362,6 +377,10 @@ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${OBJECT
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${AU_SOURCE_ROOT})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${VSTGUI_SOURCE_ROOT})
 
+# Custom directories
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_OBJECTS_SOURCE_ROOT})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_VSTGUI_SOURCE_ROOT})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_UTILS_SOURCE_ROOT})
 
 # ---------------------------------------------------------------------------------
 #

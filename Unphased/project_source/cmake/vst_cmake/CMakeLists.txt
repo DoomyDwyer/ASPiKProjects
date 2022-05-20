@@ -22,6 +22,7 @@ set(VST_SOURCE_ROOT "${SOURCE_ROOT}/vst_source")
 set(FFTW_SOURCE_ROOT "${SOURCE_ROOT}/FFTW")
 set(COMMON_OBJECTS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/dsp")
 set(COMMON_VSTGUI_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/gui")
+set(COMMON_UTILS_SOURCE_ROOT "${COMMON_SOURCE_ROOT}/utils")
 
 # ---------------------------------------------------------------------------------
 #
@@ -53,7 +54,6 @@ set(plugin_object_sources
 	${OBJECTS_SOURCE_ROOT}/fxobjects.cpp
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.h
 	${COMMON_OBJECTS_SOURCE_ROOT}/customfxobjects.cpp
-	${COMMON_OBJECTS_SOURCE_ROOT}/utilities.h
 )
 
 # ---------------------------------------------------------------------------------
@@ -97,6 +97,20 @@ set(custom_vstgui_sources
 
 # ---------------------------------------------------------------------------------
 #
+# ---  Utilities
+#
+# ---------------------------------------------------------------------------------
+set(utility_sources
+	${COMMON_UTILS_SOURCE_ROOT}/observer.h
+	${COMMON_UTILS_SOURCE_ROOT}/observer.cpp
+	${COMMON_UTILS_SOURCE_ROOT}/observable.h
+	${COMMON_UTILS_SOURCE_ROOT}/observable.cpp
+	${COMMON_UTILS_SOURCE_ROOT}/utilities.h
+)
+
+
+# ---------------------------------------------------------------------------------
+#
 # ---  Custom Source files
 #
 # ---------------------------------------------------------------------------------
@@ -133,9 +147,9 @@ endif()
 
 # --- add the plugin source and link to lib, etc... smtg_add_vst3plugin does all the setup
 if(INCLUDE_FX_OBJECTS)
-	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${custom_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${plugin_object_sources}  ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${utility_sources} ${custom_sources})
 else()
-	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${custom_sources})
+	smtg_add_vst3plugin(${target} PACKAGE_NAME ${PLUGIN_PROJECT_NAME} SOURCES_LIST ${kernel_sources} ${vst_core_sources} ${custom_vstgui_sources} ${vstsdk_sources} ${utility_sources} ${custom_sources})
 endif()
 
 # --- VST3 SDK 3.7.2 addition
@@ -152,6 +166,11 @@ target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${KERNEL
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${OBJECTS_SOURCE_ROOT})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${VSTGUI_SOURCE_ROOT})
 target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${VST_SOURCE_ROOT})
+
+# Custom directories
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_OBJECTS_SOURCE_ROOT})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_VSTGUI_SOURCE_ROOT})
+target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/${COMMON_UTILS_SOURCE_ROOT})
 
 # --- setup link lib
 if(LINK_FFTW)
@@ -274,6 +293,8 @@ endif()
 source_group(PluginKernel FILES ${kernel_sources})
 source_group(PluginObjects FILES ${plugin_object_sources})
 source_group(CustomVSTGUI FILES ${custom_vstgui_sources})
+source_group(OtherSources FILES ${custom_sources})
+source_group(Utilities FILES ${utility_sources})
 source_group(VST3Core FILES ${vst_core_sources})
 source_group(VST3SDK FILES ${vstsdk_sources})
 
