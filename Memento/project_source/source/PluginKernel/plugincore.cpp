@@ -52,6 +52,9 @@ PluginCore::PluginCore()
 
     // --- create the presets
     initPluginPresets();
+
+    // Register this plugin as an observer to the EnvelopeFollowers
+    registerSideChainSignalProcessorObservers();
 }
 
 void PluginCore::updateParameters()
@@ -91,6 +94,22 @@ void PluginCore::updateParameters()
 
     // ---set them
     stereoDelay.setParameters(params);
+}
+
+void PluginCore::update(Observable* observable)
+{
+    auto* subject = dynamic_cast<BooleanStateChangeManager*>(observable);
+
+    // --- push back knob onto list
+    if (subject)
+    {
+        thresholdExceeded = subject->getState() ? 1 : 0;
+    }
+}
+
+void PluginCore::registerSideChainSignalProcessorObservers()
+{
+    sideChainSignalProcessor.getThresholdStateChangeManager()->attach(this);
 }
 
 /**
@@ -806,6 +825,11 @@ bool PluginCore::initPluginParameters()
 	piParam->setIsDiscreteSwitch(true);
 	addPluginParameter(piParam);
 
+	// --- meter control: LED
+	piParam = new PluginParameter(controlID::thresholdExceeded, "LED", 10.00, 10.00, ENVELOPE_DETECT_MODE_RMS, meterCal::kLinearMeter);
+	piParam->setBoundVariable(&thresholdExceeded, boundVariableType::kFloat);
+	addPluginParameter(piParam);
+
 	// --- Aux Attributes
 	AuxParameterAttribute auxAttribute;
 
@@ -885,6 +909,11 @@ bool PluginCore::initPluginParameters()
 	auxAttribute.setUintAttribute(1610612736);
 	setParamAuxAttribute(controlID::fx_OnOff_Toggle, auxAttribute);
 
+	// --- controlID::thresholdExceeded
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(134217728);
+	setParamAuxAttribute(controlID::thresholdExceeded, auxAttribute);
+
 
 	// **--0xEDA5--**
 
@@ -955,7 +984,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::wetGainMax_dB, 0.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Overdriven guitar 120bpm
@@ -975,7 +1004,7 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::wetGainMax_dB, 0.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
-	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
 	addPreset(preset);
 
 	// --- Preset: Psychedelic swell 120bpm

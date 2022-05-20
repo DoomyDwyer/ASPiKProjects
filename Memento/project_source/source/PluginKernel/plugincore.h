@@ -14,6 +14,7 @@
 #define __pluginCore_h__
 
 #include "../../../../ASPiKCommon/dsp/customfxobjects.h"
+#include "../../../../ASPiKCommon/utils/observer.h"
 #include "pluginbase.h"
 
 // **--0x7F1F--**
@@ -35,7 +36,8 @@ enum controlID {
 	wetGainMax_dB = 11,
 	fx_On = 12,
 	sensitivity = 13,
-	fx_OnOff_Toggle = 14
+	fx_OnOff_Toggle = 14,
+	thresholdExceeded = 15
 };
 
 	// **--0x0F1F--**
@@ -60,7 +62,7 @@ PluginCore Operations:
 \version Revision : 1.0
 \date Date : 2018 / 09 / 7
 */
-class PluginCore : public PluginBase
+class PluginCore : public PluginBase, Observer
 {
 public:
     PluginCore();
@@ -152,6 +154,8 @@ protected:
     DigitalDelay<EnvelopeDetectorSideChainSignalProcessor<EnvelopeDetectorSideChainSignalProcessorParameters>,
                  EnvelopeDetectorSideChainSignalProcessorParameters> stereoDelay{sideChainSignalProcessor};
     void updateParameters();
+    void update(Observable* observable) override;
+    void registerSideChainSignalProcessorObservers();
 
 private:
     //  **--0x07FD--**
@@ -181,6 +185,9 @@ private:
 
 	int fx_OnOff_Toggle = 0;
 	enum class fx_OnOff_ToggleEnum { SWITCH_OFF,SWITCH_ON };	// to compare: if(compareEnumToInt(fx_OnOff_ToggleEnum::SWITCH_OFF, fx_OnOff_Toggle)) etc... 
+
+	// --- Meter Plugin Variables
+	float thresholdExceeded = 0.f;
 
 	// **--0x1A7F--**
     // --- end member variables

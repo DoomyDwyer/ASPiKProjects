@@ -12,8 +12,8 @@
 			<key>manufacturer</key>
 			<string>VENDOR_4CHAR_CODE</string>
 			<key>name</key>
-      <string>Doomsville Soundscapes: Memento</string>
-      <key>sandboxSafe</key>
+			<string>VENDOR_NAME: EXECUTABLE_NAME</string>
+			<key>sandboxSafe</key>
 			<true/>
 			<key>subtype</key>
 			<string>PI_4CHAR_CODE</string>
