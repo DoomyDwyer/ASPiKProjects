@@ -50,4 +50,8 @@ If you encounter any issues running these plugins, either on Windows or MacOS, f
 
 ----------
 
-Are you interested in how these Plugins were designed? Read the two case studies concerning the [design of the sidechain processor in the Memento Ducking Delay](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/docs/Case%20Study%20-%20A%20Ducking%20Delay.pdf) and [how the kick switch and tooltips were built to enhance the user experience](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/docs/Case%20Study%20-%20An%20enhanced%20user%20experience.pdf).
+Are you interested in how these Plugins were designed? Read the case studies concerning 
+
+- [The design of the sidechain processor in the Memento Ducking Delay](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/docs/Case%20Study%20-%20A%20Ducking%20Delay.pdf)
+- [How the kick switch and tooltips were built to enhance the user experience](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/docs/Case%20Study%20-%20An%20enhanced%20user%20experience.pdf)
+- [Exposing internal plugin processing details to the UI](https://github.com/DoomyDwyer/ASPiKProjects/blob/main/docs/Case%20Study%20-%20Exposing%20internal%20details%20to%20the%20UI.pdf)
