@@ -61,3 +61,5 @@ if [[ "$configuration" == "Release" ]] then
   ./notarize.sh ${releasesdir}Doomsville_AU_MacOS_x86_64_$version.zip
   ./notarize.sh ${releasesdir}Doomsville_AU_MacOS_arm64_$version.zip
 fi
+
+echo "\n*** BUILD COMPLETED $(date) ***"
