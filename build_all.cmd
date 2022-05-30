@@ -26,3 +26,6 @@ if "%configuration%" == "Release" (
     )
   )
 )
+
+echo.
+echo *** BUILD COMPLETED %date% %time% ***
