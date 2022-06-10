@@ -1,4 +1,5 @@
 AutoQ;AUTQ
+Gunslinger;GUNS
 Howler;HOWL
 Memento;MEMO
 Reliq;RELQ
