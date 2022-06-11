@@ -15,9 +15,9 @@
 #define AU_COCOA_VIEW_NAME AUCocoaView_F7FE70FE4F474C7A898BEC0F0644AC9C
 
 // --- BUNDLE IDs (MacOS Only)
-const char* kAAXBundleID = "doomsvillesoundscapes.aax.Gunslinger.bundleID";
-const char* kAUBundleID = "doomsvillesoundscapes.au.Gunslinger.bundleID";
-const char* kVST3BundleID = "doomsvillesoundscapes.vst3.Gunslinger.bundleID";
+const char* kAAXBundleID = "doomsvillesoundscapes.aax.gunslinger.bundleID";
+const char* kAUBundleID = "doomsvillesoundscapes.au.gunslinger.bundleID";
+const char* kVST3BundleID = "doomsvillesoundscapes.vst3.gunslinger.bundleID";
 
 // --- Plugin Names
 const char* kPluginName = "Gunslinger";
