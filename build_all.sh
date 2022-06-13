@@ -29,13 +29,13 @@ do
   dir=${arr[1]}
   pluginsubtype=${arr[2]}
   pushd $dir/mac_build
-  ../../build_deploy.sh $pluginsubtype $configuration
   ../../build_deploy.sh $pluginsubtype $configuration x86_64 -xcconfig ../../x86_64_xcodebuild_config.txt
+  ../../build_deploy.sh $pluginsubtype $configuration
   popd
 done
 
 if [[ -d $vst3_plugins_dir/$x86_64_dir ]] then
-  # Move _x86_64 to x86_64 (so Reaper loads the arm64 versions last
+  # Move x86_64 to _x86_64 (so Reaper loads the arm64 versions last
   sudo mv $vst3_plugins_dir/$x86_64_dir $vst3_plugins_dir/_$x86_64_dir 
 fi
 
