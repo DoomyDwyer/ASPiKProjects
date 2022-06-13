@@ -3254,19 +3254,19 @@ protected:
 
 
 /**
-\enum modDelaylgorithm
+\enum modDelayAlgorithm
 \ingroup Constants-Enums
 \brief
 Use this strongly typed enum to easily set modulated delay algorithm.
 
-- enum class modDelaylgorithm { kFlanger, kChorus, kVibrato };
+- enum class modDelayAlgorithm { kFlanger, kChorus, kVibrato };
 
 \author Will Pirkle http://www.willpirkle.com
 \remark This object is included in Designing Audio Effects Plugins in C++ 2nd Ed. by Will Pirkle
 \version Revision : 1.0
 \date Date : 2018 / 09 / 7
 */
-enum class modDelaylgorithm { kFlanger, kChorus, kVibrato };
+enum class modDelayAlgorithm { kFlanger, kChorus, kVibrato };
 
 
 /**
@@ -3297,7 +3297,7 @@ struct ModulatedDelayParameters
 	}
 
 	// --- individual parameters
-	modDelaylgorithm algorithm = modDelaylgorithm::kFlanger; ///< mod delay algorithm
+	modDelayAlgorithm algorithm = modDelayAlgorithm::kFlanger; ///< mod delay algorithm
 	double lfoRate_Hz = 0.0;	///< mod delay LFO rate in Hz
 	double lfoDepth_Pct = 0.0;	///< mod delay LFO depth in %
 	double feedback_Pct = 0.0;	///< feedback in %
@@ -3379,14 +3379,14 @@ public:
 		double maxDepth_mSec = 0.0;
 
 		// --- set delay times, wet/dry and feedback
-		if (parameters.algorithm == modDelaylgorithm::kFlanger)
+		if (parameters.algorithm == modDelayAlgorithm::kFlanger)
 		{
 			minDelay_mSec = 0.1;
 			maxDepth_mSec = 7.0;
 			params.wetLevel_dB = -3.0;
 			params.dryLevel_dB = -3.0;
 		}
-		if (parameters.algorithm == modDelaylgorithm::kChorus)
+		if (parameters.algorithm == modDelayAlgorithm::kChorus)
 		{
 			minDelay_mSec = 10.0;
 			maxDepth_mSec = 30.0;
@@ -3394,7 +3394,7 @@ public:
 			params.dryLevel_dB = -0.0;
 			params.feedback_Pct = 0.0;
 		}
-		if (parameters.algorithm == modDelaylgorithm::kVibrato)
+		if (parameters.algorithm == modDelayAlgorithm::kVibrato)
 		{
 			minDelay_mSec = 0.0;
 			maxDepth_mSec = 7.0;
@@ -3409,7 +3409,7 @@ public:
 		double modulationMax = minDelay_mSec + maxDepth_mSec;
 
 		// --- flanger - unipolar
-		if (parameters.algorithm == modDelaylgorithm::kFlanger)
+		if (parameters.algorithm == modDelayAlgorithm::kFlanger)
 			params.leftDelay_mSec = doUnipolarModulationFromMin(bipolarToUnipolar(depth * lfoOutput.normalOutput),
 															     modulationMin, modulationMax);
 		else
@@ -3443,7 +3443,7 @@ public:
 
 		OscillatorParameters lfoParams = lfo.getParameters();
 		lfoParams.frequency_Hz = parameters.lfoRate_Hz;
-		if (parameters.algorithm == modDelaylgorithm::kVibrato)
+		if (parameters.algorithm == modDelayAlgorithm::kVibrato)
 			lfoParams.waveform = generatorWaveform::kSin;
 		else
 			lfoParams.waveform = generatorWaveform::kTriangle;

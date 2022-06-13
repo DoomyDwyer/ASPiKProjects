@@ -825,8 +825,8 @@ bool PluginCore::initPluginParameters()
 	piParam->setIsDiscreteSwitch(true);
 	addPluginParameter(piParam);
 
-	// --- meter control: LED
-	piParam = new PluginParameter(controlID::thresholdExceeded, "LED", 10.00, 10.00, ENVELOPE_DETECT_MODE_RMS, meterCal::kLinearMeter);
+	// --- meter control: Threshold Exceeded
+	piParam = new PluginParameter(controlID::thresholdExceeded, "Threshold Exceeded", 10.00, 10.00, ENVELOPE_DETECT_MODE_RMS, meterCal::kLinearMeter);
 	piParam->setBoundVariable(&thresholdExceeded, boundVariableType::kFloat);
 	addPluginParameter(piParam);
 
