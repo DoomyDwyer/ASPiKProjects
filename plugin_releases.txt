@@ -1,6 +1,7 @@
 AutoQ;AUTQ
 Gunslinger;GUNS
 Howler;HOWL
+JetBoy;JBOY
 Memento;MEMO
 Reliq;RELQ
 Unphased;FAZE
