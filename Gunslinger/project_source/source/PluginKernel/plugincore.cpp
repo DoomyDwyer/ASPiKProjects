@@ -58,7 +58,7 @@ void PluginCore::updateParameters() {
     params.lfoDepth_Pct = lfoDepth_Pct;
     params.lfoRate_Hz = lfoRate_Hz;
     params.feedback_Pct = feedback_Pct;
-    params.algorithm = modDelaylgorithm::kVibrato;
+    params.algorithm = modDelayAlgorithm::kVibrato;
 
     vibrato.setParameters(params);
 }
