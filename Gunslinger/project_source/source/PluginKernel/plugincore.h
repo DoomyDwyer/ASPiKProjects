@@ -145,7 +145,7 @@ public:
 	// --- END USER VARIABLES AND FUNCTIONS -------------------------------------- //
 
 protected:
-    Vibrato vibrato;
+    SimpleVibrato vibrato;
     void updateParameters();
 
 private:
