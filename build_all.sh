@@ -36,7 +36,7 @@ done
 
 if [[ -d $vst3_plugins_dir/$x86_64_dir ]] then
   # Move x86_64 to _x86_64 (so Reaper loads the arm64 versions last
-  sudo mv $vst3_plugins_dir/$x86_64_dir $vst3_plugins_dir/_$x86_64_dir 
+  sudo mv $vst3_plugins_dir/$x86_64_dir $vst3_plugins_dir/_$x86_64_dir
 fi
 
 # Only create zip file for Release builds
