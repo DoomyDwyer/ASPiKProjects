@@ -1,4 +1,5 @@
 AutoQ;AUTQ
+ChoirBoy;CBOY
 Gunslinger;GUNS
 Howler;HOWL
 JetBoy;JBOY
