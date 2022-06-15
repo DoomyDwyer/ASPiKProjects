@@ -80,7 +80,7 @@ bool PluginCore::reset(ResetInfo& resetInfo)
     audioProcDescriptor.sampleRate = resetInfo.sampleRate;
     audioProcDescriptor.bitDepth = resetInfo.bitDepth;
 
-    // ---reset the vibrato, with delay & lfo
+    // ---reset the flanger, with delay & lfo
     flanger.reset(resetInfo.sampleRate);
 
     // --- other reset inits
