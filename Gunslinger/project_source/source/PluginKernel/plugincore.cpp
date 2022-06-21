@@ -54,11 +54,11 @@ PluginCore::PluginCore()
 }
 
 void PluginCore::updateParameters() {
-    ModulatedDelayParameters params = vibrato.getParameters();
+    TimeModulatedDelayParameters params = vibrato.getParameters();
     params.lfoDepth_Pct = lfoDepth_Pct;
     params.lfoRate_Hz = lfoRate_Hz;
     params.feedback_Pct = feedback_Pct;
-    params.algorithm = modDelayAlgorithm::kVibrato;
+    params.algorithm = timeModulatedDelayAlgorithm::kVibrato;
 
     vibrato.setParameters(params);
 }

@@ -149,6 +149,8 @@ protected:
     void updateParameters();
 
 private:
+	double mix = 0.2920542156;
+
 	//  **--0x07FD--**
 
 	// --- Continuous Plugin Variables 

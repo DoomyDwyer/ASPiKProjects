@@ -54,11 +54,12 @@ PluginCore::PluginCore()
 }
 
 void PluginCore::updateParameters() {
-    ModulatedDelayParameters params = chorus.getParameters();
+    TimeModulatedDelayParameters params = chorus.getParameters();
     params.lfoDepth_Pct = lfoDepth_Pct;
     params.lfoRate_Hz = lfoRate_Hz;
+    params.mix = mix;
     params.feedback_Pct = feedback_Pct;
-    params.algorithm = modDelayAlgorithm::kVibrato;
+    params.algorithm = timeModulatedDelayAlgorithm::kChorus;
 
     chorus.setParameters(params);
 }
