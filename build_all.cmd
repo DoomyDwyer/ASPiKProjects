@@ -18,10 +18,17 @@ set targetdir=C:\Program Files\Common Files\VST3\Doomsville
 
 if "%configuration%" == "Release" (
   set /p version=<version.txt
+  set zipfile=%userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_VST3_x86_64_win_%version%.zip
+  IF EXIST "%zipfile%" (
+    echo Deleting zip file %zipfile% prior to recreating it...
+    del /q "%zipfile%"
+  )
+  echo Creating releases zip file %zipfile%...
+
   for /f "tokens=*" %%p in (plugin_releases.txt) do (
     for /f "tokens=1,2 delims=;" %%a in ("%%p") do (
       pushd %targetdir%
-      zip %userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_VST3_x86_64_win_%version%.zip %%a.vst3
+      zip %zipfile% %%a.vst3
       popd
     )
   )
