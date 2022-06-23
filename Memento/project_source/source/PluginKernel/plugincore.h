@@ -37,7 +37,9 @@ enum controlID {
 	fx_On = 12,
 	sensitivity = 13,
 	fx_OnOff_Toggle = 14,
-	thresholdExceeded = 15
+	thresholdExceeded = 15,
+	emulateAnalog_filterFc_Hz = 16,
+	emulateAnalog_noiseMix = 17
 };
 
 	// **--0x0F1F--**
@@ -76,13 +78,13 @@ public:
     bool initPluginParameters();
 
     /** called when plugin is loaded, a new audio file is playing or sample rate changes */
-    virtual bool reset(ResetInfo& resetInfo);
+    virtual bool reset(ResetInfo& resetInfo) override;
 
     /** one-time post creation init function; pluginInfo contains path to this plugin */
-    virtual bool initialize(PluginInfo& _pluginInfo);
+    virtual bool initialize(PluginInfo& _pluginInfo) override;
 
     /** preProcess: sync GUI parameters here; override if you don't want to use automatic variable-binding */
-    virtual bool preProcessAudioBuffers(ProcessBufferInfo& processInfo);
+    virtual bool preProcessAudioBuffers(ProcessBufferInfo& processInfo) override;
 
     /**
      * \brief
@@ -94,42 +96,41 @@ public:
     virtual void renderFXPassThrough(ProcessFrameInfo& processFrameInfo);
 
     /** process frames of data (DEFAULT MODE) */
-    virtual bool processAudioFrame(ProcessFrameInfo& processFrameInfo);
+    bool processAudioFrame(ProcessFrameInfo& processFrameInfo) override;
 
     /** Pre-process the block with: MIDI events for the block and parametet smoothing */
-    virtual bool preProcessAudioBlock(IMidiEventQueue* midiEventQueue = nullptr);
+    bool preProcessAudioBlock(IMidiEventQueue* midiEventQueue = nullptr) override;
 
     /** process sub-blocks of data (OPTIONAL MODE) */
-    virtual bool processAudioBlock(ProcessBlockInfo& processBlockInfo);
+    bool processAudioBlock(ProcessBlockInfo& processBlockInfo) override;
 
     /** This is the native buffer processing function; you may override and implement
-         it if you want to roll your own buffer or block procssing code */
-    // virtual bool processAudioBuffers(ProcessBufferInfo& processBufferInfo);
+         it if you want to roll your own buffer or block processing code */
+    // bool processAudioBuffers(ProcessBufferInfo& processBufferInfo) override;
 
     /** preProcess: do any post-buffer processing required; default operation is to send metering data to GUI  */
-    virtual bool postProcessAudioBuffers(ProcessBufferInfo& processInfo);
+    bool postProcessAudioBuffers(ProcessBufferInfo& processInfo) override;
 
-    /** called by host plugin at top of buffer proccess; this alters parameters prior to variable binding operation  */
-    virtual bool updatePluginParameter(int32_t controlID, double controlValue, ParameterUpdateInfo& paramInfo);
+    /** called by host plugin at top of buffer process; this alters parameters prior to variable binding operation  */
+    bool updatePluginParameter(int32_t controlID, double controlValue, ParameterUpdateInfo& paramInfo) override;
 
-    /** called by host plugin at top of buffer proccess; this alters parameters prior to variable binding operation  */
-    virtual bool updatePluginParameterNormalized(int32_t controlID, double normalizedValue,
-                                                 ParameterUpdateInfo& paramInfo);
+    /** called by host plugin at top of buffer process; this alters parameters prior to variable binding operation  */
+    bool updatePluginParameterNormalized(int32_t controlID, double normalizedValue, ParameterUpdateInfo& paramInfo) override;
 
     /** this can be called: 1) after bound variable has been updated or 2) after smoothing occurs  */
-    virtual bool postUpdatePluginParameter(int32_t controlID, double controlValue, ParameterUpdateInfo& paramInfo);
+    bool postUpdatePluginParameter(int32_t controlID, double controlValue, ParameterUpdateInfo& paramInfo) override;
 
     /** this is ony called when the user makes a GUI control change */
-    virtual bool guiParameterChanged(int32_t controlID, double actualValue);
+    bool guiParameterChanged(int32_t controlID, double actualValue) override;
 
     /** processMessage: messaging system; currently used for custom/special GUI operations */
-    virtual bool processMessage(MessageInfo& messageInfo);
+    bool processMessage(MessageInfo& messageInfo) override;
 
     /** processMIDIEvent: MIDI event processing */
-    virtual bool processMIDIEvent(midiEvent& event);
+    bool processMIDIEvent(midiEvent& event) override;
 
     /** specialized joystick servicing (currently not used) */
-    virtual bool setVectorJoystickParameters(const VectorJoystickData& vectorJoysickData);
+    bool setVectorJoystickParameters(const VectorJoystickData& vectorJoysickData) override;
 
     /** create the presets */
     bool initPluginPresets();
@@ -172,6 +173,8 @@ private:
 	double wetGainMin_dB = 0.0;
 	double wetGainMax_dB = 0.0;
 	double sensitivity = 0.0;
+	double emulateAnalog_filterFc_Hz = 0.0;
+	double emulateAnalog_noiseMix = 0.0;
 
 	// --- Discrete Plugin Variables 
 	int delayType = 0;

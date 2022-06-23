@@ -65,7 +65,12 @@ void PluginCore::updateParameters()
 
     params.Level_dB = level_dB;
     params.mix = mix;
-    params.emulateAnalog = emulateAnalog;
+
+    DigitalDelayAnalogEmulationParameters analogEmulationParams = params.analogEmulation;
+    analogEmulationParams.emulateAnalog = emulateAnalog;
+    analogEmulationParams.filterFc_Hz = emulateAnalog_filterFc_Hz;
+    analogEmulationParams.noiseMix = emulateAnalog_noiseMix;
+    params.analogEmulation = analogEmulationParams;
 
     params.feedback_Pct = delayFeedback_Pct;
     params.delayRatio_Pct = delayGoldenRatio;
@@ -830,6 +835,20 @@ bool PluginCore::initPluginParameters()
 	piParam->setBoundVariable(&thresholdExceeded, boundVariableType::kFloat);
 	addPluginParameter(piParam);
 
+	// --- continuous control: Cutoff
+	piParam = new PluginParameter(controlID::emulateAnalog_filterFc_Hz, "Cutoff", "Hz", controlVariableType::kDouble, 20.000000, 20480.000000, 5120.000000, taper::kLinearTaper);
+	piParam->setParameterSmoothing(true);
+	piParam->setSmoothingTimeMsec(20.00);
+	piParam->setBoundVariable(&emulateAnalog_filterFc_Hz, boundVariableType::kDouble);
+	addPluginParameter(piParam);
+
+	// --- continuous control: Noise Mix
+	piParam = new PluginParameter(controlID::emulateAnalog_noiseMix, "Noise Mix", "", controlVariableType::kDouble, 0.000000, 1.000000, 0.200000, taper::kLinearTaper);
+	piParam->setParameterSmoothing(true);
+	piParam->setSmoothingTimeMsec(20.00);
+	piParam->setBoundVariable(&emulateAnalog_noiseMix, boundVariableType::kDouble);
+	addPluginParameter(piParam);
+
 	// --- Aux Attributes
 	AuxParameterAttribute auxAttribute;
 
@@ -914,6 +933,16 @@ bool PluginCore::initPluginParameters()
 	auxAttribute.setUintAttribute(134217728);
 	setParamAuxAttribute(controlID::thresholdExceeded, auxAttribute);
 
+	// --- controlID::emulateAnalog_filterFc_Hz
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(2147483648);
+	setParamAuxAttribute(controlID::emulateAnalog_filterFc_Hz, auxAttribute);
+
+	// --- controlID::emulateAnalog_noiseMix
+	auxAttribute.reset(auxGUIIdentifier::guiControlData);
+	auxAttribute.setUintAttribute(2147483648);
+	setParamAuxAttribute(controlID::emulateAnalog_noiseMix, auxAttribute);
+
 
 	// **--0xEDA5--**
 
@@ -965,6 +994,8 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_On, -0.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_filterFc_Hz, 5120.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_noiseMix, 0.200000);
 	addPreset(preset);
 
 	// --- Preset: Clean guitar 120bpm
@@ -985,6 +1016,8 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_filterFc_Hz, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_noiseMix, 0.000000);
 	addPreset(preset);
 
 	// --- Preset: Overdriven guitar 120bpm
@@ -1005,6 +1038,8 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 2.995000);
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_filterFc_Hz, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_noiseMix, 0.000000);
 	addPreset(preset);
 
 	// --- Preset: Psychedelic swell 120bpm
@@ -1025,6 +1060,8 @@ bool PluginCore::initPluginPresets()
 	setPresetParameter(preset->presetParameters, controlID::fx_On, 1.000000);
 	setPresetParameter(preset->presetParameters, controlID::sensitivity, 3.400000);
 	setPresetParameter(preset->presetParameters, controlID::fx_OnOff_Toggle, -0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_filterFc_Hz, 0.000000);
+	setPresetParameter(preset->presetParameters, controlID::emulateAnalog_noiseMix, 0.000000);
 	addPreset(preset);
 
 
