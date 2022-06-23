@@ -18,7 +18,10 @@ set targetdir=C:\Program Files\Common Files\VST3\Doomsville
 
 if "%configuration%" == "Release" (
   set /p version=<version.txt
-  set zipfile=%userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_VST3_x86_64_win_%version%.zip
+  set zipfile=%userprofile%\Documents\Doomsville\Releases\Win64\Doomsville_VST3_Win_x86_64_%version%.zip
+  echo.
+  echo Packaging release for version %version%...
+
   IF EXIST "%zipfile%" (
     echo Deleting zip file %zipfile% prior to recreating it...
     del /q "%zipfile%"
