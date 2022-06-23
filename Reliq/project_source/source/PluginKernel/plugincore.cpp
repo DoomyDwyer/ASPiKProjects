@@ -61,7 +61,11 @@ void PluginCore::updateParameters()
 
     params.Level_dB = level_dB;
     params.mix = mix;
-    params.emulateAnalog = emulateAnalog;
+    DigitalDelayAnalogEmulationParameters analogEmulationParams = params.analogEmulation;
+    analogEmulationParams.emulateAnalog = emulateAnalog;
+    analogEmulationParams.filterFc_Hz = 5120;
+    analogEmulationParams.noiseMix = 0.2;
+    params.analogEmulation = analogEmulationParams;
 
     params.feedback_Pct = delayFeedback_Pct;
     params.delayRatio_Pct = delayGoldenRatio;
@@ -128,7 +132,7 @@ bool PluginCore::initialize(PluginInfo& pluginInfo)
 Operation:
 - syncInBoundVariables when preProcessAudioBuffers is called, it is *guaranteed* that all GUI control change information
   has been applied to plugin parameters; this binds parameter changes to your underlying variables
-- NOTE: postUpdatePluginParameter( ) will be called for all bound variables that are acutally updated; if you need to process
+- NOTE: postUpdatePluginParameter( ) will be called for all bound variables that are actually updated; if you need to process
   them individually, do so in that function
 - use this function to bulk-transfer the bound variable data into your plugin's member object variables
 
@@ -156,7 +160,7 @@ bool PluginCore::preProcessAudioBuffers(ProcessBufferInfo& processInfo)
 	basis anyway. This is also easier to understand for most newbies.
 
 	NOTE:
-	You can enable and disable frame/buffer procssing in the constructor of this object:
+	You can enable and disable frame/buffer processing in the constructor of this object:
 
 	// --- to process audio frames call:
 	processAudioByFrames();
