@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 archivefile=$1
-keychain_profile=$(cat keychain-profile.txt)
+keychain_profile=$(cat config/MacOS/keychain-profile.txt)
 
 echo Notarizing artefacts present in ${archivefile}...
 xcrun notarytool submit $archivefile --keychain-profile "$keychain_profile" --wait

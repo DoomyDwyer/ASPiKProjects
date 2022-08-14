@@ -78,10 +78,10 @@ vst3_buildfile=VST3/$configuration/$vst3file
 au_buildfile=AU/$configuration/$au_file
 au_bundlefile=AU/$configuration/${project}.bundle
 
+developer_id=$(cat ../../config/MacOS/developer_id.txt)
 # Sign the AU bundle prior to copying it - only bother with Release builds
 if [[ "$configuration" == "Release" ]] then
-  developer_id=$(cat ../../developer_id.txt)
-  echo "Signing $au_bundlefile as $developer_id"
+ echo "Signing $au_bundlefile as $developer_id"
   codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $au_bundlefile --timestamp
   codesign -d --deep -vvv $au_bundlefile
 fi
@@ -92,7 +92,6 @@ cp -Rp $au_bundlefile $au_buildfile/Contents/Resources
 
 # Only bother signing Release builds
 if [[ "$configuration" == "Release" ]] then
-  developer_id=$(cat ../../developer_id.txt)
   echo "Signing $vst3_buildfile as $developer_id"
   codesign --deep --force --verify --verbose --options runtime --sign "$developer_id" --arch $arch $vst3_buildfile --timestamp
   codesign -d --deep -vvv $vst3_buildfile
@@ -120,10 +119,10 @@ if [[ "$configuration" == "Release" ]] then
   sudo cp -Rp $au_buildfile $au_distrodir
 fi
 
-echo "Waiting for 6 seconds for file copy to complete prior to AU validation..."
+echo "Waiting for 6 seconds for file copy to complete prior to plugin validation..."
 read -t 6
 
-auval -v $plugintype $pluginsubtype $pluginmanufacturer
+../../validate_plugin.sh $vst3_targetfile $au_targetfile $plugintype $pluginsubtype $pluginmanufacturer
 
 echo "VST3 build completed $(date)"
 echo "New file: $(ls -lad $vst3_targetfile)"

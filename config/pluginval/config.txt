@@ -1,0 +1,3 @@
+strictness_level=5
+verbose=true
+output_dir=../../logs

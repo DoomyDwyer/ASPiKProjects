@@ -345,3 +345,5 @@ keychain-profile.txt
 **/mac_build/*.xcodeproj/*
 **/mac_build/*.xctestrun
 
+# pluginval log files
+logs/**
