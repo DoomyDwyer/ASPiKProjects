@@ -39,7 +39,7 @@ enum controlID {
 	fx_OnOff_Toggle = 14,
 	thresholdExceeded = 15,
 	emulateAnalog_filterFc_Hz = 16,
-	emulateAnalog_noiseMix = 17
+	emulateAnalog_noiseMix_Pct = 17
 };
 
 	// **--0x0F1F--**
@@ -174,7 +174,7 @@ private:
 	double wetGainMax_dB = 0.0;
 	double sensitivity = 0.0;
 	double emulateAnalog_filterFc_Hz = 0.0;
-	double emulateAnalog_noiseMix = 0.0;
+	double emulateAnalog_noiseMix_Pct = 0.0;
 
 	// --- Discrete Plugin Variables 
 	int delayType = 0;

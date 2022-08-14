@@ -63,8 +63,8 @@ void PluginCore::updateParameters()
     params.mix = mix;
     DigitalDelayAnalogEmulationParameters analogEmulationParams = params.analogEmulation;
     analogEmulationParams.emulateAnalog = emulateAnalog;
-    analogEmulationParams.filterFc_Hz = 5120;
-    analogEmulationParams.noiseMix = 0.2;
+    analogEmulationParams.filterFc_Hz = DigitalDelayAnalogEmulationParameters::analogEmulationDefaultFilterFcHz;
+    analogEmulationParams.noiseMix_Pct = DigitalDelayAnalogEmulationParameters::analogEmulationDefaultNoiseMixPct;
     params.analogEmulation = analogEmulationParams;
 
     params.feedback_Pct = delayFeedback_Pct;
