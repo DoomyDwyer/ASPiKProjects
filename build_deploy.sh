@@ -122,7 +122,7 @@ fi
 echo "Waiting for 6 seconds for file copy to complete prior to plugin validation..."
 read -t 6
 
-../../validate_plugin.sh $vst3_targetfile $au_targetfile $plugintype $pluginsubtype $pluginmanufacturer
+../../validate_plugin.sh $vst3_targetfile $au_targetfile $arch $plugintype $pluginsubtype $pluginmanufacturer
 
 echo "VST3 build completed $(date)"
 echo "New file: $(ls -lad $vst3_targetfile)"
