@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 echo "Cleaning logs directory..."$
-rm -Rf logs
+rm -Rf logs/*
 
 for entry in $(cat plugin_releases.txt);
 do
