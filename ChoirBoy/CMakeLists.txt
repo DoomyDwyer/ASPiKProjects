@@ -240,8 +240,8 @@ set(VST_CMAKE_FOLDER cmake/vst_cmake)
 #
 # ---------------------------------------------------------------------------------
 
-# Read in version.txt and set up variables appropriately
-file (STRINGS "../version.txt" VERSION_STRING)
+# Read in version.txt and set up variables accordingly
+file (STRINGS "../config/version.txt" VERSION_STRING)
 # Report results to the console
 message(STATUS "VERSION_STRING is set to : " ${VERSION_STRING})
 # Perform some maths to get the version number in a correct format for Audio Unit Info.plist files

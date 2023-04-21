@@ -3,7 +3,7 @@
 echo "Cleaning logs directory..."$
 rm -Rf logs/*
 
-for entry in $(cat plugin_releases.txt);
+for entry in $(cat config/plugin_releases.txt);
 do
   IFS=';'
   read -rA arr <<< "$entry"

@@ -22,7 +22,7 @@ configuration=$1
 if [[ -z $configuration ]] ; then configuration=Release fi
 shift
 
-for entry in $(cat plugin_releases.txt); 
+for entry in $(cat config/plugin_releases.txt); 
 do 
   IFS=';'
   read -rA arr <<< "$entry"
@@ -41,7 +41,7 @@ fi
 
 # Only create zip file for Release builds
 if [[ "$configuration" == "Release" ]] then
-  version=$(cat version.txt)
+  version=$(cat config/version.txt)
   pushd $vst3_plugins_dir/_$x86_64_dir/
   zip -rq ${releasesdir}Doomsville_VST3_MacOS_x86_64_$version.zip *
   popd
