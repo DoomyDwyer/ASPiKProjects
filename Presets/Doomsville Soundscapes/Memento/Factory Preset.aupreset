@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>data</key>
+	<data>
+	AAAAAAAAAAAAAAAQAAAAAEN6AAAAAAABQkgAAQAAAAI/AAAAAAAAA8BAAAAAAAAEgAAA
+	AAAAAAWAAAAAAAAABsBAAAAAAAAHQaAAAAAAAAhD+gAAAAAACcDAAAAAAAAKwEAAAAAA
+	AAsAAAAAAAAADIAAAAAAAAANP4AAAAAAAA6AAAAAAAIABUBAAAA=
+	</data>
+	<key>element-name</key>
+	<dict>
+		<key>1</key>
+		<dict>
+			<key>0</key>
+			<string>Main Input</string>
+			<key>1</key>
+			<string>Sidechain</string>
+		</dict>
+	</dict>
+	<key>manufacturer</key>
+	<integer>1146048333</integer>
+	<key>name</key>
+	<string>Factory Preset</string>
+	<key>subtype</key>
+	<integer>1296387407</integer>
+	<key>type</key>
+	<integer>1635083896</integer>
+	<key>version</key>
+	<integer>0</integer>
+</dict>
+</plist>
